@@ -1,0 +1,134 @@
+.about-us {
+    background-image: url("/src/Img/fon - about us .svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title_about_use p {
+    font-size: 64px;
+    color: azure;
+}
+
+.about_us_button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.text-about {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.text-about span {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.text-about p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .container_about {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+
+    .about-image {
+        max-width: 80%;
+    }
+
+    .text-about {
+        max-width: 80%;
+        text-align: center;
+        align-items: center;
+    }
+
+    .text-about span {
+        font-size: 1.75rem;
+    }
+
+    .text-about p {
+        font-size: 0.95rem;
+    }
+
+    .about_us_button {
+        display: flex;
+        justify-content: space-between
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container_about {
+        padding: 25px calc(var(--bs-gutter-x) * .5);
+    }
+
+    .container_about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 100%;
+        padding: 1em;
+    }
+
+    .text-about {
+        text-align: center;
+        align-items: center;
+        max-width: 100%;
+        padding: 1em;
+    }
+
+    .text-about span {
+        font-size: 1.5rem;
+    }
+
+    .text-about p {
+        font-size: 1rem;
+        text-align: left;
+    }
+
+    .about_us_button {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1200px) {
+    .text-about span {
+        font-size: 2.5rem;
+    }
+
+    .text-about p {
+        font-size: 1.1rem;
+    }
+
+
+}

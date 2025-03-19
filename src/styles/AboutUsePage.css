@@ -1,0 +1,129 @@
+.title_about_us {
+    background-image: url("/src/Img/dasaxosneri hamar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.about_page_font {
+    background-image: url("/src/Img/fon - about us .svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+
+.title_about_us p {
+    font-size: 64px;
+    color: azure;
+    text-align: center;
+    margin: 0;
+}
+
+.about_img_text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 70px;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+.about_img_text img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px; /* Adds spacing between images and text */
+}
+
+.text_about {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.about_img_text ul li {
+    list-style: none;
+    font-size: 36px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+    .title_about_us {
+        height: 250px;
+    }
+
+    .title_about_us p {
+        font-size: 1.8em;
+    }
+
+    .text_about {
+        font-size: 22px;
+    }
+
+    .about_img_text ul li {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about_img_text img {
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    .soc_text {
+        text-align: left;
+    }
+
+    .title_about_us {
+        height: 200px;
+    }
+
+    .title_about_us p {
+        font-size: 1.5em;
+    }
+
+    .about_img_text {
+        flex-direction: column; /* Stacks items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .text_about {
+        font-size: 20px;
+    }
+
+    .about_img_text ul li {
+        font-size: 28px;
+    }
+
+    .about_img_text img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .title_about_us {
+        height: 150px;
+    }
+
+    .title_about_us p {
+        font-size: 1.2em;
+    }
+
+    .text_about {
+        font-size: 18px;
+    }
+
+    .about_img_text ul li {
+        font-size: 24px;
+    }
+
+    .about_page_font {
+        padding: 10px;
+    }
+}

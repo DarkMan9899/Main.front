@@ -1,0 +1,212 @@
+.product_detal_fon {
+    background-image: url("/src/Img/fon.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.teacher_title_contactPage{
+    background-image: url("/src/Img/dasaxosneri hamar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.teacher_title_contactPage h1{
+    font-size: 64px;
+    color: azure;
+    text-align: center;
+    margin: 0;
+}
+
+.product-details-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.product-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px; /* 50px between text and image */
+}
+
+.cours_title {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.product_description h5 {
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+.course_end {
+    text-decoration: none;
+    padding-left: 20px;
+    list-style: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.product_description p {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.product-image {
+    height: auto;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.product-info {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px; /* Align the left and right sides */
+    padding-right: 20px; /* Align the left and right sides */
+}
+
+.product-info h2 {
+    margin: 0 0 10px 0; /* Separate the title from the text */
+    font-size: 40px;
+    color: blue;
+}
+
+.product-info p {
+    margin: 0 0 10px 0;
+    line-height: 1.5; /* Space between lines in text */
+}
+
+.price-select,
+.quantity-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-select label,
+.quantity-input label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.price-select select,
+.quantity-input input {
+    padding: 10px; /* Increase padding for better appearance */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box-shadow */
+    transition: box-shadow 0.3s, border-color 0.3s;
+    max-width: 250px; /* Reduce input length */
+}
+
+.price-select select:focus,
+.quantity-input input:focus {
+    border-color: #28a745; /* Highlight border on focus */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Enhance box-shadow on focus */
+    outline: none;
+}
+
+.quantity-input span {
+    padding-top: 20px;
+    font-size: 25px;
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+    .product-details-page {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .product-header {
+        width: 40%;
+        margin-bottom: 0;
+    }
+
+    .product-info {
+        width: 60%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+    .product-details-page {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-header {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .product-image {
+        max-width: 80%;
+    }
+
+    .product-info {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .product-info h2 {
+        font-size: 20px;
+    }
+
+    .product-info p {
+        font-size: 14px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+    .product-details-page {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 40px; /* Increase padding on larger screens */
+    }
+
+    .product-header {
+        width: 50%;
+    }
+
+    .product-image {
+        max-width: 100%; /* Full width on larger screens */
+    }
+
+    .product-info {
+        width: 50%;
+        max-width: none;
+        padding-left: 40px; /* Increased padding */
+        padding-right: 40px; /* Increased padding */
+    }
+
+    .product-info h2 {
+        font-size: 40px;
+        color: blue;
+    }
+
+    .product-info p {
+        font-size: 16px;
+    }
+}

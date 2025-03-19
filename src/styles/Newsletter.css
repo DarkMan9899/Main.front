@@ -1,0 +1,130 @@
+.newsletter-section {
+    background-image: url("/src/Img/fon verjin ej.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.newsletter-content {
+    display: flex;
+}
+
+.newsletter-title {
+    text-align: left;
+    margin-bottom: 20px;
+    flex: 1; /* Ensure equal flex for responsiveness */
+}
+
+.newsletter-title h4 {
+    padding-bottom: 10px;
+    font-size: 2.625em;
+    color: #1b1b1b;
+}
+
+.newsletter-title span {
+    font-size: 1em;
+    color: #1b1b1b;
+}
+
+.newsletter-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex: 1; /* Ensure equal flex for responsiveness */
+}
+
+.newsletter-input-container input {
+    border-radius: 10px 0 0 10px;
+    background-color: #ffffff;
+    border: none;
+    height: 40px;
+    line-height: 50px;
+    font-size: 1em;
+    width: 50%;
+    padding: 15px;
+}
+
+.newsletter-input-container button {
+    height: 40px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: capitalize;
+    color: #ffffff;
+    background-color: #3B82F6;
+
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.newsletter-input-container button:hover {
+    background-color: #2e1ba4;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .newsletter-title h4 {
+        font-size: 2.25em;
+    }
+
+    .newsletter-title span {
+        font-size: 0.9em;
+    }
+
+    .newsletter-input-container input {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .newsletter-title {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .newsletter-content {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .newsletter-input-container {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .newsletter-title h4 {
+        font-size: 1.25rem;
+    }
+
+    .newsletter-title span {
+        font-size: 0.875em;
+    }
+
+    .newsletter-input-container input {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-title {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .newsletter-title h4 {
+        font-size: 1.5em;
+    }
+
+    .newsletter-title span {
+        font-size: 0.75em;
+    }
+}

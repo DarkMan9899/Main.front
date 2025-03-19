@@ -1,0 +1,97 @@
+.SocialProgram {
+    background-image: url("/src/Img/fon - about us .svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.social_program_img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.social_program_img img {
+    width: 100%;
+    max-width: 300px; /* Max width for the image */
+    height: auto;
+}
+
+.soc_text {
+    max-width: 600px;
+    margin-top: 20px; /* Margin between image and text */
+}
+
+.soc_text p {
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+.soc_text span {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.social_program_logo {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Gap between logo items */
+    padding-top: 50px;
+}
+
+.logo_item {
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 350px;
+    width: 100%; /* Ensure it takes full width within parent container */
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: #8663ff;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+}
+
+.logo_item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hover shadow */
+}
+
+.logo_item img {
+    max-width: 100px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .social_program_img {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .soc_text {
+        padding-left: 100px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .social_program_img img {
+        max-width: 400px; /* Larger max width for bigger screens */
+    }
+
+    .soc_text {
+        max-width: none;
+    }
+}

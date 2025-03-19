@@ -1,0 +1,135 @@
+.statistics-section {
+    padding: 55px 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    gap: 20px; /* Add gap between cards */
+    max-width: 1200px;
+    margin: 0 auto;
+    background-image: url("/src/Img/ikonaneri fon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+
+.statistics-card {
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 250px;
+    width: 100%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+}
+
+.statistics-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hover shadow */
+}
+
+.statistics-icon {
+    max-width: 90px;
+    height: auto;
+}
+
+.statistics-info {
+    color: #333;
+    flex-grow: 1; /* Allow info section to grow */
+}
+
+.statistics-number {
+    margin: 0;
+    font-size: 30px;
+    font-weight: bold;
+    /*color: #8663ff; !* Adjust the color as needed *!*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), /* Darker shadow */ -1px -1px 0 rgba(255, 255, 255, 0.7); /* Lighter shadow */
+}
+
+.statistics-text {
+    font-size: 17px;
+    color: #666; /* Changed color for better readability */
+    margin-top: 5px;
+}
+
+@media (max-width: 1024px) {
+    .statistics-card {
+        max-width: 300px;
+    }
+
+    .statistics-icon {
+        max-width: 70px;
+    }
+
+    .statistics-number {
+        font-size: 25px;
+    }
+
+    .statistics-text {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .statistics-card {
+        flex-direction: column;
+        text-align: center;
+        max-width: 300px;
+        gap: 10px;
+    }
+
+    .statistics-icon {
+        max-width: 60px;
+    }
+
+    .statistics-number {
+        font-size: 24px;
+    }
+
+    .statistics-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .statistics-section {
+        border-radius: 0;
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+
+    }
+
+    .statistics-card {
+        gap: 5px;
+        width: 300px;
+    }
+
+    .statistics-icon {
+        max-width: 70px;
+    }
+
+    .statistics-number {
+        font-size: 24px;
+    }
+
+    .statistics-text {
+        font-size: 16px;
+    }
+}
+
+
+

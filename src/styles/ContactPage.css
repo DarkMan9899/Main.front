@@ -1,0 +1,317 @@
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-image: url("/src/Img/fon instructor.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 4px;
+    outline: none;
+    width: 50%;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-contentt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.modal-buttons{
+    display: flex;
+    gap: 20px;
+}
+
+
+.text_title_contactPage {
+    background-image: url("/src/Img/contact us nkar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.contactPage-container {
+    background-image: url("/src/Img/contact us fon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contactPage-section {
+    background-image: url("/src/Img/contact us.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    height: auto;
+    padding: 85px 75px;
+    border-radius: 5px;
+    box-shadow: 15px 10px 10px #2300d5;
+    align-items: center;
+}
+
+.contact_text {
+    width: 70%;
+}
+
+.contact_text span {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.text_title_contactPage h1 {
+    font-size: 64px;
+    color: azure;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+}
+
+.input_list {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+}
+
+.input_list input,
+.input_list textarea {
+    width: 301px;
+    height: 50px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+.input_list label {
+    font-size: 24px;
+}
+
+.icon_contact {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.soc_info {
+    display: flex;
+    gap: 20px;
+    font-size: 24px;
+    padding-top: 40px;
+}
+
+.soc_info i:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    color: #5e44e3;
+}
+
+.mail_link {
+    display: flex;
+    flex-direction: column;
+}
+
+.mail_button {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.button1 {
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 251px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 0.8em;
+    background-color: #5e44e3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button1:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #007bff;
+}
+
+.mail_link_text {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.contact-phone,
+.contact-email {
+    display: block;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 32px;
+}
+
+/* Responsive design for tablets */
+@media (max-width: 1000px) {
+    .contactPage-section {
+        flex-direction: column;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .text_title_contactPage h1 {
+        font-size: 48px;
+    }
+
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+
+    .contact_text {
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+    }
+
+    .mail_link {
+        align-items: center;
+    }
+
+    .contact_text {
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+    }
+
+    .mail_button {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .icon_contact {
+        justify-content: center;
+    }
+
+    .mail_link_text {
+        justify-content: center;
+    }
+
+    .contact_text span {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .soc_info {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+
+    .contact-form {
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1200px) {
+    .text_title_contactPage h1 {
+        font-size: 64px;
+    }
+
+    .input_list input,
+    .input_list textarea {
+        width: 301px;
+    }
+
+    .soc_info {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .contact-phone,
+    .contact-email {
+        font-size: 21px;
+    }
+}
+
+/* Responsive design for small mobile devices */
+@media (max-width: 480px) {
+    .contact_text {
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+    }
+
+    .mail_button {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .icon_contact {
+        justify-content: center;
+    }
+
+    .mail_link_text {
+        justify-content: center;
+    }
+
+    .contact_text span {
+        font-size: 20px;
+    }
+
+    .soc_info {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+
+    .contact-form {
+        width: 100%;
+        align-items: center;
+    }
+}

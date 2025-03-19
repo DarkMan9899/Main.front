@@ -1,0 +1,80 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;}
+
+body {
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding: 120px calc(var(--bs-gutter-x) * .5);
+}
+
+.button {
+  background-color: #5e44e3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*margin: 2em 0;*/
+  width: 170px;
+  height: 40px;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #007bff;
+}
+
+/* Medium Screen Adjustments */
+@media (max-width: 992px) {
+  .container {
+    padding: 25px calc(var(--bs-gutter-x) * .5);
+  }
+
+  .button {
+    font-size: 0.875em; /* Adjust font size */
+    width: 150px; /* Adjust width */
+    height: 50px; /* Adjust height */
+  }
+}
+
+/* Small Screen Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px calc(var(--bs-gutter-x) * .5);
+  }
+
+  .button {
+    font-size: 0.75em; /* Further adjust font size */
+    width: 130px; /* Further adjust width */
+    height: 45px; /* Further adjust height */
+  }
+}
+
+/* Very Small Screen Adjustments */
+@media (max-width: 576px) {
+  .container {
+    padding: 25px calc(var(--bs-gutter-x) * .5);
+  }
+
+  .button {
+    font-size: 0.75em; /* Further adjust font size */
+    width: 120px; /* Further adjust width */
+    height: 40px; /* Further adjust height */
+    margin: 1em 0; /* Adjust margin */
+  }
+}

@@ -1,0 +1,119 @@
+.product-page {
+}
+
+.product-page_Title {
+    background-image: url("/src/Img/grqerov.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px; /* Added padding for smaller screens */
+}
+
+.product-page_Title h2 {
+    font-size: 64px;
+    color: azure;
+    text-align: center;
+    margin: 0;
+}
+
+/* Product list grid */
+.product_list_full {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 20px;
+}
+
+.product-card {
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #00000015;
+    animation: fadeIn 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Ensure content does not overflow the card */
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 0.5em 0;
+    font-size: 1.2em;
+    padding: 0 10px; /* Added padding for text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .product-page_Title {
+        height: 250px;
+    }
+
+    .product-page_Title h2 {
+        font-size: 48px;
+    }
+
+    .product_list_full {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on medium screens */
+        gap: 16px; /* Adjust gap for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-page_Title {
+        height: 200px;
+    }
+
+    .product-page_Title h2 {
+        font-size: 36px;
+    }
+
+    .product_list_full {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on small screens */
+        gap: 12px; /* Adjust gap for small screens */
+    }
+
+    .product-card img {
+        height: 120px;
+    }
+
+    .product-card h3 {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-page_Title {
+        height: 150px;
+    }
+
+    .product-page_Title h2 {
+        font-size: 28px;
+    }
+
+    .product_list_full {
+        grid-template-columns: 1fr; /* One column on very small screens */
+        gap: 8px; /* Adjust gap for very small screens */
+    }
+
+    .product-card img {
+        height: 100px;
+    }
+
+    .product-card h3 {
+        font-size: 0.9em;
+    }
+}

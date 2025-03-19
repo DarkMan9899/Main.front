@@ -1,0 +1,116 @@
+.product_fon {
+    background-image: url("/src/Img/fon qartez.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.product-section {
+    margin: 2em 0;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    padding: 1em;
+}
+
+.product-section-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    padding: 0 1em;
+}
+
+.product-section-text span {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.view-all-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.view-all-button:hover {
+    background-color: #0056b3;
+}
+
+.product-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding: 120px calc(var(--bs-gutter-x) * .5);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .product-section-text span {
+        font-size: 2rem;
+    }
+
+    .view-all-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+
+
+    .product_container {
+        padding: 25px calc(var(--bs-gutter-x) * .5);
+
+    }
+
+    .product-section-text {
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+    }
+
+    .product-section-text span {
+        font-size: 1.5rem;
+    }
+
+    .view-all-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .product_container {
+        padding: 25px calc(var(--bs-gutter-x) * .5);
+
+    }
+
+    .product-section-text span {
+        font-size: 1.2rem;
+    }
+
+    .view-all-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

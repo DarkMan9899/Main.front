@@ -1,0 +1,28 @@
+/* Gallery CSS */
+
+.gallery_posts {
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.slick-slider {
+    margin: 0 -10px;
+}
+
+.slick-slide {
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.post {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}

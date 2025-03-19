@@ -1,0 +1,165 @@
+/* Base Styles */
+.teacher_title_contactPage {
+    background-image: url("/src/Img/dasaxosneri hamar.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 300px;
+}
+
+.teacher_title_contactPage h1 {
+    font-size: 64px;
+    color: azure;
+}
+
+.teacher_pag_cont {
+    max-width: 1200px;
+    margin: 0 auto;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding: 120px calc(var(--bs-gutter-x) * .5);
+}
+
+.teacher_card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    padding: 1em;
+}
+
+.teacherPage-card-item {
+    background-image: url("/src/Img/fon drosh.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    width: 100%;
+    padding: 60px 15px;
+}
+
+.teacherPage-card-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.teacherPage-card-item img {
+    width: 104px;
+    height: 104px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.teacherPage-card-item span {
+    font-size: 26px;
+    color: #4D5756;
+    margin: 10px 0;
+}
+
+/* Medium Screen Adjustments */
+@media (max-width: 992px) {
+    .teacher_title_contactPage {
+        height: 250px; /* Reduce height */
+    }
+
+    .teacher_title_contactPage h1 {
+        font-size: 48px; /* Reduce font size */
+    }
+
+    .teacher_pag_cont {
+        padding: 80px 30px; /* Reduce padding */
+    }
+
+    .teacher_card-grid {
+        gap: 0.75em; /* Adjust gap */
+        padding: 0.75em; /* Adjust padding */
+    }
+
+    .teacherPage-card-item {
+        padding: 40px 10px; /* Reduce padding */
+    }
+
+    .teacherPage-card-item img {
+        width: 80px; /* Adjust image size */
+        height: 80px;
+    }
+
+    .teacherPage-card-item span {
+        font-size: 22px; /* Adjust font size */
+    }
+}
+
+/* Small Screen Adjustments */
+@media (max-width: 768px) {
+    .teacher_title_contactPage {
+        height: 200px; /* Further reduce height */
+    }
+
+    .teacher_title_contactPage h1 {
+        font-size: 36px; /* Further reduce font size */
+    }
+
+    .teacher_pag_cont {
+        padding: 60px 15px; /* Further reduce padding */
+    }
+
+    .teacher_card-grid {
+        gap: 0.5em; /* Further adjust gap */
+        padding: 0.5em; /* Further adjust padding */
+    }
+
+    .teacherPage-card-item {
+        padding: 30px 8px; /* Further reduce padding */
+    }
+
+    .teacherPage-card-item img {
+        width: 70px; /* Further adjust image size */
+        height: 70px;
+    }
+
+    .teacherPage-card-item span {
+        font-size: 18px; /* Further adjust font size */
+    }
+}
+
+/* Very Small Screen Adjustments */
+@media (max-width: 480px) {
+    .teacher_title_contactPage {
+        height: 150px; /* Further reduce height */
+    }
+
+    .teacher_title_contactPage h1 {
+        font-size: 24px; /* Further reduce font size */
+    }
+
+    .teacher_pag_cont {
+        padding: 40px 10px; /* Further reduce padding */
+    }
+
+    .teacher_card-grid {
+        gap: 0.25em; /* Further adjust gap */
+        padding: 0.25em; /* Further adjust padding */
+    }
+
+    .teacherPage-card-item {
+        padding: 20px 5px; /* Further reduce padding */
+    }
+
+    .teacherPage-card-item img {
+        width: 60px; /* Further adjust image size */
+        height: 60px;
+    }
+
+    .teacherPage-card-item span {
+        font-size: 16px; /* Further adjust font size */
+    }
+}

@@ -3,30 +3,56 @@ import axios from 'axios';
 import '../styles/CartPage.css';
 import {API_URL_Cart_Page} from '../api';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://academy-polyglot.site';
+const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://polyglotacademy.am';
 const IDRAM_ACCOUNT_ID = '100049302';
 const PAYMENT_DESCRIPTION = 'Your purchase description';
 const CUSTOMER_EMAIL = 'academy.polyglott@gmail.com';
+console.log('-------',BASE_URL)
+// function IdramPaymentForm({ amount, billNo }) {
+//     const userId = localStorage.getItem('userId');
+//
+//     return (
+//         <form
+//             action="https://banking.idram.am/Payment/GetPayment"
+//             method="POST"
+//             id="idramPaymentForm"
+//         >
+//             <input type="hidden" name="EDP_LANGUAGE" value="EN" />
+//             <input type="hidden" name="EDP_REC_ACCOUNT" value={IDRAM_ACCOUNT_ID} />
+//             <input type="hidden" name="EDP_DESCRIPTION" value={PAYMENT_DESCRIPTION} />
+//             <input type="hidden" name="EDP_AMOUNT" value={amount} />
+//             <input type="hidden" name="EDP_BILL_NO" value={billNo || userId} />
+//             <input type="hidden" name="EDP_EMAIL" value={CUSTOMER_EMAIL} />
+//             <input type="hidden" name="SUCCESS_URL" value={`${BASE_URL}/success`} />
+//             <input type="hidden" name="FAIL_URL" value={`${BASE_URL}/fail`} />
+//             <input type="hidden" name="RESULT_URL" value="https://main-api.academy-polyglot.site/result" />
+//         </form>
+//     );
+// }
 
-function IdramPaymentForm({amount, billNo}) {
+function IdramPaymentForm({ amount, billNo }) {
+    console.log('🟡 Idram Payment Form Values:', { amount, billNo });
+
     return (
         <form
             action="https://banking.idram.am/Payment/GetPayment"
             method="POST"
             id="idramPaymentForm"
         >
-            <input type="hidden" name="EDP_LANGUAGE" value="EN"/>
-            <input type="hidden" name="EDP_REC_ACCOUNT" value={IDRAM_ACCOUNT_ID}/>
-            <input type="hidden" name="EDP_DESCRIPTION" value={PAYMENT_DESCRIPTION}/>
-            <input type="hidden" name="EDP_AMOUNT" value={amount}/>
-            <input type="hidden" name="EDP_BILL_NO" value={billNo}/>
-            <input type="hidden" name="EDP_EMAIL" value={CUSTOMER_EMAIL}/>
-            <input type="hidden" name="SUCCESS_URL" value={`${BASE_URL}/api/payment/success`}/>
-            <input type="hidden" name="FAIL_URL" value={`${BASE_URL}/api/payment/fail`}/>
-            <input type="hidden" name="RESULT_URL" value={`${BASE_URL}/api/payment/result`}/>
+            <input type="hidden" name="EDP_LANGUAGE" value="EN" />
+            <input type="hidden" name="EDP_REC_ACCOUNT" value={IDRAM_ACCOUNT_ID} />
+            <input type="hidden" name="EDP_DESCRIPTION" value={PAYMENT_DESCRIPTION} />
+            <input type="hidden" name="EDP_AMOUNT" value={amount} />
+            <input type="hidden" name="EDP_BILL_NO" value={billNo} />
+            <input type="hidden" name="EDP_EMAIL" value={CUSTOMER_EMAIL} />
+            <input type="hidden" name="SUCCESS_URL" value={`${BASE_URL}/success`} />
+            <input type="hidden" name="FAIL_URL" value={`${BASE_URL}/fail`} />
+            <input type="hidden" name="RESULT_URL" value="https://main-api.academy-polyglot.site/result" />
         </form>
     );
 }
+
+
 
 function CartPage({cart, updateQuantity, removeItem}) {
     const [customerInfo, setCustomerInfo] = useState({
@@ -62,6 +88,34 @@ function CartPage({cart, updateQuantity, removeItem}) {
         setModalOpen(true);
     };
 
+    // const confirmPayment = async () => {
+    //     try {
+    //         const userId = localStorage.getItem('userId');
+    //
+    //         const orderData = {
+    //             customer_name: customerInfo.name,
+    //             customer_surname: customerInfo.surname,
+    //             customer_phone: customerInfo.phone,
+    //             cart,
+    //             userId,
+    //         };
+    //
+    //         const response = await axios.post(API_URL_Cart_Page, orderData);
+    //         const billNo = response.data.billNo;
+    //
+    //         setPaymentStatus({ success: true, error: null });
+    //
+    //         document.getElementById('idramPaymentForm').submit();
+    //     } catch (error) {
+    //         setPaymentStatus({
+    //             success: false,
+    //             error: 'There was an issue submitting your order. Please try again.',
+    //         });
+    //     } finally {
+    //         setModalOpen(false);
+    //     }
+    // };
+
     const confirmPayment = async () => {
         try {
             const orderData = {
@@ -71,13 +125,18 @@ function CartPage({cart, updateQuantity, removeItem}) {
                 cart,
             };
 
+            console.log('🟡 Sending Order Data to Backend:', orderData);
+
             const response = await axios.post(API_URL_Cart_Page, orderData);
             const billNo = response.data.billNo; // Expecting bill number from the backend
 
-            setPaymentStatus({success: true, error: null});
+            console.log('🟢 Backend Response:', response.data);
+
+            setPaymentStatus({ success: true, error: null });
 
             document.getElementById('idramPaymentForm').submit();
         } catch (error) {
+            console.error('🔴 Error Confirming Payment:', error);
             setPaymentStatus({
                 success: false,
                 error: 'There was an issue submitting your order. Please try again.',
@@ -86,6 +145,10 @@ function CartPage({cart, updateQuantity, removeItem}) {
             setModalOpen(false);
         }
     };
+
+
+
+
 
     const cancelPayment = () => {
         setModalOpen(false);

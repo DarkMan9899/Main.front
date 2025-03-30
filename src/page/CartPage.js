@@ -1,3 +1,4 @@
+
 import React, {useState, useMemo} from 'react';
 import axios from 'axios';
 import '../styles/CartPage.css';
@@ -8,27 +9,6 @@ const IDRAM_ACCOUNT_ID = '100049302';
 const PAYMENT_DESCRIPTION = 'Your purchase description';
 const CUSTOMER_EMAIL = 'academy.polyglott@gmail.com';
 console.log('-------',BASE_URL)
-// function IdramPaymentForm({ amount, billNo }) {
-//     const userId = localStorage.getItem('userId');
-//
-//     return (
-//         <form
-//             action="https://banking.idram.am/Payment/GetPayment"
-//             method="POST"
-//             id="idramPaymentForm"
-//         >
-//             <input type="hidden" name="EDP_LANGUAGE" value="EN" />
-//             <input type="hidden" name="EDP_REC_ACCOUNT" value={IDRAM_ACCOUNT_ID} />
-//             <input type="hidden" name="EDP_DESCRIPTION" value={PAYMENT_DESCRIPTION} />
-//             <input type="hidden" name="EDP_AMOUNT" value={amount} />
-//             <input type="hidden" name="EDP_BILL_NO" value={billNo || userId} />
-//             <input type="hidden" name="EDP_EMAIL" value={CUSTOMER_EMAIL} />
-//             <input type="hidden" name="SUCCESS_URL" value={`${BASE_URL}/success`} />
-//             <input type="hidden" name="FAIL_URL" value={`${BASE_URL}/fail`} />
-//             <input type="hidden" name="RESULT_URL" value="https://main-api.academy-polyglot.site/result" />
-//         </form>
-//     );
-// }
 
 function IdramPaymentForm({ amount, billNo }) {
     console.log('🟡 Idram Payment Form Values:', { amount, billNo });
@@ -88,33 +68,6 @@ function CartPage({cart, updateQuantity, removeItem}) {
         setModalOpen(true);
     };
 
-    // const confirmPayment = async () => {
-    //     try {
-    //         const userId = localStorage.getItem('userId');
-    //
-    //         const orderData = {
-    //             customer_name: customerInfo.name,
-    //             customer_surname: customerInfo.surname,
-    //             customer_phone: customerInfo.phone,
-    //             cart,
-    //             userId,
-    //         };
-    //
-    //         const response = await axios.post(API_URL_Cart_Page, orderData);
-    //         const billNo = response.data.billNo;
-    //
-    //         setPaymentStatus({ success: true, error: null });
-    //
-    //         document.getElementById('idramPaymentForm').submit();
-    //     } catch (error) {
-    //         setPaymentStatus({
-    //             success: false,
-    //             error: 'There was an issue submitting your order. Please try again.',
-    //         });
-    //     } finally {
-    //         setModalOpen(false);
-    //     }
-    // };
 
     const confirmPayment = async () => {
         try {
@@ -128,13 +81,22 @@ function CartPage({cart, updateQuantity, removeItem}) {
             console.log('🟡 Sending Order Data to Backend:', orderData);
 
             const response = await axios.post(API_URL_Cart_Page, orderData);
-            const billNo = response.data.billNo; // Expecting bill number from the backend
+            const { billNo } = response.data;
 
-            console.log('🟢 Backend Response:', response.data);
+            // Ստուգում ենք, որ form-ը և input-ը գոյություն ունեն
+            const form = document.getElementById('idramPaymentForm');
+            const billInput = document.querySelector('input[name="EDP_BILL_NO"]');
+
+            if (form && billInput) {
+                billInput.value = billNo;
+                form.submit();
+                console.log('🟢 Payment form submitted!');
+            } else {
+                console.error('🔴 Form or hidden input not found!');
+            }
 
             setPaymentStatus({ success: true, error: null });
 
-            document.getElementById('idramPaymentForm').submit();
         } catch (error) {
             console.error('🔴 Error Confirming Payment:', error);
             setPaymentStatus({

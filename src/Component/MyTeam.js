@@ -7,7 +7,7 @@ import axios from 'axios';
 import { API_URL_MyTeam } from '../api';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://academy-polyglot.site' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
 
 
 const CACHE_KEY = 'my_team_cache';

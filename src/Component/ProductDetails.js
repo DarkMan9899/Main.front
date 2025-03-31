@@ -4,9 +4,8 @@ import axios from 'axios';
 import '../styles/ProductDetails.css';
 import { API_URL_Product_Details } from "../api";
 
-// Set the BASE_URL based on the environment
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://academy-polyglot.site' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
 
 function ProductDetails({ addToCart }) {
     const { id } = useParams();

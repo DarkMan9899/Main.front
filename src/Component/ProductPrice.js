@@ -5,7 +5,7 @@ import '../styles/ProductDetails.css';
 import { API_URL_Product_Details } from "../api";
 
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://academy-polyglot.site' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
 
 function ProductDetails({ addToCart }) {
     const { id } = useParams();
@@ -78,9 +78,27 @@ function ProductDetails({ addToCart }) {
                         />
                     </div>
                     <div className="product-info">
-                        <div>
-                            <h2>{product.name}</h2>
-                            <p>{product.description}</p>
+                            <div>
+                                <h2>{product.name}</h2>
+                                <div className="product_description">
+                                    <p>Three-Month Course</p>
+                                    <ul className="cours_title">
+                                        <li>3 lessons per week</li>
+                                        <li>2 live meetings</li>
+                                        <li>1 AI-assisted task or video tutorial</li>
+                                    </ul>
+                                    <h5>What does our student get as a result? </h5>
+                                    <ul className="course_end">
+                                        <li>✅ Cambridge Methodology training</li>
+                                        <li>✅ Direct meetings with the teacher</li>
+                                        <li>✅ Access to stored materials</li>
+                                        <li>✅ Regular homework and quizzes</li>
+                                        <li>✅ Personal Support Manager</li>
+                                        <li>✅ Convenient educational platform</li>
+                                        <li>✅ Certificate</li>
+                                        <li>✅ Guaranteed results</li>
+                                    </ul>
+                                </div>
                         </div>
                         <div>
                             <div className="price-select">

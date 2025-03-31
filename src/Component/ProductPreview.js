@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/ProductPreview.css';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://academy-polyglot.site' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
 
 const getImageUrl = (imagePath) => {
     return `${BASE_URL.replace(/\/$/, '')}/${imagePath.replace(/^\//, '')}`;
@@ -23,7 +23,7 @@ function ProductPreview({ product }) {
                 className="product-image_p"
             />
             <h3 className="product-name">{product.name}</h3>
-            <Link to={`/products/${product.id}`} className="product-link">
+            <Link to={`/product/${product.id}`} className="product-link">
                 <button className="view-details-button" onClick={scrollToTop}>
                     Courses
                 </button>

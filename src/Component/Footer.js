@@ -75,7 +75,7 @@ const Footer = () => {
             </div>
             <div className="lic">
                 <div className="lic-content">
-                    <p>Copyright © 2024 <span className="brand">Polyglot Academy</span> || All Rights Reserved</p>
+                    <p>Copyright © 2025 <span className="brand">Polyglot Academy</span> || All Rights Reserved</p>
                 </div>
             </div>
         </footer>

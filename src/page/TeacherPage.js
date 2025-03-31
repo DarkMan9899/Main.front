@@ -5,7 +5,7 @@ import { API_URL_Teacher_Page } from '../api';
 
 // Define the environment check and BASE_URL
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://academy-polyglot.site' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
 
 const CACHE_KEY = 'teacher_data_cache';
 const CACHE_TIME_KEY = 'teacher_data_cache_time';

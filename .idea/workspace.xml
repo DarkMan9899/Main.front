@@ -5,88 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fcf0dd8-edf7-438b-b068-d45394a76901" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/970.37514ad2.chunk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/static/js/970.37514ad2.chunk.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/02c7908fdd68a8f32d542c94e4b9af56d62758933819d92aa9ded56628759e8c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0d7799d4da8ec78ead92a3894d200da8999825d9f0fc71796c701f016bcd8ce3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0e937fd93baee57c638ccb2fec8c6aa6457109364dbdbb9e6a982a569aebc28b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/10bc41b2113ffb9a69a690dd411e119886fc276dce145e76098af474c98d39c2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/15345f0addfa3426c0eef3b22a766727c42eb6bb45bc35a1de75518dc22ebf81.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1c00a8af8c2364c16822131ca1a5cdd7946420b72ae6de049b101a89f2d0238f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1ce42b4c72d18812a0dee8b8c7db1e4de5728e8a239b8cf5bca6fa47d256a353.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/2b9c95de248c087aefe5df8122763937cc00f261c3568f95e684cc1f0397aff4.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/2bff9fd59da788243c747d11e5f012d650934c69a6a75dae7594971eb6a4b325.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/300c49d091112f37d6dcac979f3e7ba66636824e14e8bcaed7fbd634194d478f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3fc67924886096dccdf3aa6ee83a987554be90670c72d273718710b5e9983624.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4066e2f8196185350c0d706175f82c08e43cd33b5c380db6bc46d720bca788cc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/46133ac9ee634c6ac917bd5056f606f84f505af5fba4d6b9a7bcb8813498b881.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4a2219b441cb74d1f1d8ec96bed548ca8702ddc7f9a29cba1ea1913185b6b2cf.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4e6080a2498243c47d34ff69c020289b9ce637e24ca3d4d3b12a75b996f27a7b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4ef644b5f44f4c3083e1095d058ee7f67417c91eb53e5ac96ee0746e603bb394.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/5699b0f4f077d711b08da90698c7f3e3aa7f023f9088b95623be942178fc632e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/5c77e94e3c0ebdc2aac38d3524ff186e5542c845b63eb05b78a8fa15946311c3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/69d6e32ed7b3512f1814801f48b3437fed56bc19c23148b07b88e73935b76076.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6a5197baf55d530565e27fa3f6d6b5de98c15eb925248f98030a7c1c96e334d0.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6ec098276fcd24d5ed79ae0c15a6249d686c41bd22fcb62db9604808ec3631e5.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/73e93e1a8b91da6c4fe5f7fc038319ecbfd20b0aa85db1e3b77b30acc396c344.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/75316676ece1ec1a8617f4697b2de2001966b529c775d66902578d7bd32e7d7c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/7afb50677a8e64457f082f91b7df37a61fca53ab334f5744994a3f3d2ab38c06.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/835405f07bd224c46990cea02f8448b6f4ccf649e97f8b5609ed6d0d5a9b1b16.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/8928cf3a5fc4bea00b39a4867316ce891b33309e0947a6799988d644686e7c5b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/8ab2a2ffc2f02289bf47f31a5d54710a1b65256ca422234269140723490214c8.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/9312ec8414e4500bb8bf247b2e8b6db757bbfe2c0395f97e8ae1f06032782693.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/952275f87e663435185a9616c730dc7d000470bbb61424af41bbf8af4d5cb3ee.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/9d205678180101ec6d4ffded9ca11d4cae3fdf579e07924ad04f09b11efe8d4e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/9e0883aeb1d46ec31561f50a29ffe19e4e8e444919adaabd12d174307336a228.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a2625edd97fcb1e71aed4bb580d32b177d3acd688012525908294379fb649519.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a2f429e55d91f7b561d50d8c7686cd0e617d28cd813853ee428c9cb7977ee595.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/af2f5831441584cc8ccce705952ee27f4cf16fcad3ffe25611486b85c957071c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b44847745f7bce724f170c31fc808f2d2346ca4e919a9c38cf0dcaf81c3f8765.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b9db046da7a12e5dc4cff70e75ea43571f1f177d01be81f6a4ddfdce14869592.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c24e213892a800c83377200224deddfa1115a47ee48a6a40c3797df6bda59a38.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c8b9ea3ed38000b7db179e4de644dc8ad15d61a696852d4b1ce30e73d67d438f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/ccf35f5c48bc928dcce3623e56e1aa35fe394c7f1af750103f81ced667ef96f9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/ce57040e2b23e7f30b0d538b8a8e4380bc1f033dcd0477529a5fad4740e55bc1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/db7162e9d4a889a28079b409f31438fe8acad5d0283e60a820947e1b5ce2450f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/dca982507aa682ced7d8f991878dc302ba41f939aa5bcfa607a87899f526e6cf.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/e294246de79f9516d60b04c1ece0aedcca30428da2154e58f6c4de7154316fbf.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/ec76c25cb8ccf882a2dda36c781ed3459f1a2370445ced6f89c90586be9eca99.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/ecfe30d423dc983599521bf6a100042cf691a03d4f834db7d0d959c9aa13e010.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f0079e40fa480b66eaf24be0b5434fec17370667bbaac01666043c3647df41d3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f025689bf3066d360e49c65ea5b62891511c9c7b94cbc136f0dd4615817178b3.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f5883887e5e31febdcce53e446f7ee73901b4b57b80811a1216a8c42c62ed0d9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/f747be9f3e50730d18888ef0f8a45c93d7d53af3463f4bec28d97816f7256fa7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/fb92730ff8825f515330275d765d78ef274e8d28d3febc25ffdeb552c4b21a11.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/10.pack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/11.pack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/12.pack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/13.pack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/6.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/7.pack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/8.pack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/9.pack" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/Gallery.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/Gallery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/MyTeam.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/MyTeam.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/ProductDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProductDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/ProductPreview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProductPreview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Component/ProductPrice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProductPrice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/CartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/CartPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/page/TeacherPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/TeacherPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +67,8 @@
       <workItem from="1743492586940" duration="2748000" />
       <workItem from="1743589177364" duration="1739000" />
       <workItem from="1744805624959" duration="3034000" />
-      <workItem from="1744809380848" duration="508000" />
+      <workItem from="1744809380848" duration="771000" />
+      <workItem from="1744812199971" duration="1444000" />
     </task>
     <servers />
   </component>

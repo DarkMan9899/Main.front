@@ -4,6 +4,8 @@ import Navbar from './Component/Navbar';
 import './App.css';
 import Footer from './Component/Footer';
 import Newsletter from './Component/Newsletter';
+import SuccessPage from "./Component/SuccessPage";
+import FailPage from "./Component/FailPage";
 
 const Home = lazy(() => import('./page/Home'));
 const ProductPage = lazy(() => import('./page/ProductPage'));
@@ -57,6 +59,8 @@ function App() {
                         <Route path="/teacher" element={<TeacherPage />} />
                         <Route path="/aboutus" element={<AboutUsPage />} />
                         <Route path="/contact" element={<ContactPage />} />
+                        <Route path="/success" element={<SuccessPage />} />
+                        <Route path="/fail" element={<FailPage />} />
                         <Route path="/" element={<Home />} />
                         <Route path="/products" element={<ProductPage />} />
                         <Route path="/products/:id" element={<ProductDetails addToCart={addToCart} />} />

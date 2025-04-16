@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/ProductPreview.css';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://main-api.academy-polyglot.site' : 'http://localhost:5001';
 
 const getImageUrl = (imagePath) => {
     return `${BASE_URL.replace(/\/$/, '')}/${imagePath.replace(/^\//, '')}`;

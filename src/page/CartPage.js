@@ -1,18 +1,14 @@
-
-import React, {useState, useMemo} from 'react';
+import React, { useState, useMemo } from 'react';
 import axios from 'axios';
 import '../styles/CartPage.css';
-import {API_URL_Cart_Page} from '../api';
+import { API_URL_Cart_Page } from '../api';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://polyglotacademy.am';
 const IDRAM_ACCOUNT_ID = '100049302';
 const PAYMENT_DESCRIPTION = 'Your purchase description';
 const CUSTOMER_EMAIL = 'academy.polyglott@gmail.com';
-console.log('-------',BASE_URL)
 
 function IdramPaymentForm({ amount, billNo }) {
-    console.log('🟡 Idram Payment Form Values:', { amount, billNo });
-
     return (
         <form
             action="https://banking.idram.am/Payment/GetPayment"
@@ -23,7 +19,7 @@ function IdramPaymentForm({ amount, billNo }) {
             <input type="hidden" name="EDP_REC_ACCOUNT" value={IDRAM_ACCOUNT_ID} />
             <input type="hidden" name="EDP_DESCRIPTION" value={PAYMENT_DESCRIPTION} />
             <input type="hidden" name="EDP_AMOUNT" value={amount} />
-            <input type="hidden" name="EDP_BILL_NO" value={billNo} />
+            <input type="hidden" name="EDP_BILL_NO" value={billNo || ''} />
             <input type="hidden" name="EDP_EMAIL" value={CUSTOMER_EMAIL} />
             <input type="hidden" name="SUCCESS_URL" value={`${BASE_URL}/success`} />
             <input type="hidden" name="FAIL_URL" value={`${BASE_URL}/fail`} />
@@ -32,19 +28,16 @@ function IdramPaymentForm({ amount, billNo }) {
     );
 }
 
-
-
-function CartPage({cart, updateQuantity, removeItem}) {
+function CartPage({ cart, updateQuantity, removeItem }) {
     const [customerInfo, setCustomerInfo] = useState({
         name: '',
         surname: '',
         phone: '',
+        paymentType: 'idram',
     });
     const [modalOpen, setModalOpen] = useState(false);
-    const [paymentStatus, setPaymentStatus] = useState({
-        success: false,
-        error: null,
-    });
+    const [paymentStatus, setPaymentStatus] = useState({ success: false, error: null });
+    const [latestBillNo, setLatestBillNo] = useState(null);
 
     const isFormValid = useMemo(() => {
         return (
@@ -60,14 +53,13 @@ function CartPage({cart, updateQuantity, removeItem}) {
     }, [cart]);
 
     const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setCustomerInfo((prevInfo) => ({...prevInfo, [name]: value}));
+        const { name, value } = e.target;
+        setCustomerInfo((prevInfo) => ({ ...prevInfo, [name]: value }));
     };
 
     const handlePayment = () => {
         setModalOpen(true);
     };
-
 
     const confirmPayment = async () => {
         try {
@@ -76,27 +68,31 @@ function CartPage({cart, updateQuantity, removeItem}) {
                 customer_surname: customerInfo.surname,
                 customer_phone: customerInfo.phone,
                 cart,
+                type: customerInfo.paymentType || 'idram',
             };
 
-            console.log('🟡 Sending Order Data to Backend:', orderData);
-
             const response = await axios.post(API_URL_Cart_Page, orderData);
-            const { billNo } = response.data;
+            const { billNo, paymentLink } = response.data;
+            setLatestBillNo(billNo);
 
-            // Ստուգում ենք, որ form-ը և input-ը գոյություն ունեն
-            const form = document.getElementById('idramPaymentForm');
-            const billInput = document.querySelector('input[name="EDP_BILL_NO"]');
-
-            if (form && billInput) {
-                billInput.value = billNo;
-                form.submit();
-                console.log('🟢 Payment form submitted!');
+            if (customerInfo.paymentType === 'idram') {
+                const form = document.getElementById('idramPaymentForm');
+                const billInput = document.querySelector('input[name="EDP_BILL_NO"]');
+                if (form && billInput) {
+                    billInput.value = billNo;
+                    form.submit();
+                } else {
+                    console.error('🔴 Idram form/input missing');
+                }
             } else {
-                console.error('🔴 Form or hidden input not found!');
+                if (paymentLink) {
+                    window.location.href = paymentLink;
+                } else {
+                    console.error('🔴 No payment link received');
+                }
             }
 
             setPaymentStatus({ success: true, error: null });
-
         } catch (error) {
             console.error('🔴 Error Confirming Payment:', error);
             setPaymentStatus({
@@ -107,10 +103,6 @@ function CartPage({cart, updateQuantity, removeItem}) {
             setModalOpen(false);
         }
     };
-
-
-
-
 
     const cancelPayment = () => {
         setModalOpen(false);
@@ -139,21 +131,13 @@ function CartPage({cart, updateQuantity, removeItem}) {
                             {cart.map((item) => (
                                 <tr key={`${item.id}-${item.selectedType}`} className="cart-item">
                                     <td>
-                                        <img src={item.image} alt={item.name} className="cart-item-image"/>
+                                        <img src={item.image} alt={item.name} className="cart-item-image" />
                                     </td>
                                     <td>{item.name}</td>
                                     <td>{item.price} AMD</td>
                                     <td>
                                         <div className="quantity-controls">
-                                            <button
-                                                onClick={() =>
-                                                    updateQuantity(
-                                                        item.id,
-                                                        item.selectedType,
-                                                        Math.max(item.quantity - 1, 1)
-                                                    )
-                                                }
-                                            >
+                                            <button onClick={() => updateQuantity(item.id, item.selectedType, Math.max(item.quantity - 1, 1))}>
                                                 -
                                             </button>
                                             <input
@@ -168,21 +152,14 @@ function CartPage({cart, updateQuantity, removeItem}) {
                                                     )
                                                 }
                                             />
-                                            <button
-                                                onClick={() =>
-                                                    updateQuantity(item.id, item.selectedType, item.quantity + 1)
-                                                }
-                                            >
+                                            <button onClick={() => updateQuantity(item.id, item.selectedType, item.quantity + 1)}>
                                                 +
                                             </button>
                                         </div>
                                     </td>
                                     <td>{(item.price * item.quantity).toFixed(2)} AMD</td>
                                     <td>
-                                        <button
-                                            onClick={() => removeItem(item.id, item.selectedType)}
-                                            className="remove-button"
-                                        >
+                                        <button onClick={() => removeItem(item.id, item.selectedType)} className="remove-button">
                                             ×
                                         </button>
                                     </td>
@@ -225,6 +202,18 @@ function CartPage({cart, updateQuantity, removeItem}) {
                                     onChange={handleInputChange}
                                 />
                             </div>
+                            <div className="input-group">
+                                <label>Payment Method</label>
+                                <select
+                                    name="paymentType"
+                                    value={customerInfo.paymentType}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="idram">Idram</option>
+                                    <option value="card">Card (Ameria)</option>
+                                    <option value="ameria_pay">AmeriaPay</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div className="cart-totals">
@@ -246,12 +235,8 @@ function CartPage({cart, updateQuantity, removeItem}) {
                             </button>
                         </div>
 
-                        {paymentStatus.error && (
-                            <p className="error-message">{paymentStatus.error}</p>
-                        )}
-                        {paymentStatus.success && (
-                            <p className="success-message">Payment Successful!</p>
-                        )}
+                        {paymentStatus.error && <p className="error-message">{paymentStatus.error}</p>}
+                        {paymentStatus.success && <p className="success-message">Payment Successful!</p>}
                     </div>
                 </div>
             </div>
@@ -275,7 +260,7 @@ function CartPage({cart, updateQuantity, removeItem}) {
                 </div>
             )}
 
-            <IdramPaymentForm amount={totalAmount} billNo="GENERATED_BILL_NO"/>
+            <IdramPaymentForm amount={totalAmount} billNo={latestBillNo} />
         </>
     );
 }

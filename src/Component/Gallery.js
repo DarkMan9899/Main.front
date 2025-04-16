@@ -5,7 +5,7 @@ import '../styles/Gallery.css';
 import { API_URL_Gallery } from '../api';
 
 const isProduction = process.env.NODE_ENV === 'production';
-const BASE_URL = isProduction ? 'https://polyglotacademy.am' : 'http://localhost:5001';
+const BASE_URL = isProduction ? 'https://main-api.academy-polyglot.site' : 'http://localhost:5001';
 
 const CACHE_KEY = 'gallery_images_cache';
 const CACHE_TIME_KEY = 'gallery_images_cache_time';

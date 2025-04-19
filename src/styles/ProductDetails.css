@@ -1,218 +1,198 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-/* Background Styling */
-.product_detal_fon {
-    background-image: url("/src/Img/fon.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 50px 0;
-}
-
-/* Title Section */
 .teacher_title_contactPage {
     background-image: url("/src/Img/dasaxosneri hamar.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 250px;
     text-align: center;
+    background-color: #f5f7fa;
+    margin-bottom: 30px;
 }
 
 .teacher_title_contactPage h1 {
-    font-size: 50px;
+    font-size: 64px;
     color: azure;
+    text-align: center;
     margin: 0;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Product Details Section */
+.product_detal_fon {
+    background-color: #fff;
+    padding: 20px 0 50px;
+}
+
+
+
 .product-details-page {
-    max-width: 1100px;
-    margin: auto;
     display: flex;
-    align-items: flex-start;
-    gap: 50px;
-    padding: 20px;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px;
 }
 
-/* Product Image */
 .product-header {
-    width: 40%;
-    display: flex;
-    justify-content: flex-start; /* Move the image to the left */
-    align-items: flex-start; /* Move the image up */
 }
 
 .product-image {
-    width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 30%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
 }
 
-/* Product Info */
 .product-info {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
-/* Increase Text Sizes */
 .product-info h2 {
-    font-size: 42px;
-    color: #2c3e50;
-    font-weight: bold;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.product_description {
+    color: #555;
+}
+
+.product_description p {
+    font-size: 18px;
+    font-weight: 500;
     margin-bottom: 15px;
 }
 
-.product-info p {
-    font-size: 22px;
-    line-height: 1.6;
+.cours_title {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 25px;
+}
+
+.cours_title li {
+    margin-bottom: 8px;
 }
 
 .product_description h5 {
-    font-size: 26px;
-    font-weight: bold;
-    margin-top: 15px;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
 }
 
-/* Course Details */
-.cours_title,
 .course_end {
-    list-style: none;
+    list-style-type: none;
     padding-left: 0;
 }
 
-.cours_title li,
 .course_end li {
-    font-size: 20px;
-    padding: 6px 0;
-    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
 }
 
-/* Price & Quantity Select */
 .price-select,
-.quantity-input,
-.manual-price-input {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+.manual-price-input,
+.quantity-input {
+    margin-bottom: 20px;
 }
 
 .price-select label,
-.quantity-input label,
-.manual-price-input label {
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
+.manual-price-input label,
+.quantity-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
 }
 
 .price-select select,
-.quantity-input input,
-.manual-price-input input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    background-color: #fff;
+.manual-price-input input,
+.quantity-input input {
     width: 100%;
-    max-width: 220px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s, border-color 0.3s;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.price-select select:focus,
-.quantity-input input:focus,
-.manual-price-input input:focus {
-    border-color: #28a745;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    outline: none;
-}
-
-/* Total Price */
 .quantity-input span {
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Button Styles */
-.button-container {
-    display: flex;
-    justify-content: flex-start; /* Align buttons to the left */
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.button {
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: 6px;
+    display: block;
+    font-weight: 600;
     font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 220px;
-    text-align: center;
+    margin-top: 10px;
+    color: #4a6eb5;
 }
+
 
 .button:hover {
-    transform: scale(1.05);
+    background-color: #45a049;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .product-details-page {
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-    }
-
-    .product-header {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+/* Responsive styles */
+@media (max-width: 992px) {
+    .product-info {
+        grid-template-columns: 1fr;
     }
 
     .product-image {
-        width: 80%;
+        max-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .teacher_title_contactPage h1 {
+        font-size: 28px;
     }
 
-    .product-info {
-        width: 100%;
-        text-align: center;
+    .product-details-page {
+        padding: 20px;
     }
 
     .product-info h2 {
-        font-size: 30px;
+        font-size: 24px;
     }
 
-    .product-info p {
-        font-size: 18px;
+    .product_description p {
+        font-size: 16px;
     }
 
-    .cours_title li,
-    .course_end li {
-        font-size: 18px;
+    .product_description h5 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .teacher_title_contactPage {
+        padding: 20px 0;
+        margin-bottom: 20px;
     }
 
-    .button-container {
-        flex-direction: column;
-        align-items: center;
+    .teacher_title_contactPage h1 {
+        font-size: 24px;
+    }
+
+    .product-details-page {
+        padding: 15px;
+    }
+
+    .product-image {
+        max-height: 250px;
+    }
+
+    .product-info h2 {
+        font-size: 22px;
     }
 
     .button {
-        width: 100%;
+        padding: 12px 20px;
     }
 }

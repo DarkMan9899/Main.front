@@ -120,16 +120,17 @@ function ProductDetails({ addToCart }) {
                                     onChange={e => setSelectedPrice(parseFloat(e.target.value) || 0)}
                                 />
                             </div>
-                            <div className="quantity-input">
-                                <label>Count</label>
-                                <input
-                                    type="number"
-                                    value={quantity}
-                                    min="1"
-                                    onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                                />
-                                <span>Total: {quantity * selectedPrice} AMD</span>
-                            </div>
+                            {/*<div className="quantity-input">*/}
+                            {/*    <label>Count</label>*/}
+                            {/*    <input*/}
+                            {/*        type="number"*/}
+                            {/*        value={quantity}*/}
+                            {/*        min="1"*/}
+                            {/*        onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}*/}
+                            {/*    />*/}
+                            {/*
+                            {/*</div>*/}
+                            <span>Total: {quantity * selectedPrice} AMD</span>
                             <button className="button" onClick={handleAddToCart}>
                                 Add to Cart
                             </button>

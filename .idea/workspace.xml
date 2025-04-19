@@ -6,11 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="2fcf0dd8-edf7-438b-b068-d45394a76901" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/6.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/6.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/index.pack.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Component/ProductPrice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Component/ProductPrice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/page/CartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/CartPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/CartPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CartPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/ProductDetails.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ProductDetails.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +57,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.1.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -69,6 +81,16 @@
       <workItem from="1744805624959" duration="3034000" />
       <workItem from="1744809380848" duration="771000" />
       <workItem from="1744812199971" duration="1444000" />
+      <workItem from="1744813822711" duration="154000" />
+      <workItem from="1744821759776" duration="3823000" />
+      <workItem from="1744827767082" duration="1199000" />
+      <workItem from="1744871301337" duration="1817000" />
+      <workItem from="1744895812148" duration="103000" />
+      <workItem from="1744896693125" duration="1497000" />
+      <workItem from="1744973967780" duration="1479000" />
+      <workItem from="1744992620371" duration="81000" />
+      <workItem from="1744992759343" duration="34000" />
+      <workItem from="1745065955986" duration="2025000" />
     </task>
     <servers />
   </component>

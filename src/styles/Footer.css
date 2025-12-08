@@ -13,8 +13,8 @@
 .footer_section li {
     background-image: linear-gradient(
             to right,
-            #5e44e3,
-            #5e44e3 50%,
+            #0098DA,
+            #0098DA 50%,
             #fff 50%
     );
     background-size: 200% 100%;
@@ -28,7 +28,7 @@
 
 .footer_section li:before {
     content: '';
-    background: #5e44e3;
+    background:  #0098DA;
     display: block;
     position: absolute;
     bottom: -3px;
@@ -70,7 +70,7 @@
 .footer-section-edu i:hover {
     cursor: pointer;
     transform: scale(1.5);
-    color: #5e44e3;
+    color:  #0098DA;
 }
 
 .footer-section_link {

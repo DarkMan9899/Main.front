@@ -1,29 +1,41 @@
-import React from 'react';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "../styles/AboutUs.css";
 import about from "../Img/nkar - about us.jpg";
 
-function AboutUs(props) {
+function AboutUs() {
+    const { lang } = useParams(); // 🌍 Get current language from URL
+    const { t } = useTranslation(); // 🌐 Load translations
+
     return (
-        <div className='about-us'>
+        <section className="about-us">
             <div className="container_about container">
+                {/* 🖼️ About Image */}
                 <img
-                    alt="About Us"
                     src={about}
+                    alt={t("about.alt")}
                     className="about-image"
                     loading="lazy"
-                    onError={(e) => {e.target.src = 'fallback-image.png';}}
+                    onError={(e) => {
+                        e.target.src = "fallback-image.png";
+                    }}
                 />
+
+                {/* 🧾 About Text */}
                 <div className="text-about">
+                    <span>{t("about.title")}</span>
+                    <p>{t("about.description")}</p>
+
                     <div className="about_us_button">
-                        <span>About Us</span>
-                        <a href="/aboutus" className="button">More About Us</a>
+                        <Link to={`/${lang}/aboutus`} className="button">
+                            {t("about.button")}
+                        </Link>
                     </div>
-                    <p>
-                        At Polyglot Academy, our success is driven by a big team of motivated and smart individuals who are passionate about language learning and innovation. Each member of our team brings unique skills and expertise, working together to provide you with the best language learning experience possible.
-                    </p>
+
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

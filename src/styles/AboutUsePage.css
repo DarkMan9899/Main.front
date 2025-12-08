@@ -1,129 +1,300 @@
-.title_about_us {
-    background-image: url("/src/Img/dasaxosneri hamar.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    height: 300px;
-}
+/* ===========================================
+   ABOUT US PAGE — Full Premium Design System
+   =========================================== */
 
-.about_page_font {
-    background-image: url("/src/Img/fon - about us .svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 20px;
-}
+/* ---------- WRAPPER ---------- */
 
-.title_about_us p {
-    font-size: 64px;
-    color: azure;
-    text-align: center;
-    margin: 0;
-}
-
-.about_img_text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 70px;
-    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-}
-
-.about_img_text img {
+.about_page_wrapper {
     width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 8px;
-    margin: 10px; /* Adds spacing between images and text */
+    overflow-x: hidden;
 }
 
-.text_about {
-    font-size: 16px;
-    line-height: 1.5;
+/* ---------- HERO SECTION ---------- */
+
+.about_hero {
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
 }
 
-.about_img_text ul li {
+.about_hero1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px var(--base-padding-x);
+    margin-top: 50px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about_hero .hero_text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about_hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.about_hero p {
+    font-size: 18px;
+    color: #eef3ff;
+    max-width: 550px;
+    line-height: 1.7;
+}
+
+.hero_buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.hero_buttons a {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    transition: background-position .5s ease, transform var(--transition);
+    font-weight: 600;
+}
+
+.hero_buttons a:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+}
+
+.hero_image {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero_image img {
+    max-width: 450px;
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ---------- SECTION TITLE ---------- */
+
+.container h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+/* ---------- STORY SECTION ---------- */
+
+.story_section {
+    padding: 70px var(--base-padding-x);
+}
+
+.story_section p {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 900px;
+    color: #333;
+}
+
+/* ---------- VISION / MISSION / VALUES ---------- */
+
+.vision_values {
+    padding-bottom: 70px;
+}
+
+.vv_block {
+    background: #f6f9ff;
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: var(--border-radius);
+    border-left: 6px solid var(--brand-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.vv_block h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: var(--brand-color);
+}
+
+.vv_block p,
+.vv_block ul li {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* ---------- STRUCTURE SECTION ---------- */
+
+.company_structure ul {
+    padding: 0;
     list-style: none;
+    margin-top: 20px;
+}
+
+.company_structure ul li {
+    padding: 14px 18px;
+    border-radius: var(--border-radius);
+    background: #eef2ff;
+    border-left: 5px solid var(--brand-color);
+    margin-bottom: 12px;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.company_structure h3 {
+    margin-top: 25px;
+    font-size: 22px;
+}
+
+/* ==================================================
+   NEW PREMIUM WHY CHOOSE US — BRAND CONSISTENT
+   ================================================== */
+
+.why_choose {
+    text-align: center;
+}
+
+.why_choose h2 {
     font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
 }
 
-/* Media Queries for responsiveness */
-@media (max-width: 1024px) {
-    .title_about_us {
-        height: 250px;
-    }
+/* GRID */
+.why_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding-bottom: 100px;
+}
 
-    .title_about_us p {
-        font-size: 1.8em;
+@media (max-width: 992px) {
+    .why_grid {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .text_about {
-        font-size: 22px;
+@media (max-width: 600px) {
+    .why_grid {
+        grid-template-columns: 1fr;
     }
+}
 
-    .about_img_text ul li {
+/* CARD */
+.why_card {
+    background: linear-gradient(135deg, #5e44e3, #6fb4c8);
+    border-radius: 18px;
+    padding: 35px 25px;
+    min-height: 160px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.20);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.why_card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.28);
+}
+
+/* ICON */
+.why_icon {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--brand-color);
+
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* TEXT */
+.why_text {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* ---------- FINAL CTA ---------- */
+
+.final_cta {
+    padding: 60px var(--base-padding-x);
+    text-align: center;
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    color: #fff;
+    border-radius: var(--border-radius);
+}
+
+.final_cta h2 {
+    font-size: 36px;
+    color: #fff;
+}
+
+.final_cta p {
+    font-size: 18px;
+    margin: 20px 0 35px;
+}
+
+.cta_buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.cta_buttons a {
+    padding: 12px 28px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.cta_buttons a:hover {
+    background-position: right;
+    transform: translateY(-3px);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+    .about_hero h1 {
         font-size: 32px;
+        text-align: center;
+    }
+
+    .about_hero1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero_image {
+        justify-content: center;
     }
 }
 
-@media (max-width: 768px) {
-    .about_img_text img {
-        margin: 0;
-        padding: 10px 0;
-    }
-
-    .soc_text {
-        text-align: left;
-    }
-
-    .title_about_us {
-        height: 200px;
-    }
-
-    .title_about_us p {
-        font-size: 1.5em;
-    }
-
-    .about_img_text {
-        flex-direction: column; /* Stacks items vertically */
-        align-items: flex-start; /* Align items to the start */
-    }
-
-    .text_about {
-        font-size: 20px;
-    }
-
-    .about_img_text ul li {
-        font-size: 28px;
-    }
-
-    .about_img_text img {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .title_about_us {
-        height: 150px;
-    }
-
-    .title_about_us p {
-        font-size: 1.2em;
-    }
-
-    .text_about {
-        font-size: 18px;
-    }
-
-    .about_img_text ul li {
-        font-size: 24px;
-    }
-
-    .about_page_font {
-        padding: 10px;
+@media (max-width: 500px) {
+    .vv_block,
+    .company_structure ul li {
+        font-size: 16px;
     }
 }

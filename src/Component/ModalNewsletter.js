@@ -1,16 +1,31 @@
-import React from 'react';
-import '../styles/ModalNewsletter.css';
+import React, { useEffect } from "react";
+import "../styles/ModalNewsletter.css";
 
 const ModalNewsletter = ({ isOpen, onClose, message }) => {
+    useEffect(() => {
+        if (!isOpen) return;
+
+        // Auto-close after 3s if success
+        if (message.startsWith("✅")) {
+            const timer = setTimeout(() => onClose(), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [isOpen, message, onClose]);
+
     if (!isOpen) return null;
 
     return (
-        <div className="modal-overlay">
-            <div className="modal">
-                <div className="modal-content">
-                    <p>Thank you for reaching out! We've received your message and will keep you updated with our latest news and updates.</p>
-                    <button onClick={onClose} className="button">Close</button>
-                </div>
+        <div className="newsletter-modal-overlay" onClick={onClose}>
+            <div
+                className={`newsletter-modal ${
+                    message.startsWith("✅") ? "success" : "error"
+                }`}
+                onClick={(e) => e.stopPropagation()}
+            >
+        <span className="close-btn" onClick={onClose}>
+          &times;
+        </span>
+                <p className="newsletter-modal-message">{message}</p>
             </div>
         </div>
     );

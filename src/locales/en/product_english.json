@@ -1,0 +1,91 @@
+{
+  "hero": {
+    "title": "English Courses for All Levels",
+    "description": "Learn English through Cambridge methodology, with high–quality educational programs, steady progress, and internationally aligned knowledge — with native speakers.",
+    "cta": "Find your correct starting point"
+  },
+
+  "levels": [
+    {
+      "title": "A1 — Beginner",
+      "text": "Basic vocabulary, simple expressions, foundational grammar structures."
+    },
+    {
+      "title": "A2 — Elementary",
+      "text": "Conversational base, everyday topics, simple independent speech."
+    },
+    {
+      "title": "B1 — Intermediate",
+      "text": "Balanced knowledge, confident communication on common topics."
+    },
+    {
+      "title": "B2 — Upper-Intermediate",
+      "text": "Advanced speaking and writing skills, development of academic vocabulary."
+    },
+    {
+      "title": "C1 — Advanced",
+      "text": "High–level fluency, analysis of complex topics, elements of business English."
+    }
+  ],
+
+  "levels_cta": {
+    "title": "Check your English level for free",
+    "button": "Test"
+  },
+
+  "structure": {
+    "title": "Course Structure",
+    "list": [
+      "Vocabulary development",
+      "Grammar",
+      "Speaking",
+      "Listening",
+      "Reading",
+      "Writing skills"
+    ]
+  },
+
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "list": [
+      "What will I learn in this course?",
+      "How is progress evaluated?",
+      "What happens if I don’t progress?",
+      "What will I receive in the end?",
+      "Reviews from English course students"
+    ],
+    "cta": "Pre-register"
+  },
+
+  "formats": {
+    "title": "Learning Formats",
+    "list": [
+      "Online group",
+      "Online individual",
+      "Accelerated / intensive",
+      "For children ages 5–11"
+    ]
+  },
+
+  "packages": {
+    "title": "Packages & Pricing",
+    "list": [
+      {
+        "name": "Starter",
+        "info": "beginner level"
+      },
+      {
+        "name": "Standard",
+        "info": "regular essential lessons"
+      },
+      {
+        "name": "Premium",
+        "info": "individual approach, intensive"
+      }
+    ]
+  },
+
+  "final": {
+    "cta": "Join the course and start progressing today"
+  }
+}

@@ -1,0 +1,28 @@
+.payment-result {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.payment-result.success {
+    background: #e8fce8;
+    color: #1e7d32;
+}
+
+.payment-result.fail {
+    background: #ffeaea;
+    color: #c0392b;
+}
+
+.payment-result .btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #24346D;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+}

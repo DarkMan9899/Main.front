@@ -1,3 +1,19 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+# Robots.txt for Polyglot Academy
+# Կայքի ինդեքսացիա որոնողական համակարգերի համար
+
+User-agent: *
+Allow: /
+
+# Արգելված տեխնիկական բաժիններ
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://polyglotacademy.am/sitemap.xml

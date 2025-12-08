@@ -1,133 +1,108 @@
+/* Container for product cards */
 .product-preview-container {
     display: flex;
     justify-content: center;
-    border-radius: 10px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 60px 20px;
+    margin: 0 auto;
+    max-width: 1300px;
 }
 
+/* Individual card */
 .product-card-item {
-    background-image: url("/src/Img/fon drosh.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(180deg, #AEE4E7 0%, #5A9BF0 100%);
+    border-radius: 20px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
-    width: 100%;
     padding: 60px 15px;
-    max-width: 300px;
-    /* Consider using a compressed and optimized background image */
-}
-
-.product-image_p {
-    width: 104px;
-    height: 104px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.product-name {
-    font-size: 18px;
-    color: #4D5756;
-    margin: 10px 0;
-}
-
-.product-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-.view-details-button {
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 20px;
-    background-image: linear-gradient(to right, #5e44e3, #5e44e3 50%, #fff 50%);
-    background-size: 200% 100%;
-    background-position: -100%;
-    padding: 5px 0;
-    position: relative;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out;
-}
-
-.view-details-button:before {
-    content: '';
-    background: #5e44e3;
-    display: block;
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    transition: all 0.3s ease-in-out;
-}
-
-.view-details-button:hover {
-    background-position: 0;
-}
-
-.view-details-button:hover::before {
     width: 100%;
+    max-width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.fa-solid {
-    color: #4D5756;
-    margin-left: 5px;
+/* Hover effect */
+.product-card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* Flag image */
+.product-image_p {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Product name */
+.product-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin: 8px 0;
+}
+
+/* “Courses” link/button container */
+.product-link {
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+/* INITIAL LOOK – Simple text */
+.view-details-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 10px;
+}
+
+/* HOVER → turns into REAL BUTTON */
+.product-card-item:hover .view-details-button {
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .product-preview-container {
+        gap: 30px;
+    }
+    .product-card-item {
+        max-width: 240px;
+    }
 }
 
 @media (max-width: 768px) {
     .product-preview-container {
-        padding: 15px;
-        margin: 15px;
-    }
-
-    .product-card-item {
+        gap: 25px;
         padding: 30px 15px;
-        max-width: 200px;
     }
-
-    .product-image_p {
-        width: 80px;
-        height: 80px;
-    }
-
-    .product-name {
-        font-size: 16px;
-    }
-
-    .view-details-button {
-        font-size: 16px;
+    .product-card-item {
+        max-width: 220px;
     }
 }
 
 @media (max-width: 480px) {
     .product-preview-container {
-        padding: 10px;
-        margin: 10px;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
     }
-
     .product-card-item {
-        padding: 20px 10px;
-        max-width: 100%;
-    }
-
-    .product-image_p {
-        width: 60px;
-        height: 60px;
-    }
-
-    .product-name {
-        font-size: 14px;
-    }
-
-    .view-details-button {
-        font-size: 14px;
+        width: 100%;
+        max-width: 340px;
     }
 }

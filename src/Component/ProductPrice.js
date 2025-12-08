@@ -15,19 +15,31 @@ function ProductDetails({ addToCart }) {
     const [quantity, setQuantity] = useState(1);
     const [error, setError] = useState(null);
 
+    // NEW PRICE MAP
+    const priceTypes = [
+        { key: "individual_full_price", label: "Individual" },
+        { key: "group2_full_price", label: "Group (2 people)" },
+        { key: "group5_full_price", label: "Group (5 people)" },
+        { key: "speaking_full_price", label: "Speaking Course" },
+        { key: "accelerated_full_price", label: "Accelerated" },
+        { key: "hybrid_full_price", label: "Hybrid" },
+    ];
+
     useEffect(() => {
         if (id) {
             axios.get(`${API_URL_Product_Details}${id}`)
                 .then(response => {
                     const productData = response.data;
-                    if (productData && productData.individual_price != null && productData.group_price != null) {
-                        setProduct(productData);
-                        setSelectedType('individual');
-                        setSelectedPrice(parseFloat(productData.individual_price)); // Set initial price
-                        setError(null);
-                    } else {
-                        throw new Error('Product prices are missing or invalid.');
+
+                    setProduct(productData);
+
+                    // Default price — Individual
+                    if (productData.individual_full_price) {
+                        setSelectedType("individual_full_price");
+                        setSelectedPrice(parseFloat(productData.individual_full_price));
                     }
+
+                    setError(null);
                 })
                 .catch(error => {
                     if (error.response && error.response.status === 404) {
@@ -44,8 +56,10 @@ function ProductDetails({ addToCart }) {
     const handleTypeChange = (e) => {
         const type = e.target.value;
         setSelectedType(type);
-        const price = type === 'individual' ? parseFloat(product.individual_price) : parseFloat(product.group_price);
-        setSelectedPrice(price);
+
+        if (product[type]) {
+            setSelectedPrice(parseFloat(product[type]));
+        }
     };
 
     const handleAddToCart = () => {
@@ -65,75 +79,73 @@ function ProductDetails({ addToCart }) {
     return (
         <>
             <div className="teacher_title_contactPage">
-                <h1>Product Details</h1>
+                <h1>{product.name}</h1>
             </div>
+
             <div className="product_detal_fon">
                 <div className="product-details-page container">
+
+                    {/* IMAGE */}
                     <div className="product-header">
                         <img
                             loading="lazy"
                             className="product-image"
-                            src={product.image ? `${BASE_URL}${product.image}` : `${BASE_URL}/path/to/fallback-image.jpg`}
-                            alt={product.name || 'Product Image'}
+                            src={product.image ? `${BASE_URL}${product.image}` : `${BASE_URL}/fallback.jpg`}
+                            alt={product.name}
                         />
                     </div>
+
                     <div className="product-info">
-                            <div>
-                                <h2>{product.name}</h2>
-                                <div className="product_description">
-                                    <p>Three-Month Course</p>
-                                    <ul className="cours_title">
-                                        <li>3 lessons per week</li>
-                                        <li>2 live meetings</li>
-                                        <li>1 AI-assisted task or video tutorial</li>
-                                    </ul>
-                                    <h5>What does our student get as a result? </h5>
-                                    <ul className="course_end">
-                                        <li>✅ Cambridge Methodology training</li>
-                                        <li>✅ Direct meetings with the teacher</li>
-                                        <li>✅ Access to stored materials</li>
-                                        <li>✅ Regular homework and quizzes</li>
-                                        <li>✅ Personal Support Manager</li>
-                                        <li>✅ Convenient educational platform</li>
-                                        <li>✅ Certificate</li>
-                                        <li>✅ Guaranteed results</li>
-                                    </ul>
-                                </div>
+
+                        {/* DESCRIPTION */}
+                        <div className="product_description">
+                            <h3>Course Description</h3>
+                            <p>{product.description_en}</p>
+
+                            <h5>What does the student get?</h5>
+                            <ul>
+                                <li>✔ Cambridge methodology</li>
+                                <li>✔ Live meetings with teacher</li>
+                                <li>✔ Access to materials</li>
+                                <li>✔ Homework & quizzes</li>
+                                <li>✔ Personal support manager</li>
+                                <li>✔ Certificate</li>
+                                <li>✔ Guaranteed progress</li>
+                            </ul>
                         </div>
-                        <div>
-                            <div className="price-select">
-                                <label htmlFor="productType">Choose Type:</label>
-                                <select
-                                    id="productType"
-                                    value={selectedType}
-                                    onChange={handleTypeChange}
-                                >
-                                    <option value="individual">Individual - {product.individual_price} AMD</option>
-                                    <option value="group">Group - {product.group_price} AMD</option>
-                                </select>
-                            </div>
+
+                        {/* PRICE SELECTOR */}
+                        <div className="price-box">
+
+                            <label htmlFor="productType">Select Course Type:</label>
+                            <select id="productType" value={selectedType} onChange={handleTypeChange}>
+
+                                {priceTypes.map(type =>
+                                    product[type.key] ? (
+                                        <option key={type.key} value={type.key}>
+                                            {type.label} — {product[type.key]} AMD
+                                        </option>
+                                    ) : null
+                                )}
+
+                            </select>
+
+                            {/* Custom manual price */}
                             <div className="manual-price-input">
-                                <label>Enter Price:</label>
+                                <label>Enter Custom Price:</label>
                                 <input
                                     type="number"
                                     value={selectedPrice}
                                     onChange={e => setSelectedPrice(parseFloat(e.target.value) || 0)}
                                 />
                             </div>
-                            {/*<div className="quantity-input">*/}
-                            {/*    <label>Count</label>*/}
-                            {/*    <input*/}
-                            {/*        type="number"*/}
-                            {/*        value={quantity}*/}
-                            {/*        min="1"*/}
-                            {/*        onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}*/}
-                            {/*    />*/}
-                            {/*
-                            {/*</div>*/}
+
                             <span>Total: {quantity * selectedPrice} AMD</span>
+
                             <button className="button" onClick={handleAddToCart}>
                                 Add to Cart
                             </button>
+
                         </div>
                     </div>
                 </div>

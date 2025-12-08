@@ -1,0 +1,267 @@
+/* GLOBAL PAGE WRAPPER */
+.product-page {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    color: #1a1a1a;
+}
+
+/* REUSABLE CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 40px 0;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: #0057ff;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.btn-primary:hover {
+    background: #003dcc;
+}
+
+.btn-secondary {
+    background: #f1f3ff;
+    color: #003dcc;
+    padding: 12px 25px;
+    border-radius: 10px;
+    border: 2px solid #003dcc;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.btn-secondary:hover {
+    background: #dce2ff;
+}
+
+/* ========================= */
+/* HERO SECTION              */
+/* ========================= */
+
+.hero-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 0;
+}
+
+.hero-image {
+    width: 50%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.hero-content {
+    width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* ========================= */
+/* LEVELS SECTION            */
+/* ========================= */
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.level-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.07);
+    transition: 0.25s;
+}
+
+.level-card:hover {
+    transform: translateY(-5px);
+}
+
+.level-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.level-card p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* ========================= */
+/* STRUCTURE SECTION         */
+/* ========================= */
+
+.structure ul {
+    padding-left: 20px;
+}
+
+.structure li {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+/* ========================= */
+/* FAQ SECTION               */
+/* ========================= */
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.faq-item {
+    background: #fafbff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    font-size: 17px;
+    font-weight: 500;
+    border-left: 4px solid #0057ff;
+}
+
+/* ========================= */
+/* FORMATS SECTION           */
+/* ========================= */
+
+.formats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.format-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ========================= */
+/* PACKAGES SECTION          */
+/* ========================= */
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.package-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.06);
+    transition: 0.25s;
+}
+
+.package-card:hover {
+    transform: translateY(-6px);
+}
+
+.package-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.package-card p {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+/* ========================= */
+/* PRICING SECTION           */
+/* ========================= */
+
+.pricing {
+    text-align: center;
+}
+
+.pricing p {
+    font-size: 19px;
+    margin: 8px 0;
+}
+
+/* ========================= */
+/* FINAL CTA                 */
+/* ========================= */
+
+.final {
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE         */
+/* ========================= */
+
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image,
+    .hero-content {
+        width: 100%;
+    }
+
+    .levels-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .levels-grid,
+    .formats-grid,
+    .packages-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}

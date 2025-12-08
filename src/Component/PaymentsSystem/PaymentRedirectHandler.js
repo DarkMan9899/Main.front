@@ -1,11 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-export function PaymentRedirectHandler({ paymentType, paymentLink }) {
-    useEffect(() => {
-        if (paymentLink && (paymentType === 'card' || paymentType === 'ameria_pay')) {
-            window.location.href = paymentLink;
-        }
-    }, [paymentType, paymentLink]);
-
+export function PaymentRedirectHandler() {
     return null;
 }

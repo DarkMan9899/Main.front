@@ -5,7 +5,7 @@ import '../styles/Comments.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import { API_URL_Comment } from "../api";
+import { API_URL_Comment, BASE_STATIC_URL } from "../api"; // ✅ Ավելացրու BASE_STATIC_URL
 
 const fetchComments = async () => {
     const { data } = await axios.get(API_URL_Comment);
@@ -39,12 +39,22 @@ const TestimonialSlider = () => {
                     {comments.map((comment, index) => (
                         <div key={index} className="testimonial-slide">
                             <div className="testimonial-content">
-                                <div className="testimonial-text">
-                                    <h3>{comment.name}</h3>
-                                    <p>{comment.description}</p>
+                                <div className="testimonial-card">
+                                    <div className="testimonial-image">
+                                        <img
+                                            src={`${BASE_STATIC_URL}${comment.img}`}
+                                            alt="comment img"
+                                        />
+                                    </div>
+                                    <div className="testimonial-text">
+                                        <h3 className="animated-name">{comment.name}</h3>
+                                        <p>{comment.description}</p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+
                     ))}
                 </Slider>
             </div>

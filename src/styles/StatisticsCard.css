@@ -1,135 +1,148 @@
-.statistics-section {
-    padding: 55px 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
-    gap: 20px; /* Add gap between cards */
-    max-width: 1200px;
-    margin: 0 auto;
-    background-image: url("/src/Img/ikonaneri fon.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 10px;
-    margin-bottom: 60px;
-    margin-top: 60px;
+/* =========================================
+   📊 STATISTICS SECTION – Full Width Layout
+   ========================================= */
+
+/* 💡 Wrap this section in a <section class="statistics-wrapper"> in your JSX */
+.statistics-wrapper {
+    position: relative;
+    width: 100vw; /* Force section to fill full viewport width */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background: linear-gradient(180deg, #f6f7ff 0%, #ffffff 100%);
+    overflow: hidden;
 }
 
-.statistics-card {
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 250px;
-    width: 100%;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: flex;
+/* Inner grid container */
+.statistics-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    justify-items: center;
     align-items: center;
+    padding: 50px 108px 50px 108px;    box-sizing: border-box;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+}
+
+/* =========================================
+   🎴 STATISTIC CARD STYLES
+   ========================================= */
+
+.statistics-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 280px;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    gap: 15px;
-    box-sizing: border-box; /* Ensure padding is included in width calculation */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Default shadow */
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .statistics-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hover shadow */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Icon */
 .statistics-icon {
-    max-width: 90px;
-    height: auto;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
 }
 
-.statistics-info {
-    color: #333;
-    flex-grow: 1; /* Allow info section to grow */
-}
-
+/* Animated number */
 .statistics-number {
-    margin: 0;
-    font-size: 30px;
-    font-weight: bold;
-    /*color: #8663ff; !* Adjust the color as needed *!*/
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), /* Darker shadow */ -1px -1px 0 rgba(255, 255, 255, 0.7); /* Lighter shadow */
+    font-size: 2rem;
+    font-weight: 700;
+    color:#0098DA
+;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
 }
 
+/* Description text */
 .statistics-text {
-    font-size: 17px;
-    color: #666; /* Changed color for better readability */
-    margin-top: 5px;
+    font-size: 1rem;
+    color: #444;
+    max-width: 220px;
+    line-height: 1.4;
 }
 
-@media (max-width: 1024px) {
-    .statistics-card {
-        max-width: 300px;
-    }
-
-    .statistics-icon {
-        max-width: 70px;
-    }
-
-    .statistics-number {
-        font-size: 25px;
-    }
-
-    .statistics-text {
-        font-size: 24px;
-    }
+/* Hover color effect */
+.statistics-card:hover .statistics-number {
+    color: #0098DA;
 }
 
-@media (max-width: 768px) {
-    .statistics-card {
-        flex-direction: column;
-        text-align: center;
-        max-width: 300px;
-        gap: 10px;
-    }
+/* =========================================
+   📱 RESPONSIVE FIXES
+   ========================================= */
 
-    .statistics-icon {
-        max-width: 60px;
-    }
-
-    .statistics-number {
-        font-size: 24px;
-    }
-
-    .statistics-text {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-
+/* 🖥️ Large laptops */
+@media (max-width: 1200px) {
     .statistics-section {
-        border-radius: 0;
-        padding: 30px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-
+        gap: 35px;
+        padding: 80px 30px;
     }
 
     .statistics-card {
-        gap: 5px;
-        width: 300px;
-    }
-
-    .statistics-icon {
-        max-width: 70px;
+        max-width: 260px;
+        height: 210px;
     }
 
     .statistics-number {
-        font-size: 24px;
-    }
-
-    .statistics-text {
-        font-size: 16px;
+        font-size: 1.8rem;
     }
 }
 
+/* 💻 Tablets */
+@media (max-width: 900px) {
+    .statistics-section {
+        gap: 30px;
+        padding: 70px 25px;
+    }
 
+    .statistics-card {
+        height: 200px;
+    }
 
+    .statistics-number {
+        font-size: 1.7rem;
+    }
+}
+
+/* 📱 Mobile */
+@media (max-width: 600px) {
+    .statistics-section {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 60px 20px;
+    }
+
+    .statistics-card {
+        max-width: 320px;
+        height: 190px;
+    }
+
+    .statistics-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .statistics-number {
+        font-size: 1.6rem;
+    }
+
+    .statistics-text {
+        font-size: 0.95rem;
+    }
+}

@@ -1,134 +1,138 @@
+/* =========================================
+   🏫 About Us Section – Clean & Responsive
+   ========================================= */
+
 .about-us {
-    background-image: url("/src/Img/fon - about us .svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.title_about_use p {
-    font-size: 64px;
-    color: azure;
-}
-
-.about_us_button {
+    width: 100%;
+    background: #ffffff;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding-top: 100px;
 }
 
 .container_about {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
-    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 2rem;
 }
 
+/* ===== Image ===== */
 .about-image {
-    width: 100%;
+    width: 50%;
     max-width: 500px;
     height: auto;
-    border-radius: 8px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.about-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Text Section ===== */
 .text-about {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
     justify-content: center;
-    max-width: 600px;
+    gap: 25px;
+}
+
+.about_us_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .text-about span {
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1e1e2f;
 }
 
 .text-about p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 600px;
 }
 
-@media (max-width: 1024px) {
+/* ===== Medium Screens (Tablets) ===== */
+@media (max-width: 992px) {
     .container_about {
         flex-direction: column;
-        align-items: center;
-        margin-top: 50px;
-    }
-
-    .about-image {
-        max-width: 80%;
-    }
-
-    .text-about {
-        max-width: 80%;
         text-align: center;
-        align-items: center;
+        gap: 40px;
+        padding: 0 1.5rem;
+    }
+
+    .about_us_button {
+        justify-content: center;
     }
 
     .text-about span {
-        font-size: 1.75rem;
+        font-size: 2rem;
+    }
+
+    .about-image {
+        width: 80%;
+        max-width: 420px;
+    }
+
+    .text-about p {
+        font-size: 1rem;
+    }
+}
+
+/* ===== Small Screens (Phones) ===== */
+@media (max-width: 576px) {
+    .about-us {
+        padding: 80px 0;
+    }
+
+    /* 🔥 MOBILE: MAKE BUTTON GO UNDER TEXT */
+    .about_us_button {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+    }
+              /* space between text & button */
+
+
+    .text-about span {
+        font-size: 1.6rem;
+    }
+
+    .about-image {
+        width: 100%;
+        max-width: 350px;
     }
 
     .text-about p {
         font-size: 0.95rem;
     }
-
-    .about_us_button {
-        display: flex;
-        justify-content: space-between
-    }
 }
 
-@media (max-width: 768px) {
-
-    .container_about {
-        padding: 25px calc(var(--bs-gutter-x) * .5);
-    }
-
-    .container_about {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-image {
-        max-width: 100%;
-        padding: 1em;
-    }
-
-    .text-about {
-        text-align: center;
-        align-items: center;
-        max-width: 100%;
-        padding: 1em;
-    }
-
+/* ===== Very Small Screens (≤400px) ===== */
+@media (max-width: 400px) {
     .text-about span {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .text-about p {
-        font-size: 1rem;
-        text-align: left;
+        font-size: 0.9rem;
     }
-
-    .about_us_button {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (min-width: 1200px) {
-    .text-about span {
-        font-size: 2.5rem;
-    }
-
-    .text-about p {
-        font-size: 1.1rem;
-    }
-
-
 }

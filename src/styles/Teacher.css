@@ -1,209 +1,142 @@
-/* Base Styles */
+/* 🌟 TEACHER SECTION - clean and modern */
 .teacher_section {
-    background-image: url("/src/Img/fon instructor.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 100px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Container */
 .teacher-container {
-    width: 100%;
-    padding: 120px calc(1.5rem * .5);
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    box-sizing: border-box;
+}
+
+/* ----------------------------
+   HEADER ROW (Title)
+---------------------------- */
+.teacher-header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
-}
-
-.title-section {
-    margin-bottom: 40px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1em;
-}
-
-.title-section h2 {
-    font-size: 2.5rem;
-    color: #212529;
-}
-
-.title-section .highlight {
-    color: blue;
-    position: relative;
-}
-
-.title-section .highlight::before {
-    content: "";
-    position: absolute;
-    left: -5px;
-    right: -5px;
-    bottom: 0;
-    height: 10px;
-    background: rgba(0, 192, 163, 0.3);
-    z-index: -1;
-}
-
-.title-section p {
-    color: black;
-    margin: 20px 0;
-    text-align: left;
-    line-height: 1.5em;
-}
-
-.button-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
     flex-wrap: wrap;
+    padding-top: 50px;
 }
 
-.button {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+.teacher-header h2 {
+    font-size: 2rem;
+    color: #212529;
+    font-weight: 700;
+}
+
+/* ----------------------------
+   INTRO PARAGRAPH
+---------------------------- */
+.teacher-intro {
+    color: #333;
+    line-height: 1.5em;
     font-size: 1rem;
-    border-radius: 5px;
-    background-color: #5e44e3;
-    color: white;
-    text-decoration: none;
+    max-width: 700px;
+    margin-bottom: 50px;
 }
 
+/* ----------------------------
+   GRID OF TEACHERS
+---------------------------- */
 .teacher-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
     width: 100%;
-    padding: 1em;
+    align-items: stretch; /* ⭐ all cards equal height */
 }
 
+/* TEACHER CARD */
 .teacher-card {
-    background-image: url("/src/Img/fon dasaxosneri nkarneri hamar.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 8px;
-    padding: 20px;
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    border-radius: 12px;
+    padding: 30px 20px;
+
+    /* ⭐ best solution for equal content spacing */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .teacher-card img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
-    margin-bottom: 20px;
+    margin: 0 auto 15px auto;
 }
 
 .teacher-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: #212529;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .teacher-card p {
     font-size: 1rem;
-    color: #6c757d;
+    color: #000;
+    margin: 0;
 }
 
+/* ----------------------------
+   RESPONSIVE DESIGN
+---------------------------- */
 @media (max-width: 1024px) {
-    .teacher-container {
-        gap: 30px;
-    }
-
-    .title-section h2 {
+    .teacher-header h2 {
         font-size: 1.75rem;
     }
 
-    .button-group {
-        gap: 25px;
-    }
-
     .teacher-card img {
-        width: 80px;
-        height: 80px;
-    }
-
-    .teacher-card h3 {
-        font-size: 1.1rem;
-    }
-
-    .teacher-card p {
-        font-size: 0.9rem;
+        width: 90px;
+        height: 90px;
     }
 }
 
 @media (max-width: 768px) {
-
-    .title-section {
-        justify-content: center;
+    .teacher-header {
+        flex-direction: column;
         align-items: center;
-        padding-top: 30px;
-        margin: 0;
+        text-align: center;
+        gap: 15px;
     }
 
-    .teacher-container {
-        gap: 20px;
-        display: contents;
-    }
-
-    .title-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .button-group {
-        gap: 20px;
-        margin: 0;
+    .teacher-intro {
+        text-align: center;
     }
 
     .teacher-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .teacher-card img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .teacher-card h3 {
-        font-size: 1rem;
-    }
-
-    .teacher-card p {
-        font-size: 0.875rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
 }
 
-@media (max-width: 480px) {
-    .teacher-container {
-        display: contents;
-        gap: 10px;
+@media (max-width: 576px) {
+    .teacher-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;   /* ⭐ centers the cards */
     }
 
-    .title-section h2 {
-        font-size: 1.25rem;
-    }
-
-    .button-group {
-        gap: 15px;
-        margin: 0;
-    }
-
-    .teacher-card img {
-        width: 50px;
-        height: 50px;
-    }
-
-    .teacher-card h3 {
-        font-size: 25px;
-    }
-
-    .teacher-card p {
-        font-size: 20px;
+    .teacher-card {
+        width: 100%;
+        max-width: 340px;        /* ⭐ prevents full-width stretching */
+        margin: 0 auto;          /* ⭐ centers card perfectly */
     }
 }

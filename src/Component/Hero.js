@@ -1,29 +1,43 @@
-import React from 'react';
-import '../styles/Hero.css';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import "../styles/Hero.css";
 import hero from "../Img/glxavor ej.png";
 
-function Hero(props) {
+function Hero() {
+    const { t } = useTranslation(); // 🌍 Translation hook
+
     return (
-        <div className="hero">
+        <section className="hero">
             <div className="hero-cont">
+                {/* 🧾 Text Section */}
                 <div className="hero-text">
-                    <span>Welcome to <br/>  Polyglot Academy</span>
+          <span>
+            {t("hero.welcome")} <br /> Polyglot Academy
+          </span>
+
                     <ul className="custom-arrow">
-                        <li><b>Convenient Learning:</b> Learn languages at your convenience, anytime, anywhere.</li>
-                        <li><b>Free Level Assessment:</b> Start with a complimentary demo lesson to determine your
-                            language proficiency.
+                        <li>
+                            <b>{t("hero.item1.title")}</b> {t("hero.item1.text")}
                         </li>
-                        <li><b>Expert-Guided Courses:</b> Select tailored individual or group packages to enhance your
-                            language skills with our skilled educators at Polyglot Academy.
+                        <li>
+                            <b>{t("hero.item2.title")}</b> {t("hero.item2.text")}
+                        </li>
+                        <li>
+                            <b>{t("hero.item3.title")}</b> {t("hero.item3.text")}
                         </li>
                     </ul>
                 </div>
-                <img alt="hero"
-                     src={hero}
-                     loading="lazy"
-                     className="hero-img"/>
+
+                {/* 🖼️ Image */}
+                <img
+                    alt={t("hero.alt")}
+                    src={hero}
+                    loading="lazy"
+                    className="hero-img"
+                    onError={(e) => (e.target.src = "fallback-image.png")}
+                />
             </div>
-        </div>
+        </section>
     );
 }
 

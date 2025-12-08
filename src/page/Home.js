@@ -1,124 +1,148 @@
-import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import ProductPreview from '../Component/ProductPreview';
-import '../styles/Home.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Hero from '../Component/Hero';
-import AboutUs from '../Component/AboutUs';
-import Contact from '../Component/Contact';
-import Polia from '../Component/Polia';
-import StatisticsSection from '../Component/StatisticsSection';
-import Teacher from '../Component/Teacher';
-import Comment from '../Component/Comment';
-import axios from 'axios';
-import { API_URL_Products } from '../api';
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import {useParams, Link, ScrollRestoration} from "react-router-dom";
+import Slider from "react-slick";
+import axios from "axios";
 
-const CACHE_KEY = 'home_products_cache';
-const CACHE_TIME_KEY = 'home_products_cache_time';
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
+import ProductPreview from "../Component/ProductPreview";
+import Hero from "../Component/Hero";
+import AboutUs from "../Component/AboutUs";
+import Polia from "../Component/Polia";
+import StatisticsSection from "../Component/StatisticsSection";
+import Teacher from "../Component/Teacher";
+import Comment from "../Component/Comment";
+import "../styles/Home.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import { API_URL_Products } from "../api";
+import WhyChoose from "../Component/WhyChoose";
+import SocialProgram from "../Component/SocialProgram";
+import SocialResponsibility from "../Component/SocialResponsibility";
+import FAQ from "../Component/FAQ";
+import Partners from "../Component/Partners";
+
+/* 🧠 Cache Config */
+const CACHE_KEY = "home_products_cache";
+const CACHE_TIME_KEY = "home_products_cache_time";
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24h
 
 function Home() {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const { lang } = useParams();
+    const { t } = useTranslation();
 
+    /* 📡 Fetch from API */
     const fetchProductsFromAPI = async () => {
         try {
-            const response = await axios.get(API_URL_Products);
-            if (response.data) {
-                setProducts(response.data);
-                localStorage.setItem(CACHE_KEY, JSON.stringify(response.data));
+            const { data } = await axios.get(API_URL_Products);
+            if (Array.isArray(data)) {
+                setProducts(data);
+                localStorage.setItem(CACHE_KEY, JSON.stringify(data));
                 localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
             } else {
-                throw new Error('API response does not contain product data');
+                throw new Error("Invalid API response format");
             }
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            setError(error);
+        } catch (err) {
+            console.error("❌ Error fetching products:", err);
+            setError(err);
+        } finally {
+            setLoading(false);
         }
     };
 
+    /* ⚙️ Load Products with Cache Validation */
     const getProducts = () => {
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
-        const now = Date.now();
+        try {
+            const cachedData = localStorage.getItem(CACHE_KEY);
+            const cacheTime = localStorage.getItem(CACHE_TIME_KEY);
+            const now = Date.now();
 
-        if (cachedData && cacheTime && now - parseInt(cacheTime, 10) < CACHE_DURATION) {
-            setProducts(JSON.parse(cachedData));
-            // Optionally, revalidate in the background
-            fetchProductsFromAPI();
-        } else {
+            if (cachedData && cacheTime && now - parseInt(cacheTime, 10) < CACHE_DURATION) {
+                const parsed = JSON.parse(cachedData);
+                if (Array.isArray(parsed)) setProducts(parsed);
+                // background refresh
+                fetchProductsFromAPI();
+            } else {
+                fetchProductsFromAPI();
+            }
+        } catch (err) {
+            console.warn("⚠️ Cache parse error, refetching:", err);
             fetchProductsFromAPI();
         }
     };
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
+
 
     useEffect(() => {
         getProducts();
     }, []);
 
-    if (error) {
-        return <div>Error fetching products: {error.message}</div>;
-    }
-
+    /* 🧭 Slider Configuration */
     const settings = {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 600,
         slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 2000,
+        pauseOnHover: true,
         arrows: false,
         responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    dots: false,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    dots: false,
-                },
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: false,
-                },
-            },
+            { breakpoint: 1024, settings: { slidesToShow: 3 } },
+            { breakpoint: 768, settings: { slidesToShow: 2 } },
+            { breakpoint: 480, settings: { slidesToShow: 1 } },
         ],
     };
+
+    /* 🧾 Conditional Rendering */
+    if (error)
+        return <div className="error-message">{t("home.error")}: {error.message}</div>;
+    if (loading && products.length === 0)
+        return <div className="loader">{t("home.loading")}</div>;
 
     return (
         <div className="home">
             <Hero />
-            <div className="product_fon">
+
+            {/* 🗂️ Product Section */}
+            <section className="product_fon">
                 <div className="product_container">
+                    <AboutUs />
+
+
+
+                    {products.length > 0 ? (
+                        <Slider {...settings} className="product-grid">
+                            {products.map((product) => (
+                                <ProductPreview key={product.id} product={product} />
+                            ))}
+                        </Slider>
+                    ) : (
+                        <div className="no-products">{t("home.noProducts")}</div>
+                    )}
                     <div className="product-section-text">
-                        <span>Choose Your Language Course</span>
-                        <a href="/products" className="view-all-button">All Language</a>
+                        <span>{t("home.chooseCourse")}</span>
+                        <Link to={`/${lang}/products`} className="button">
+                            {t("home.allLanguages")}
+                        </Link>
                     </div>
-                    <Slider {...settings} className="product-grid">
-                        {products.map(product => (
-                            <ProductPreview key={product.id} product={product} />
-                        ))}
-                    </Slider>
                 </div>
-            </div>
-            <AboutUs />
-            <Contact />
-            <Polia />
-            <StatisticsSection />
-            <Teacher />
+            </section>
             <Comment />
+            <StatisticsSection />
+
+            <WhyChoose/>
+            <Teacher />
+            <Polia />
+            <SocialResponsibility/>
+            <FAQ/>
+            <Partners/>
         </div>
     );
 }

@@ -1,130 +1,123 @@
+/* 🌟 NEWSLETTER SECTION - Fully Responsive & Bug-Free */
+
 .newsletter-section {
-    background-image: url("/src/Img/fon verjin ej.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.newsletter-content {
+.newsletter-container {
     display: flex;
-}
-
-.newsletter-title {
-    text-align: left;
-    margin-bottom: 20px;
-    flex: 1; /* Ensure equal flex for responsiveness */
-}
-
-.newsletter-title h4 {
-    padding-bottom: 10px;
-    font-size: 2.625em;
-    color: #1b1b1b;
-}
-
-.newsletter-title span {
-    font-size: 1em;
-    color: #1b1b1b;
-}
-
-.newsletter-input-container {
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    flex: 1; /* Ensure equal flex for responsiveness */
+
+    /* ❗ FIXED: responsive padding */
+    padding: 30px 80px;
+    gap: 40px;
 }
 
-.newsletter-input-container input {
-    border-radius: 10px 0 0 10px;
-    background-color: #ffffff;
-    border: none;
-    height: 40px;
-    line-height: 50px;
-    font-size: 1em;
-    width: 50%;
-    padding: 15px;
-}
-
-.newsletter-input-container button {
-    height: 40px;
-    padding: 0 10px;
-    border: none;
-    border-radius: 0 10px 10px 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-transform: capitalize;
+/* Left Text */
+.newsletter-text h4 {
+    flex: 1;
+    min-width: 300px;
     color: #ffffff;
-    background-color: #3B82F6;
-
+    font-size: 2em;
 }
 
-textarea:focus, input:focus {
+/* Right Form */
+.newsletter-form {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    min-width: 320px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1em;
     outline: none;
+    transition: border-color 0.3s;
 }
 
-.newsletter-input-container button:hover {
-    background-color: #2e1ba4;
+.newsletter-form input:focus {
+    border-color: #5e44e3;
 }
 
-/* Responsive Design */
+/* Button */
+.newsletter-form .button {
+    height: 45px;
+    padding: 0 25px;
+    white-space: nowrap;
+}
+
+/* =========================
+   📱 RESPONSIVE FIXES
+   ========================= */
+
+/* Laptop / Tablet */
 @media (max-width: 1024px) {
-    .newsletter-title h4 {
-        font-size: 2.25em;
-    }
-
-    .newsletter-title span {
-        font-size: 0.9em;
-    }
-
-    .newsletter-input-container input {
-        width: 250px;
-    }
-}
-
-@media (max-width: 768px) {
-    .newsletter-title {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .newsletter-content {
-
-        display: flex;
+    .newsletter-container {
         flex-direction: column;
-
+        align-items: flex-start;
+        padding: 30px 40px;   /* FIXED */
+        gap: 25px;
+        text-align: left;
     }
 
-    .newsletter-input-container {
-        display: flex;
-        flex-wrap: nowrap;
+    .newsletter-form {
+        justify-content: flex-start;
+        width: 100%;
     }
 
-    .newsletter-title h4 {
-        font-size: 1.25rem;
-    }
-
-    .newsletter-title span {
-        font-size: 0.875em;
-    }
-
-    .newsletter-input-container input {
-        width: 200px;
+    .newsletter-form input {
+        width: 100%;
+        flex: none;
     }
 }
 
+/* Tablet / Large Phones */
+@media (max-width: 768px) {
+    .newsletter-container {
+        padding: 25px 20px; /* FIXED */
+    }
+
+    .newsletter-text h4 {
+        font-size: 1.8em;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .newsletter-form input,
+    .newsletter-form .button {
+        width: 100%;
+    }
+}
+
+/* Small Phones */
 @media (max-width: 480px) {
-    .newsletter-title {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+    .newsletter-text h4 {
+        font-size: 1.4em;
     }
 
-    .newsletter-title h4 {
-        font-size: 1.5em;
+    .newsletter-form input {
+        padding: 10px 12px;
     }
 
-    .newsletter-title span {
-        font-size: 0.75em;
+    .newsletter-form .button {
+        height: 42px;
+        font-size: 0.9em;
     }
 }

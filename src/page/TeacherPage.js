@@ -58,23 +58,69 @@ function TeacherPage() {
             <div className="teacher_title_contactPage">
                 <h1>Tutors</h1>
             </div>
+
+            {/* Teacher Section */}
             <div className="teacher_pag_cont">
+                <p className="Title_teacher">Teacher</p>
                 <div className="teacher_card-grid">
-                    {teachers.map((teacher, index) => (
-                        <div key={index} className="teacherPage-card-item">
-                            {/* Construct the full image URL dynamically */}
-                            <img
-                                loading="lazy"
-                                alt={teacher.name}
-                                src={`${BASE_URL}${teacher.img}`}
-                            />
-                            <span>{teacher.name}</span>
-                            <p>{teacher.description}</p>
-                        </div>
-                    ))}
+                    {teachers
+                        .filter((teacher) => teacher.role === 'teacher')
+                        .map((teacher, index) => (
+                            <div key={index} className="teacherPage-card-item">
+                                <img
+                                    loading="lazy"
+                                    alt={teacher.name}
+                                    src={`${BASE_URL}${teacher.img}`}
+                                />
+                                <span>{teacher.name}</span>
+                                <p>{teacher.description}</p>
+                            </div>
+                        ))}
+                </div>
+            </div>
+
+            {/* Manager Section */}
+            <div className="teacher_pag_cont">
+                <p className="Title_teacher">Manager</p>
+                <div className="teacher_card-grid">
+                    {teachers
+                        .filter((teacher) => teacher.role === 'manager')
+                        .map((teacher, index) => (
+                            <div key={index} className="teacherPage-card-item">
+                                <img
+                                    loading="lazy"
+                                    alt={teacher.name}
+                                    src={`${BASE_URL}${teacher.img}`}
+                                />
+                                <span>{teacher.name}</span>
+                                <p>{teacher.description}</p>
+                            </div>
+                        ))}
+                </div>
+            </div>
+
+            {/* Mentor Section */}
+            <div className="teacher_pag_cont">
+                <p className="Title_teacher">Support Specialists</p>
+                <div className="teacher_card-grid">
+                    {teachers
+                        .filter((teacher) => teacher.role === 'mentor')
+                        .map((teacher, index) => (
+                            <div key={index} className="teacherPage-card-item">
+                                <img
+                                    loading="lazy"
+                                    alt={teacher.name}
+                                    src={`${BASE_URL}${teacher.img}`}
+
+                                />
+                                <span>{teacher.name}</span>
+                                <p>{teacher.description}</p>
+                            </div>
+                        ))}
                 </div>
             </div>
         </div>
+
     );
 }
 

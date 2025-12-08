@@ -1,12 +1,11 @@
-// CartPage.js - Main checkout component
-import React, { useState, useMemo, useEffect } from 'react';
+// CartPage.js - Main checkout component - PRODUCTION READY
+import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/CartPage.css';
-import { API_URL_Cart_Page } from '../api';
-import { BASE_URL } from '../Component/PaymentsSystem/PaymentConfig';
 
-// Import our components
+import { API_URL_Cart_Page } from '../api';
+
 import { CartItemsList } from '../Component/PaymentsSystem/CartItemsList';
 import { OrderConfirmationModal } from '../Component/PaymentsSystem/OrderConfirmationModal';
 import { PaymentProcessor } from '../Component/PaymentsSystem/PaymentProcessor';
@@ -35,6 +34,7 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         error: null,
         message: null
     });
+
     const [paymentData, setPaymentData] = useState({
         orderId: null,
         billNo: null,
@@ -42,23 +42,20 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         amount: 0
     });
 
-    // API client with timeout
+    // API client
     const apiClient = axios.create({
-        timeout: 15000, // 15 seconds timeout
-        headers: {
-            'Content-Type': 'application/json',
-        }
+        timeout: 15000,
+        headers: { 'Content-Type': 'application/json' }
     });
 
-    // Calculate total amount - memoized to avoid recalculation on every render
+    // Calculate total amount
     const totalAmount = useMemo(() => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
     }, [cart]);
 
-    // Check if cart is empty
     const isCartEmpty = cart.length === 0;
 
-    // Check if the form is valid before proceeding
+    // Form validation
     const isFormValid = useMemo(() => {
         return (
             customerInfo.name.trim() &&
@@ -68,17 +65,11 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         );
     }, [customerInfo, totalAmount]);
 
-    // Form validation
     const validateForm = () => {
         const errors = {};
 
-        if (!customerInfo.name.trim()) {
-            errors.name = 'Name is required';
-        }
-
-        if (!customerInfo.surname.trim()) {
-            errors.surname = 'Surname is required';
-        }
+        if (!customerInfo.name.trim()) errors.name = 'Name is required';
+        if (!customerInfo.surname.trim()) errors.surname = 'Surname is required';
 
         if (!customerInfo.phone.trim()) {
             errors.phone = 'Phone number is required';
@@ -86,43 +77,36 @@ function CartPage({ cart, updateQuantity, removeItem }) {
             errors.phone = 'Please enter a valid Armenian phone number (e.g., +37499123456)';
         }
 
-        if (isCartEmpty) {
-            errors.cart = 'Your cart is empty';
-        }
-
-        if (parseFloat(totalAmount) <= 0) {
-            errors.amount = 'Total amount must be greater than 0';
-        }
+        if (isCartEmpty) errors.cart = 'Your cart is empty';
+        if (parseFloat(totalAmount) <= 0) errors.amount = 'Total amount must be greater than 0';
 
         setValidationErrors(errors);
         return Object.keys(errors).length === 0;
     };
 
-    // Handle input changes for form fields
+    // Handle input change
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setCustomerInfo(prevInfo => ({ ...prevInfo, [name]: value }));
+        setCustomerInfo(prev => ({ ...prev, [name]: value }));
 
-        // Clear validation error when user starts typing
         if (validationErrors[name]) {
             setValidationErrors(prev => ({ ...prev, [name]: null }));
         }
     };
 
-    // Handle initial payment button click - open confirmation modal
+    // Show confirmation modal
     const handlePayment = () => {
-        if (validateForm()) {
-            setModalOpen(true);
-        }
+        if (validateForm()) setModalOpen(true);
     };
 
-    // Process the payment after confirmation
+    // ✅ ENHANCED PAYMENT CONFIRMATION WITH IMMEDIATE REDIRECT
     const confirmPayment = async () => {
+        console.log("🟡 CONFIRM PAYMENT STARTED");
+
         try {
             setIsLoading(true);
             setPaymentStatus({ success: false, error: null });
 
-            // Prepare order data
             const orderData = {
                 customer_name: customerInfo.name,
                 customer_surname: customerInfo.surname,
@@ -137,29 +121,61 @@ function CartPage({ cart, updateQuantity, removeItem }) {
                 type: customerInfo.paymentType
             };
 
-            console.log('Sending order data:', orderData);
+            console.log("🟡 Sending order data:", orderData);
 
             const response = await apiClient.post(API_URL_Cart_Page, orderData);
-            console.log('Server response:', response.data);
 
-            if (!response.data) {
-                throw new Error('No data received from server');
-            }
+            console.log("🟡 Server response:", response.data);
 
-            const { orderId, billNo, paymentLink } = response.data;
+            if (!response.data) throw new Error('No data from server');
 
+            // ✅ CORRECT DATA EXTRACTION
+            const { orderId, payment } = response.data;
+            const paymentLink = payment?.paymentLink;
+            const billNo = orderId;
+
+            console.log("🟡 Extracted payment data:", { orderId, billNo, paymentLink });
+
+            // ✅ SET PAYMENT DATA
             setPaymentData({
                 orderId,
-                billNo: billNo || orderId,
+                billNo,
                 paymentLink,
                 amount: totalAmount
             });
 
+            // ⭐ IMMEDIATE REDIRECT FOR CARD AND AMERIAPAY PAYMENTS
+            if (paymentLink && (customerInfo.paymentType === 'card' || customerInfo.paymentType === 'ameriapay')) {
+                console.log("🔵 IMMEDIATE REDIRECT TO:", paymentLink);
+
+                // Small delay to ensure state is set before redirect
+                setTimeout(() => {
+                    window.location.href = paymentLink;
+                }, 100);
+
+                return; // Exit function to prevent further processing
+            }
+
+            // ✅ FOR IDRAM/TELCELL - Let PaymentProcessor handle it
+            if (paymentLink && (customerInfo.paymentType === 'idram' || customerInfo.paymentType === 'telcell')) {
+                console.log("💳 Payment data set for processor:", {
+                    paymentType: customerInfo.paymentType,
+                    paymentLink: paymentLink
+                });
+            }
+
+            // ✅ SUCCESS STATE
+            setPaymentStatus({
+                success: true,
+                message: `${customerInfo.paymentType.toUpperCase()} payment initiated successfully`
+            });
+
         } catch (error) {
-            console.error('🔴 Error Confirming Payment:', error);
+            console.error("🔴 PAYMENT ERROR:", error);
+
             setPaymentStatus({
                 success: false,
-                error: error.response?.data?.message || error.message || 'There was an issue submitting your order. Please try again.',
+                error: error.response?.data?.message || error.message || 'Payment initialization failed'
             });
         } finally {
             setIsLoading(false);
@@ -167,124 +183,96 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         }
     };
 
-    const cancelPayment = () => {
-        setModalOpen(false);
-    };
+    const cancelPayment = () => setModalOpen(false);
 
-    // Render payment processor when payment data is available
-    const renderPaymentProcessor = () => {
-        if (paymentData.orderId || paymentData.billNo || paymentData.paymentLink) {
-            return (
-                <PaymentProcessor
-                    paymentType={customerInfo.paymentType}
-                    paymentData={paymentData}
-                    setPaymentStatus={setPaymentStatus}
+    /** ------------------------
+     *  COMPONENT RENDER SECTIONS
+     ---------------------------*/
+
+    const renderCustomerForm = () => (
+        <div className="customer-info">
+            <h3>Customer Information</h3>
+
+            <div className={`input-group ${validationErrors.name ? 'has-error' : ''}`}>
+                <label>Name *</label>
+                <input
+                    name="name"
+                    value={customerInfo.name}
+                    onChange={handleInputChange}
+                    placeholder="Enter your first name"
                 />
-            );
-        }
-        return null;
-    };
-
-    const renderCustomerForm = () => {
-        return (
-            <div className="customer-info">
-                <h3>Customer Information</h3>
-                <div className={`input-group ${validationErrors.name ? 'has-error' : ''}`}>
-                    <label htmlFor="name">Name *</label>
-                    <input
-                        id="name"
-                        type="text"
-                        name="name"
-                        placeholder="Your name"
-                        value={customerInfo.name}
-                        onChange={handleInputChange}
-                    />
-                    {validationErrors.name && <div className="error-text">{validationErrors.name}</div>}
-                </div>
-                <div className={`input-group ${validationErrors.surname ? 'has-error' : ''}`}>
-                    <label htmlFor="surname">Surname *</label>
-                    <input
-                        id="surname"
-                        type="text"
-                        name="surname"
-                        placeholder="Your surname"
-                        value={customerInfo.surname}
-                        onChange={handleInputChange}
-                    />
-                    {validationErrors.surname && <div className="error-text">{validationErrors.surname}</div>}
-                </div>
-                <div className={`input-group ${validationErrors.phone ? 'has-error' : ''}`}>
-                    <label htmlFor="phone">Phone Number *</label>
-                    <input
-                        id="phone"
-                        type="text"
-                        name="phone"
-                        placeholder="Armenian phone number (e.g., +37499123456)"
-                        value={customerInfo.phone}
-                        onChange={handleInputChange}
-                    />
-                    {validationErrors.phone && <div className="error-text">{validationErrors.phone}</div>}
-                </div>
-                <div className="input-group">
-                    <label htmlFor="paymentType">Payment Method *</label>
-                    <select
-                        id="paymentType"
-                        name="paymentType"
-                        value={customerInfo.paymentType}
-                        onChange={handleInputChange}
-                        className="payment-select"
-                    >
-                        <option value="idram">Idram</option>
-                        <option value="card">Card</option>
-                        <option value="ameria_pay">MyAmeria Pay</option>
-                        <option value="telcell">Telcell</option>
-                    </select>
-                </div>
+                {validationErrors.name && <div className="error-text">{validationErrors.name}</div>}
             </div>
-        );
-    };
 
-    const renderOrderSummary = () => {
-        return (
-            <div className="cart-totals">
-                <h3>Order Summary</h3>
-                <div className="total-row">
-                    <span>Subtotal</span>
-                    <span>{totalAmount} AMD</span>
-                </div>
-                <div className="total-row total-amount">
-                    <span>Total</span>
-                    <span>{totalAmount} AMD</span>
-                </div>
-                <button
-                    className="proceed-to-checkout"
-                    onClick={handlePayment}
-                    disabled={!isFormValid || isLoading || isCartEmpty}
-                >
-                    {isLoading ? 'Processing...' : 'Proceed To Checkout'}
-                </button>
-                {validationErrors.cart && <div className="error-text center">{validationErrors.cart}</div>}
-                {validationErrors.amount && <div className="error-text center">{validationErrors.amount}</div>}
+            <div className={`input-group ${validationErrors.surname ? 'has-error' : ''}`}>
+                <label>Surname *</label>
+                <input
+                    name="surname"
+                    value={customerInfo.surname}
+                    onChange={handleInputChange}
+                    placeholder="Enter your last name"
+                />
+                {validationErrors.surname && <div className="error-text">{validationErrors.surname}</div>}
             </div>
-        );
-    };
+
+            <div className={`input-group ${validationErrors.phone ? 'has-error' : ''}`}>
+                <label>Phone *</label>
+                <input
+                    name="phone"
+                    value={customerInfo.phone}
+                    onChange={handleInputChange}
+                    placeholder="+37477123456"
+                />
+                {validationErrors.phone && <div className="error-text">{validationErrors.phone}</div>}
+            </div>
+
+            <div className="input-group">
+                <label>Payment Method *</label>
+                <select name="paymentType" value={customerInfo.paymentType} onChange={handleInputChange}>
+                    <option value="idram">💳 Idram Digital Wallet</option>
+                    <option value="card">🏦 Bank Card (Ameria Bank)</option>
+                    <option value="ameriapay">📱 MyAmeria Pay</option>
+                    <option value="telcell">📞 Telcell Payment</option>
+                </select>
+            </div>
+        </div>
+    );
+
+    const renderOrderSummary = () => (
+        <div className="cart-totals">
+            <h3>Order Summary</h3>
+
+            <div className="total-row">
+                <span>Subtotal</span>
+                <span>{totalAmount} AMD</span>
+            </div>
+
+            <div className="total-row total-amount">
+                <span>Total</span>
+                <span>{totalAmount} AMD</span>
+            </div>
+
+            <button
+                className="proceed-to-checkout"
+                onClick={handlePayment}
+                disabled={!isFormValid || isLoading || isCartEmpty}
+            >
+                {isLoading ? 'Processing...' : 'Proceed To Checkout'}
+            </button>
+
+            {validationErrors.cart && <div className="error-text center">{validationErrors.cart}</div>}
+            {validationErrors.amount && <div className="error-text center">{validationErrors.amount}</div>}
+        </div>
+    );
 
     const renderPaymentStatusMessages = () => {
         if (paymentStatus.error) {
             return (
                 <div className="payment-message error">
-                    <p className="error-message">{paymentStatus.error}</p>
+                    <p className="error-message">❌ {paymentStatus.error}</p>
                     <button
-                        className="try-again-btn"
-                        onClick={() => {
-                            setPaymentStatus({ success: false, error: null });
-                            setPaymentData({
-                                orderId: null,
-                                billNo: null,
-                                paymentLink: null,
-                                amount: 0
-                            });
-                        }}
+                        onClick={() => setPaymentStatus({ success: false, error: null, message: null })}
+                        className="retry-button"
                     >
                         Try Again
                     </button>
@@ -296,14 +284,8 @@ function CartPage({ cart, updateQuantity, removeItem }) {
             return (
                 <div className="payment-message success">
                     <p className="success-message">
-                        {paymentStatus.message || 'Payment Successful!'}
+                        ✅ {paymentStatus.message || 'Payment Successful!'}
                     </p>
-                    <button
-                        className="continue-shopping"
-                        onClick={() => navigate('/products')}
-                    >
-                        Continue Shopping
-                    </button>
                 </div>
             );
         }
@@ -311,31 +293,44 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         return null;
     };
 
+    const renderPaymentProcessor = () => {
+        // Only show PaymentProcessor for Idram/Telcell (non-redirect payments)
+        if (!paymentData.paymentLink || !paymentData.orderId) return null;
+
+        if (customerInfo.paymentType === 'card' || customerInfo.paymentType === 'ameriapay') {
+            // These are handled by immediate redirect, no processor needed
+            return null;
+        }
+
+        return (
+            <PaymentProcessor
+                paymentType={customerInfo.paymentType}
+                paymentData={paymentData}
+                setPaymentStatus={setPaymentStatus}
+            />
+        );
+    };
+
     return (
         <>
             <div className="cart-page">
                 <h2>Your Cart</h2>
             </div>
+
             <div className="container">
                 <div className="cart-page-container">
                     {isCartEmpty ? (
                         <div className="empty-cart-message">
                             <h3>Your cart is empty</h3>
-                            <p>Please add some products to your cart before checkout.</p>
-                            <button
-                                className="continue-shopping"
-                                onClick={() => navigate('/products')}
-                            >
+                            <p>Add some courses to get started with your learning journey!</p>
+                            <button className="continue-shopping" onClick={() => navigate('/products')}>
                                 Continue Shopping
                             </button>
                         </div>
                     ) : (
-                        <CartItemsList
-                            cart={cart}
-                            updateQuantity={updateQuantity}
-                            removeItem={removeItem}
-                        />
+                        <CartItemsList cart={cart} updateQuantity={updateQuantity} removeItem={removeItem} />
                     )}
+
                     <div className="checkout-section">
                         {renderCustomerForm()}
                         {renderOrderSummary()}
@@ -343,6 +338,7 @@ function CartPage({ cart, updateQuantity, removeItem }) {
                     </div>
                 </div>
             </div>
+
             <OrderConfirmationModal
                 modalOpen={modalOpen}
                 customerInfo={customerInfo}
@@ -351,11 +347,14 @@ function CartPage({ cart, updateQuantity, removeItem }) {
                 cancelPayment={cancelPayment}
                 isLoading={isLoading}
             />
+
             <PaymentStatusChecker setPaymentStatus={setPaymentStatus} />
+
             <PaymentRedirectHandler
                 paymentType={customerInfo.paymentType}
                 paymentLink={paymentData.paymentLink}
             />
+
             {renderPaymentProcessor()}
         </>
     );

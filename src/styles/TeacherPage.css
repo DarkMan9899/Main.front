@@ -15,14 +15,19 @@
     font-size: 64px;
     color: azure;
 }
-
+ .Title_teacher{
+     align-items: center;
+     font-size: 50px;
+     margin-left: 15px;
+     color: blue;
+ }
 .teacher_pag_cont {
     max-width: 1200px;
     margin: 0 auto;
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     width: 100%;
-    padding: 120px calc(var(--bs-gutter-x) * .5);
+    padding: 60px calc(var(--bs-gutter-x) * .5);
 }
 
 .teacher_card-grid {
@@ -76,7 +81,7 @@
     }
 
     .teacher_pag_cont {
-        padding: 80px 30px; /* Reduce padding */
+        padding: 40px 30px; /* Reduce padding */
     }
 
     .teacher_card-grid {

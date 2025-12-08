@@ -1,0 +1,63 @@
+.managers-section {
+    padding: 60px var(--base-padding-x);
+    text-align: center;
+}
+
+.managers-section h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+/* ---- MANAGER CARD ---- */
+
+.manager-card {
+    background: linear-gradient(135deg, #5e44e3, #6fb4c8);
+    border-radius: 22px;
+    padding: 35px 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.manager-card:hover {
+    transform: translateY(-6px);
+}
+
+/* ---- PROFILE IMAGE ---- */
+
+.manager-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    border: 5px solid white;
+
+    margin-bottom: 18px;
+}
+
+/* ---- TEXT ---- */
+
+.manager-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.manager-role {
+    font-size: 17px;
+    font-weight: 600;
+    color: #eef3ff;
+}
+
+/* ---- Fix slick alignment ---- */
+.slick-slide > div {
+    display: flex !important;
+    justify-content: center;
+}

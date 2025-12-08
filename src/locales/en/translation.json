@@ -1,0 +1,388 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "language": "Courses",
+    "contact": "Contact",
+    "certificate": "Certificate"
+  },
+
+  "lang": {
+    "hy": "Armenian",
+    "ru": "Russian",
+    "en": "English"
+  },
+  "certificateCheck": {
+    "checkTitle": "Certificate Verification",
+    "enterCode": "Enter certificate code",
+    "check": "Check",
+    "checking": "Checking...",
+    "notFound": "Certificate not found",
+    "valid": "Certificate is valid",
+    "fullName": "Full Name",
+    "course": "Course",
+    "level": "Level",
+    "date": "Issue Date",
+    "approved": "Certificate approved by the Ministry of Education",
+    "error": "Server error",
+    "code": "Certificate Code"
+  },
+
+  "certificateForm": {
+    "title": "Certificate Registration",
+    "fullName": "Full Name",
+    "courseName": "Course Name",
+    "level": "Level",
+    "code": "Certificate Code",
+    "date": "Issue Date",
+    "submit": "Submit to Database",
+    "sending": "Submitting...",
+    "success": "Certificate successfully saved",
+    "error": "Error — failed to save"
+  },
+
+
+
+
+  "home": {
+    "chooseCourse": "Choose Your Language Course",
+    "allLanguages": "All Languages",
+    "noProducts": "No products available at the moment.",
+    "loading": "Loading...",
+    "error": "Error fetching products"
+  },
+
+  "hero": {
+    "welcome": "Welcome to",
+    "item1": {
+      "title": "Convenient Learning:",
+      "text": "Learn languages at your convenience, anytime, anywhere."
+    },
+    "item2": {
+      "title": "Free Level Assessment:",
+      "text": "Start with a complimentary demo lesson to determine your language proficiency."
+    },
+    "item3": {
+      "title": "Expert-Guided Courses:",
+      "text": "Select tailored individual or group packages to enhance your language skills with our skilled educators at Polyglot Academy."
+    },
+    "alt": "Hero section of Polyglot Academy"
+  },
+
+  "about": {
+    "title": "About Us",
+    "button": "More About Us",
+    "description": "At Polyglot Academy, our success is driven by a team of motivated and smart individuals who are passionate about language learning and innovation. Each member brings unique skills and expertise, working together to provide you with the best learning experience possible.",
+    "alt": "About Polyglot Academy"
+  },
+
+  "product": {
+    "courses": "Courses",
+    "unnamed": "Unnamed Course"
+  },
+
+  "statistics": {
+    "students": "Students currently learning",
+    "completed": "Successfully completed",
+    "team": "Team members",
+    "beneficiaries": "Beneficiaries of social programs"
+  },
+
+  "polia": {
+    "title": "Meet Polya: Your AI Learning Companion at Polyglot Academy",
+    "subtitle": "We’re thrilled to introduce Polya, our innovative AI bot designed to make language learning quick and easy.",
+    "assessmentText": "Discover your language level with precision using Polya’s quick assessment.",
+    "button": "Check Your Language Level",
+    "feature1": {
+      "title": "Advanced AI Technology",
+      "description": "Enjoy a smart and intuitive learning experience."
+    },
+    "feature2": {
+      "title": "User-Friendly Interface",
+      "description": "Navigate the platform easily, no matter your tech skills."
+    },
+    "feature3": {
+      "title": "Support and Motivation",
+      "description": "Polya offers constant encouragement to keep you engaged."
+    },
+    "feature4": {
+      "title": "Continuous Improvement",
+      "description": "Polya regularly updates content and features to enhance your learning experience."
+    }
+  },
+
+  "teacher": {
+    "title": "Meet Our Tutors",
+    "view_all": "All Tutors",
+    "intro": "Learn from qualified, passionate tutors who make every language lesson engaging and effective.",
+    "teachers": [
+      { "name": "Heghine", "title": "German Lecturer" },
+      { "name": "Anna", "title": "English Tutor" },
+      { "name": "Ani", "title": "English Tutor" },
+      { "name": "Garik", "title": "German Lecturer" }
+    ]
+  },
+
+  "newsletter": {
+    "title": "Join Our Newsletter",
+    "subtitle": "Subscribe to get our latest updates and news directly to your inbox.",
+    "placeholder": "Enter your email",
+    "button": "Subscribe Now",
+    "success": "✅ Subscription successful! You’re now on our list.",
+    "error_invalid": "❌ Please enter a valid email address.",
+    "error_general": "❌ There was an error subscribing. Please try again later."
+  },
+
+  "footer": {
+    "educate": {
+      "title": "Educate",
+      "text": "Join us and stay updated with the latest in language learning by following us on social media. Discover a world of opportunities and make your learning journey exciting with Polyglot Academy."
+    },
+    "languages": {
+      "title": "Languages",
+      "english": "English",
+      "russian": "Russian",
+      "armenian": "Armenian",
+      "spanish": "Spanish",
+      "german": "German"
+    },
+    "quickLinks": "Quick Links",
+    "links": {
+      "polya": "Meet Polya",
+      "linkedin": "LinkedIn",
+      "englishClub": "Polyglot’s English Club",
+      "russianClub": "Polyglot’s Russian Club",
+      "questionnaire": "Questionnaire for Experts"
+    },
+    "rights": "All Rights Reserved"
+  },
+
+  "why": {
+    "title": "Why Choose Polyglot Academy",
+    "flexible": "Flexible Schedule",
+    "certification": "International Certification",
+    "programs": "Guaranteed Educational Programs",
+    "formats": "Various Learning Formats",
+    "partnerships": "Partnerships with Leading Companies",
+
+    "flexibleText": "Study at your own pace with customizable schedules that fit your lifestyle.",
+    "certificationText": "Receive globally recognized certificates upon successful course completion.",
+    "programsText": "Each program is designed to ensure consistent progress and measurable results.",
+    "formatsText": "Choose between individual lessons, group sessions, or online self-paced modules.",
+    "partnershipsText": "Benefit from collaborations with top organizations and career opportunities."
+  },
+
+  "social": {
+    "title": "Social Responsibility",
+    "subtitle": "Collaborations through social programs",
+
+    "card1": "UNICEF Armenia",
+    "desc1": "Joint initiatives supporting inclusive language education for children.",
+
+    "card2": "Red Cross Armenia",
+    "desc2": "Providing free language classes for refugees and displaced families.",
+
+    "card3": "Teach for Armenia",
+    "desc3": "Supporting teachers in rural communities through training and digital tools.",
+
+    "card4": "Armenian Caritas",
+    "desc4": "Helping socially vulnerable groups gain access to language education.",
+
+    "card5": "World Vision Armenia",
+    "desc5": "Promoting youth empowerment and language learning opportunities."
+  },
+
+
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "How can I enroll in a course?",
+    "a1": "You can enroll directly through our website by selecting your preferred language course and completing the online registration form.",
+    "q2": "Do you provide international certificates?",
+    "a2": "Yes, upon successful completion of your course, you will receive a globally recognized certificate.",
+    "q3": "Can I take classes online?",
+    "a3": "Of course! We offer flexible online learning options alongside in-person sessions.",
+    "q4": "Are the courses suitable for beginners?",
+    "a4": "Absolutely. We have structured programs for all levels, from beginner to advanced.",
+    "q5": "How do I contact my tutor?",
+    "a5": "Once enrolled, you can easily contact your tutor via the student dashboard or email support."
+  },
+
+  "partners": {
+    "title": "Our Partners & Collaborations"
+  },
+
+
+  "aboutPage": {
+    "hero": {
+      "title": "We provide education that creates new opportunities",
+      "subtitle": "At Polyglot Academy, we combine experienced specialists, international methodologies, and a student-centered approach to deliver education that leads to real, measurable results.",
+      "btnCourses": "Courses",
+      "btnTeam": "Our Team",
+      "alt": "Polyglot Academy team"
+    },
+
+    "story": {
+      "title": "Our Story",
+      "text": "Polyglot Academy was founded to shape a new standard of language education in Armenia. Our mission is to provide effective, accessible, and internationally recognized education to every learner—regardless of age, prior knowledge, or schedule. Our team continuously refines our programs, following global educational trends and creating an environment where progress is an expected outcome, not a coincidence."
+    },
+
+    "vision": {
+      "title": "Our Vision and Values",
+
+      "missionTitle": "Mission",
+      "missionText": "To create a modern, effective, and accessible learning environment where every student can grow safely and confidently.",
+
+      "visionTitle": "Vision",
+      "visionText": "To become the most trusted and innovative language-education platform in the region.",
+
+      "valuesTitle": "Values",
+      "values": [
+        "Quality",
+        "Transparency",
+        "Result-oriented approach",
+        "Individual approach",
+        "Compliance with international standards",
+        "Continuous improvement"
+      ]
+    },
+
+    "structure": {
+      "title": "Our Organizational Structure",
+      "text": "We operate with a well-defined structure to ensure high efficiency and continuous quality control.",
+      "list": [
+        "Education Department",
+        "Marketing & Public Relations Department",
+        "Sales & Customer Support Department",
+        "Student Care Department",
+        "Technical Support Department"
+      ],
+      "managersTitle": "Department Managers",
+      "managersText": "Here you can find the names and photos of our department managers."
+    },
+
+    "why": {
+      "title": "Why Students Choose Us",
+      "list": [
+        "5000+ graduates",
+        "30+ professional instructors",
+        "98% satisfaction rate",
+        "Visible results in 8–12 weeks",
+        "Programs for all levels and age groups"
+      ]
+    },
+
+    "final": {
+      "title": "Join Polyglot Academy and unlock new opportunities",
+      "text": "Start today—choose the language and level that fits you best.",
+      "btnCourses": "Courses",
+      "btnRegister": "Register"
+    }
+  },
+  "course": {
+    "cover": {
+      "title": "English courses for all levels",
+      "subtitle": "Learn English with Cambridge methodology, high-quality educational programs, and achieve consistent progress with internationally aligned knowledge — guided by native speakers.",
+      "cta": "Find your correct starting point"
+    },
+
+    "levels": {
+      "title": "Course Levels",
+      "cta": "Take a free level assessment",
+
+      "A1": {
+        "title": "Beginner",
+        "desc": "Basic vocabulary, simple expressions, essential grammar."
+      },
+      "A2": {
+        "title": "Elementary",
+        "desc": "Conversational basics, everyday topics, simple independent speech."
+      },
+      "B1": {
+        "title": "Intermediate",
+        "desc": "Balanced language skills, confident communication on common topics."
+      },
+      "B2": {
+        "title": "Upper-Intermediate",
+        "desc": "Advanced speaking and writing, academic vocabulary development."
+      },
+      "C1": {
+        "title": "Advanced",
+        "desc": "High-level fluency, complex topic analysis, business English elements."
+      }
+    },
+
+    "structure": {
+      "title": "Course Structure",
+      "vocabulary": "Vocabulary Development",
+      "grammar": "Grammar",
+      "speaking": "Speaking",
+      "listening": "Listening",
+      "reading": "Reading",
+      "writing": "Writing Skills"
+    },
+
+    "faq": {
+      "learn": {
+        "q": "What will I learn in this course?",
+        "a": "You will develop all essential language skills — speaking, writing, vocabulary, and grammar."
+      },
+      "progress_check": {
+        "q": "How is progress evaluated?",
+        "a": "Through quizzes, assignments, assessments, and teacher feedback."
+      },
+      "no_progress": {
+        "q": "What happens if I don’t have progress?",
+        "a": "You will receive personalized guidance and additional materials."
+      },
+      "result": {
+        "q": "What will I receive upon completion?",
+        "a": "A certificate, strong language skills, and real fluency."
+      },
+      "reviews": {
+        "q": "Student feedback on the English course",
+        "a": "Thousands of learners have already achieved excellent results."
+      },
+      "cta": "Pre-register"
+    },
+
+    "formats": {
+      "title": "Learning Formats",
+      "online_group": "Online Group Classes",
+      "online_individual": "Online Individual Lessons",
+      "intensive": "Accelerated / Intensive Program",
+      "kids": "For Kids Ages 5–11"
+    },
+
+    "packages": {
+      "title": "Packages & Pricing",
+      "starter": {
+        "title": "Starter – Beginner Level",
+        "desc": "Perfect for absolute beginners."
+      },
+      "standard": {
+        "title": "Standard – Core Lessons",
+        "desc": "Effective standard lesson structure."
+      },
+      "premium": {
+        "title": "Premium – Individual Approach",
+        "desc": "Intensive learning with personal attention."
+      },
+      "cta": "Choose Package"
+    },
+
+    "final": {
+      "title": "Start your learning journey with Polyglot Academy",
+      "cta": "Start Learning"
+    }
+  },
+  "tariff": {
+    "individual": "Individual",
+    "group2": "Group (2 people)",
+    "group5": "Group (5 people)",
+    "speaking": "Speaking Course",
+    "accelerated": "Accelerated",
+    "hybrid": "Hybrid"
+  }
+
+
+}

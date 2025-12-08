@@ -1,28 +1,78 @@
-/* Gallery CSS */
+/* ============================
+   PREMIUM GALLERY SECTION
+============================ */
 
 .gallery_posts {
-    text-align: center;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.slick-slider {
-    margin: 0 -10px;
-}
-
-.slick-slide {
-    padding: 0 10px;
-    box-sizing: border-box;
-}
-
-.post {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    padding: 60px var(--base-padding-x);
     margin: 0 auto;
+}
+
+.gallery_posts .slick-slide {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.gallery_posts .slick-slide > div {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.gallery_posts .post {
+    width: 100%;
+    max-width: 330px;
+    height: 260px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, #5e44e3, #6fb4c8);
+
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery_posts .post:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.32);
+}
+
+/* ============================
+   IMAGE STYLING
+============================ */
+
+.gallery_posts img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;     /* keeps the image clean */
+    object-position: center; /* always center inside box */
+    transition: transform .35s ease;
+}
+
+/* smooth zoom on hover */
+.gallery_posts .post:hover img {
+    transform: scale(1.1);
+}
+
+/* ============================
+   RESPONSIVE FIXES
+============================ */
+
+@media (max-width: 768px) {
+    .gallery_posts .post {
+        max-width: 280px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery_posts .post {
+        max-width: 250px;
+        height: 200px;
+    }
 }

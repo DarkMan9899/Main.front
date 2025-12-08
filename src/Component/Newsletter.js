@@ -1,59 +1,72 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import '../styles/Newsletter.css';
-import ModalNewsletter from './ModalNewsletter';
-import {API_URL_Newsletter} from "../api"
+import React, { useState } from "react";
+import axios from "axios";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import "../styles/Newsletter.css";
+import ModalNewsletter from "./ModalNewsletter";
+import { API_URL_Newsletter } from "../api";
 
 const Newsletter = () => {
-    const [email, setEmail] = useState('');
-    const [modalOpen, setModalOpen] = useState(false);
-    const [responseMessage, setResponseMessage] = useState('');
+    const { t } = useTranslation();
+    const { lang } = useParams();
 
-    useEffect(() => {
-    }, [modalOpen, responseMessage]);
+    const [email, setEmail] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
+    const [responseMessage, setResponseMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setModalOpen(true)
+
+        if (!email.trim()) {
+            setResponseMessage(t("newsletter.error_invalid"));
+            setModalOpen(true);
+            return;
+        }
 
         try {
-            const response = await axios.post(`${API_URL_Newsletter}`, {email});
-            setResponseMessage(response.data.message || 'Everything is normal, the data has been sent successfully.');
-            setModalOpen(true);
-            setEmail('');
+            const response = await axios.post(API_URL_Newsletter, { email });
+            setResponseMessage(
+                response.data?.message || t("newsletter.success")
+            );
+            setEmail("");
         } catch (error) {
-            setResponseMessage('There was an error saving the contact.');
+            setResponseMessage(t("newsletter.error_general"));
+        } finally {
             setModalOpen(true);
         }
     };
 
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
     return (
-        <div className="newsletter-section">
-            <div className="newsletter-content container">
-                <div className="newsletter-title">
-                    <h4>Join Our Newsletter</h4>
-                    <span>Subscribe to our newsletter to get our latest updates & news.</span>
+        <section className="newsletter-section">
+            <div className="newsletter-container ">
+                {/* 📰 Text Section */}
+                <div className="newsletter-text">
+                    <h4 className="newsletter-title">{t("newsletter.title")}</h4>
+                    {/*<p className="newsletter-subtitle">{t("newsletter.subtitle")}</p>*/}
                 </div>
-                <form className="newsletter-input-container" onSubmit={handleSubmit}>
+
+                {/* 📩 Form Section */}
+                <form className="newsletter-form" onSubmit={handleSubmit}>
                     <input
                         type="email"
+                        placeholder={t("newsletter.placeholder")}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                    <button type="submit" className="button">Subscribe Now</button>
+                    <button type="submit" className="button">
+                        {t("newsletter.button")}
+                    </button>
                 </form>
+
+                {/* ✅ Modal for Feedback */}
                 <ModalNewsletter
                     isOpen={modalOpen}
-                    onClose={closeModal}
+                    onClose={() => setModalOpen(false)}
                     message={responseMessage}
                 />
             </div>
-        </div>
+        </section>
     );
 };
 

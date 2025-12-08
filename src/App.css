@@ -1,80 +1,188 @@
-/* Base Styles */
+/* ===================================
+   🌐 Global Styles – Clean & Responsive
+   =================================== */
+
+/* 🎨 Theme Variables */
+:root {
+  --brand-color: #5e44e3;
+  --brand-hover: #007bff;
+  --border-radius: 10px;
+  --transition: 0.3s ease;
+  --max-width: 1200px;
+  --base-padding-x: 1.5rem;
+  --base-padding-y: 25px;
+  --font-family: Helvetica, Arial, sans-serif;
+}
+
+/* 🧱 Reset & Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;}
+  font-family: var(--font-family);
+}
 
 body {
+  line-height: 1.6;
+  background-color: #fff;
+  color: #000;
 }
 
+/* ==============================
+   📦 Layout Containers
+   ============================== */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
+  max-width: var(--max-width);
   width: 100%;
-  padding: 120px calc(var(--bs-gutter-x) * .5);
+  margin: 0 auto;
+  padding: 100px var(--base-padding-x) 0;
+  --bs-gutter-x: var(--base-padding-x);
+  --bs-gutter-y: 0;
 }
 
+/* ==============================
+   🔘 Global Button Styles
+   ============================== */
 .button {
-  background-color: #5e44e3;
-  color: white;
+  background: linear-gradient(90deg, #3377E6, #6FB4C8);
+  background-size: 200% 100%; /* enables sliding animation */
+  background-position: left center; /* default gradient position */
+  white-space: nowrap;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
   cursor: pointer;
   font-size: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
-  /*margin: 2em 0;*/
+
   width: 170px;
   height: 40px;
   text-decoration: none;
-  border-radius: 10px;
-  transition: background-color 0.3s;
+  border-radius: var(--border-radius);
+
+  transition:
+          background-position 0.5s ease,
+          transform var(--transition);
+
+  padding: 10px 20px;
 }
 
+/* ✨ Hover → gradient slides RIGHT → LEFT */
 .button:hover {
-  background-color: #007bff;
+  background-position: right center;
+  transform: translateY(-2px);
 }
 
-/* Medium Screen Adjustments */
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--brand-hover);
+  outline-offset: 3px;
+}
+
+/* ==============================
+   🧱 Responsive Layouts
+   ============================== */
+
+/* 💻 Medium Screens (tablets, laptops) */
 @media (max-width: 992px) {
   .container {
-    padding: 25px calc(var(--bs-gutter-x) * .5);
+    padding: var(--base-padding-y) calc(var(--bs-gutter-x) * 0.5);
   }
 
   .button {
-    font-size: 0.875em; /* Adjust font size */
-    width: 150px; /* Adjust width */
-    height: 50px; /* Adjust height */
+    font-size: 0.875em;
+    width: 150px;
+    height: 50px;
   }
 }
 
-/* Small Screen Adjustments */
+/* 📱 Small Screens (mobile landscape) */
 @media (max-width: 768px) {
   .container {
-    padding: 25px calc(var(--bs-gutter-x) * .5);
+    padding: var(--base-padding-y) calc(var(--bs-gutter-x) * 0.5);
   }
 
   .button {
-    font-size: 0.75em; /* Further adjust font size */
-    width: 130px; /* Further adjust width */
-    height: 45px; /* Further adjust height */
+    font-size: 0.75em;
+    width: 130px;
+    height: 45px;
   }
 }
 
-/* Very Small Screen Adjustments */
+/* 📲 Very Small Screens (mobile portrait) */
 @media (max-width: 576px) {
   .container {
-    padding: 25px calc(var(--bs-gutter-x) * .5);
+    padding: var(--base-padding-y) calc(var(--bs-gutter-x) * 0.5);
   }
 
   .button {
-    font-size: 0.75em; /* Further adjust font size */
-    width: 120px; /* Further adjust width */
-    height: 40px; /* Further adjust height */
-    margin: 1em 0; /* Adjust margin */
+    font-size: 0.75em;
+    width: 120px;
+    height: 40px;
+    margin: 1em 0;
+    white-space: nowrap;
+
   }
+}
+
+/* ==============================
+   ✨ Utility Classes
+   ============================== */
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background: linear-gradient(90deg, #3377E6, #6FB4C8);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+/* Hover animation */
+.scroll-to-top:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }

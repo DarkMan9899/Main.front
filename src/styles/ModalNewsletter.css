@@ -1,28 +1,80 @@
-.modal-content p{
-    padding-bottom: 20px;
-    font-size: 16px;
-}
-.modal-content {
-    padding: 20px;
-    border-radius: 8px;
+/* 🌟 MODAL - Clean, Animated, and On-Brand */
+
+.newsletter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(2px);
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
 }
 
-.close-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+.newsletter-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+    border-top: 6px solid transparent;
+}
+
+.newsletter-modal.success {
+    border-color: #5e44e3; /* brand purple */
+}
+
+.newsletter-modal.error {
+    border-color: #e34d4d; /* soft red */
+}
+
+.newsletter-modal-message {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+    font-weight: 500;
+    white-space: pre-wrap;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #777;
     cursor: pointer;
+    transition: color 0.3s;
 }
 
-.close-button:hover {
-    background: #0056b3;
+.close-btn:hover {
+    color: #000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-15px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

@@ -1,70 +1,74 @@
-import React from 'react';
-import './../styles/Polia.css';
-import about from '../Img/robot.png';
+import React from "react";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import "../styles/Polia.css";
 
-const Polia = (props) => {
-    const openSocialMedia = (url) => {
-        window.open(url, '_blank');
-    };
+const Polia = () => {
+    const { t } = useTranslation();
+    const { lang } = useParams();
+
+    const openSocialMedia = (url) =>
+        window.open(url, "_blank", "noopener,noreferrer");
 
     const features = [
         {
-            icon: 'fa-regular fa-circle-check',
-            title: 'Advanced AI Technology',
-            description: 'Enjoy a smart and intuitive learning experience'
+            title: t("polia.feature1.title"),
+            description: t("polia.feature1.description"),
         },
         {
-            icon: 'fa-regular fa-circle-check',
-            title: 'User-Friendly Interface',
-            description: 'Navigate the platform easily, no matter your tech skills.'
+            title: t("polia.feature2.title"),
+            description: t("polia.feature2.description"),
         },
         {
-            icon: 'fa-regular fa-circle-check',
-            title: 'Support and Motivation',
-            description: 'Polya offers constant encouragement to keep you engaged'
+            title: t("polia.feature3.title"),
+            description: t("polia.feature3.description"),
         },
         {
-            icon: 'fa-regular fa-circle-check',
-            title: 'Continuous Improvement',
-            description: 'Polya regularly updates content and features to enhance your learning experience.'
-        }
+            title: t("polia.feature4.title"),
+            description: t("polia.feature4.description"),
+        },
     ];
 
     return (
-        <div className="polia-container">
+        <section className="polia-container">
             <div className="container">
+                {/* 🧠 Header Section */}
                 <div className="polia-info">
-                    <h2 className="polia-title">Meet Polya: Your AI Learning Companion at Polyglot Academy</h2>
-                    <p className="polia-description">We’re thrilled to introduce Polya, our innovative AI bot designed
-                        to make language learning quick and easy.</p>
+                    <h2 className="polia-title">{t("polia.title")}</h2>
+                    <p className="polia-description">{t("polia.subtitle")}</p>
                 </div>
-                <div className="polia_section">
-                    <div className="polia-left">
-                        <div className="polia-grid">
-                            {features.map((feature, index) => (
-                                <div className="polia-item" key={index}>
-                                    <div className="polia-item_icon">
-                                        <i className={feature.icon}></i>
-                                        <h3 className="polia-item-name">{feature.title}</h3>
-                                    </div>
-                                    <p className="polia-item-description">{feature.description}</p>
+
+                {/* 💬 Button + Text */}
+
+                {/* ✅ Features */}
+                <div className="polia-left">
+                    <div className="polia-grid">
+                        {features.map((feature, index) => (
+                            <div className="polia-item" key={index}>
+                                <div className="polia-item-icon">
+                                    <i className="fa-regular fa-circle-check"></i>
+                                    {/*<h3 className="polia-item-name">{feature.title}</h3>*/}
                                 </div>
-                            ))}
-                        </div>
-                        <div className="free_test">
-                            <p className="polia-description">Discover your language level with precision using Polya's
-                                quick assessment. Click the link to find out where you stand!</p>
-                            <button onClick={() => openSocialMedia('https://salebot.site/student_test_1')}
-                                    className=" button_pol">Check Your Language Level
-                            </button>
-                        </div>
+                                <p className="polia-item-description">
+                                    {feature.description}
+                                </p>
+                            </div>
+                        ))}
                     </div>
-                    <div className="polia-right">
-                        <img loading="lazy" src={about} alt="Polya"/>
-                    </div>
+                </div>
+                <div className="polia-button-wrap">
+                    <p className="polia-description">{t("polia.assessmentText")}</p>
+                    <button
+                        onClick={() =>
+                            openSocialMedia("https://bot.polyglotacademy.am/student-test_1")
+                        }
+                        className="button"
+                    >
+                        {t("polia.button")}
+                    </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

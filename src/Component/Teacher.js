@@ -20,9 +20,15 @@ const Teacher = () => {
     ];
 
     return (
-        <section className="teacher_section">
-            <div className="teacher-container">
-                {/* 👩‍🏫 Tutors Grid */}
+        <section>
+            <div className="container">
+
+                {/* ՎԵՐՆԱԳԻՐ — մնում է վերևում */}
+                <div className="teacher-header">
+                    <h2>{t("teacher.title")}</h2>
+                </div>
+
+                {/* GRID */}
                 <div className="teacher-grid">
                     {teachers.map((teacher, index) => (
                         <div key={index} className="teacher-card">
@@ -38,13 +44,13 @@ const Teacher = () => {
                     ))}
                 </div>
 
-                {/* 🔹 Title Row */}
-                <div className="teacher-header">
-                    <h2>{t("teacher.title")}</h2>
-                    <Link to={`/${lang}/teacher`} className="button">
+                {/* ԿՈՂՋԱԿ — աջ ներքևում */}
+                <div className="teacher-all-btn">
+                    <Link to={`/${lang}/teacher`} className="button btich">
                         {t("teacher.view_all")}
                     </Link>
                 </div>
+
             </div>
         </section>
     );

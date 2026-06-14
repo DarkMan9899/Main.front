@@ -13,7 +13,7 @@
     flex-wrap: wrap;
 
     /* ❗ FIXED: responsive padding */
-    padding: 30px 80px;
+    padding: 30px 200px;
     gap: 40px;
 }
 

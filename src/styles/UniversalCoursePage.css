@@ -1,281 +1,516 @@
-/* =========================================
-   🎨 Universal Course Page — Premium Design
-   ========================================= */
+/* =========================
+   BASE
+   ========================= */
 
 .course-page {
     width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
 }
 
-/* =======================
-   📌 COVER SECTION
-   ======================= */
+/* GLOBAL CONTAINER */
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   COVER
+   ========================= */
+.price-input {
+    font-size: 28px;
+    font-weight: 700;
+    border: none;
+    background: transparent;
+    width: 140px;
+    text-align: center;
+    outline: none;
+}
+
+
 .cover {
     position: relative;
-    width: 100%;
-    height: 420px;
-    border-radius: 0 0 25px 25px;
-    overflow: hidden;
-}
+    background:
+            url("../Img/Dasyntac_banner.png") center / cover no-repeat;
+    min-height: 300px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.cover-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(45%);
 }
 
 .cover-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    width: 90%;
+    padding: 0 20px;
+    color: white;
+    max-width: 1400px;
 }
 
 .cover-text h1 {
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: #fff;
+    font-size: clamp(22px, 5vw, 44px);
     line-height: 1.2;
-    margin-bottom: 10px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
-.cover-text p {
-    color: #e9e9e9;
-    font-size: 1.1rem;
-    max-width: 780px;
-    margin: 0 auto 20px;
-    line-height: 1.5;
+.cover-subtitle {
+    font-size: clamp(13px, 3.5vw, 16px);
+    max-width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    padding-bottom: 20px;
 }
 
-.cover-text .cta {
+/* =========================
+   CTA BUTTON
+   ========================= */
+
+.cta {
     background: linear-gradient(90deg, #3377E6, #6FB4C8);
+    color: #ffffff;
     padding: 14px 30px;
     border-radius: 12px;
-    font-size: 18px;
     border: none;
     cursor: pointer;
-    color: #fff;
-    transition: 0.3s ease;
+    transition: 0.25s ease;
+    max-width: 100%;
+    width: fit-content;
+    white-space: normal;
+    text-align: center;
 }
 
-.cover-text .cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+.cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
 }
 
-/* =======================
-   🎓 LEVELS SECTION
-   ======================= */
-.levels h2 {
-    font-size: 2rem;
+.cta.small {
+    padding: 8px 18px;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+
+
+.levels-section {
+    background: #eef3fb;
+}
+
+.levels-title {
+    font-size: 26px;
     font-weight: 700;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .levels-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-bottom: 100px;
 }
 
 .level-card {
-    padding: 22px;
-    border-radius: 16px;
-    background: #f8faff;
-    border: 1px solid #dce3ff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    transition: all 0.25s ease;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 22px 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: 0.25s ease;
 }
 
 .level-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+    transform: translateY(-4px);
 }
 
-.level-card h3 {
-    font-size: 1.2rem;
+.level-head {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.level-code,
+.level-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2f6fed;
+}
+
+.level-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+/* =========================
+   STRUCTURE
+   ========================= */
+
+.structure-section {
+    background: #ffffff;
+    padding: 70px 20px;
+}
+
+
+.structure-grid h3{
+    font-size: 26px;
     font-weight: 700;
-    color: #2C4190;
-    margin-bottom: 8px;
+    margin-bottom: 50px;
 }
 
-.level-card p {
-    font-size: 0.95rem;
-    opacity: 0.8;
+
+.structure-head {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; /* հավասար հեռավորություն */
+    margin-top: 24px;
 }
 
-/* =======================
-   🧩 STRUCTURE SECTION
-   ======================= */
-.structure h2 {
-    font-size: 1.8rem;
+.structure-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #2f6fed;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.structure-head h3 {
+    font-size: 16px;
     font-weight: 700;
-    margin-bottom: 15px;
 }
 
-.structure ul {
+.structure-list {
     list-style: none;
     padding: 0;
 }
 
-.structure li {
-    padding-left: 26px;
-    position: relative;
+.structure-list li {
+    font-size: 14px;
+    color: #374151;
     margin-bottom: 10px;
-    font-size: 1rem;
+    padding-left: 18px;
+    position: relative;
 }
 
-.structure li::before {
+.structure-list li::before {
     content: "✔";
     position: absolute;
     left: 0;
     top: 0;
-    color: #3377E6;
-    font-weight: bold;
+    color: #2f6fed;
+    font-weight: 700;
 }
 
-/* =======================
-   ❓ FAQ SECTION
-   ======================= */
-.faq h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+/* =========================
+   FAQ
+   ========================= */
+
+.faq-section1 {
+    background: #ffffff;
 }
 
-.faq details {
-    background: #f3f4ff;
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin-bottom: 12px;
-    border: 1px solid #cfd6ff;
-    transition: 0.25s ease;
+.faq-title2{
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 14px 16px;
+    cursor: pointer;
+    background: #ffffff;
+    transition: 0.2s ease;
+}
+
+.faq-item.open {
+    border-color: #2f6fed;
+    background: #f8faff;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.faq-arrow {
+    color: #2f6fed;
+    font-weight: 600;
+}
+
+.faq-answer {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.faq-illustration img {
+    max-width: 360px;
+    margin-left: auto;
+}
+
+/* =========================
+   PRICING
+   ========================= */
+
+.packages-section {
+    background: #eef3fb;
+    padding: 80px 20px;
+}
+
+.packages-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 35px;
+    color: #4f6fd7;
+}
+
+/* TOGGLE */
+.price-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+
+.price-toggle button {
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid #cfd9ff;
+    background: #ffffff;
+    color: #4f6fd7;
     cursor: pointer;
 }
 
-.faq summary {
-    font-weight: 600;
-    font-size: 1.05rem;
+.price-toggle button.active {
+    background: #4f6fd7;
+    color: #ffffff;
+    border-color: #4f6fd7;
 }
 
-.faq details[open] {
-    background: #e9ecff;
-}
-
-.faq p {
-    margin-top: 12px;
-    font-size: 0.95rem;
-    opacity: 0.85;
-}
-
-/* =======================
-   🖥 FORMATS SECTION
-   ======================= */
-.formats h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.formats ul {
-    padding: 0;
-    list-style: none;
-}
-
-.formats li {
-    font-size: 1.05rem;
-    margin-bottom: 10px;
-}
-
-/* =======================
-   💸 PACKAGES / PRICING
-   ======================= */
-.packages h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
+/* GRID */
 .packages-grid {
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 22px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding-bottom: 100px;
 }
 
+/* CARD */
 .package-card {
-    background: #fff;
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid #e4e4e4;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    transition: 0.25s ease;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 22px 18px 24px;
     text-align: center;
-}
-
-.package-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
 }
 
 .package-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 6px;
-    color: #2C4190;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
+.price-suffix {
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 6px;
+    color: #6b7280;
+}
 .price {
-    font-size: 2rem;
+    font-size: 20px;
     font-weight: 700;
-    margin-bottom: 18px;
-    color: #3377E6;
+    color: #4f6fd7;
+    margin-bottom: 14px;
 }
 
-/* CTA inside pricing */
-.package-card .cta.small {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 1rem;
-    background: linear-gradient(90deg, #3377E6, #6FB4C8);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s ease;
+/* =========================
+   RESPONSIVE
+   ========================= */
+/* =========================
+   FINAL RESPONSIVE FIX
+   ========================= */
+
+@media (max-width: 768px) {
+
+    /* COVER */
+    .cover {
+        height: auto;
+        padding: 60px 0;
+    }
+
+    .cover-text h1 {
+        font-size: 26px;
+        line-height: 1.2;
+        color: white;
+        padding-bottom: 10px;
+    }
+
+    .cover-subtitle {
+        font-size: 14px;
+        color: white;
+        padding-bottom: 20px;
+    }
+
+    /* LEVELS */
+    .levels-grid {
+        gap: 20px;
+        padding-bottom: 50px;
+    }
+
+    .level-card {
+        padding: 18px;
+    }
+
+    .level-code,
+    .level-name {
+        font-size: 17px;
+    }
+
+    /* STRUCTURE */
+    .structure-section {
+        padding: 50px 16px;
+    }
+
+    .structure-head {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .structure-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .structure-list li {
+        font-size: 13px;
+    }
+
+    /* FAQ */
+    .faq-grid {
+        gap: 30px;
+    }
+
+    .faq-question {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .faq-answer {
+        font-size: 13px;
+    }
+
+    .faq-illustration img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* PRICING */
+    .packages-section {
+        padding: 60px 16px;
+    }
+
+    .packages-grid {
+        gap: 20px;
+        padding-bottom: 50px;
+    }
+
+    .package-card {
+        padding: 20px 16px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
 }
 
-.package-card .cta.small:hover {
-    transform: translateY(-3px);
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+
+    .cover-text h1 {
+        font-size: 22px;
+    }
+
+    .section-title,
+    .levels-title,
+    .faq-title2 {
+        font-size: 22px;
+    }
+
+    .cta {
+        width: 100%;
+    }
 }
 
-/* =======================
-   🚀 FINAL CTA
-   ======================= */
-.final {
-    margin-top: 60px;
-    padding: 60px 20px;
-    background: linear-gradient(90deg, #2C4190, #1f2f65);
-    border-radius: 25px;
-    text-align: center;
-    color: white;
+/* Levels */
+@media (max-width: 992px) {
+    .levels-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 576px) {
+    .levels-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.final h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+/* FAQ */
+@media (max-width: 768px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+    .cover {
+        background-image: url("/src/Img/mobile/720x420 3.png");
+    }
 }
 
-.cta.big {
-    padding: 16px 32px;
-    font-size: 1.2rem;
-    border-radius: 12px;
-    background: #fff;
-    color: #2C4190;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
+/* Packages */
+@media (max-width: 992px) {
+    .cover {
+        background-image: url("/src/Img/mobile/720x420 3.png");
+    }
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-
-.cta.big:hover {
-    background: #f4f4f4;
+@media (max-width: 576px) {
+    .cover {
+        background-image: url("/src/Img/mobile/720x420 3.png");
+    }
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
 }

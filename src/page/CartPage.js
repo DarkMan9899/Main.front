@@ -1,9 +1,14 @@
-// CartPage.js - Main checkout component - PRODUCTION READY
+// CartPage.js — FULL I18N PRODUCTION VERSION
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/CartPage.css';
+import { useTranslation } from 'react-i18next';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
+import { track } from '../utils/analytics';
 
+
+import '../styles/CartPage.css';
 import { API_URL_Cart_Page } from '../api';
 
 import { CartItemsList } from '../Component/PaymentsSystem/CartItemsList';
@@ -11,24 +16,35 @@ import { OrderConfirmationModal } from '../Component/PaymentsSystem/OrderConfirm
 import { PaymentProcessor } from '../Component/PaymentsSystem/PaymentProcessor';
 import { PaymentStatusChecker } from '../Component/PaymentsSystem/PaymentStatusChecker';
 import { PaymentRedirectHandler } from '../Component/PaymentsSystem/PaymentRedirectHandler';
+import logoPay1 from "../Img/logoPay/logoner 120x35px 1.png";
+import logoPay2 from "../Img/logoPay/logoner 120x35px 2.png";
+import logoPay3 from "../Img/logoPay/logoner 120x35px 3.png";
+import logoPay4 from "../Img/logoPay/logoner 120x35px 4.png";
+import logoPay5 from "../Img/logoPay/logoner 120x35px 5.png";
+import logoPay6 from "../Img/logoPay/logoner 120x35px 6.png";
+import logoPay7 from "../Img/logoPay/MyAmeria.svg";
+
+
+
 
 function CartPage({ cart, updateQuantity, removeItem }) {
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
-    // Customer information state
+    /* ---------------- CUSTOMER INFO ---------------- */
     const [customerInfo, setCustomerInfo] = useState({
         name: '',
         surname: '',
         phone: '',
-        paymentType: 'idram',
+        paymentType: 'idram'
     });
 
-    // UI states
+    /* ---------------- UI STATES ---------------- */
     const [modalOpen, setModalOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [validationErrors, setValidationErrors] = useState({});
 
-    // Payment states
+    /* ---------------- PAYMENT STATES ---------------- */
     const [paymentStatus, setPaymentStatus] = useState({
         success: false,
         error: null,
@@ -42,20 +58,22 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         amount: 0
     });
 
-    // API client
+    /* ---------------- API CLIENT ---------------- */
     const apiClient = axios.create({
         timeout: 15000,
         headers: { 'Content-Type': 'application/json' }
     });
 
-    // Calculate total amount
+    /* ---------------- TOTAL AMOUNT ---------------- */
     const totalAmount = useMemo(() => {
-        return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+        return cart
+            .reduce((total, item) => total + item.price * item.quantity, 0)
+            .toFixed(2);
     }, [cart]);
 
     const isCartEmpty = cart.length === 0;
 
-    // Form validation
+    /* ---------------- FORM VALIDATION ---------------- */
     const isFormValid = useMemo(() => {
         return (
             customerInfo.name.trim() &&
@@ -68,23 +86,26 @@ function CartPage({ cart, updateQuantity, removeItem }) {
     const validateForm = () => {
         const errors = {};
 
-        if (!customerInfo.name.trim()) errors.name = 'Name is required';
-        if (!customerInfo.surname.trim()) errors.surname = 'Surname is required';
+        if (!customerInfo.name.trim()) errors.name = t("cart.errors.name");
+        if (!customerInfo.surname.trim()) errors.surname = t("cart.errors.surname");
 
-        if (!customerInfo.phone.trim()) {
-            errors.phone = 'Phone number is required';
-        } else if (!/^\+374\d{8}$/.test(customerInfo.phone.trim())) {
-            errors.phone = 'Please enter a valid Armenian phone number (e.g., +37499123456)';
+        const phone = customerInfo.phone.trim();
+
+        if (!phone) {
+            errors.phone = t("cart.errors.phone_required");
+        } else if (!/^\+\d{8,15}$/.test(phone)) {
+            errors.phone = t("cart.errors.phone_invalid");
         }
 
-        if (isCartEmpty) errors.cart = 'Your cart is empty';
-        if (parseFloat(totalAmount) <= 0) errors.amount = 'Total amount must be greater than 0';
+        if (isCartEmpty) errors.cart = t("cart.errors.cart_empty");
+        if (parseFloat(totalAmount) <= 0) errors.amount = t("cart.errors.amount");
 
         setValidationErrors(errors);
         return Object.keys(errors).length === 0;
     };
 
-    // Handle input change
+
+    /* ---------------- INPUT HANDLER ---------------- */
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setCustomerInfo(prev => ({ ...prev, [name]: value }));
@@ -94,18 +115,33 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         }
     };
 
-    // Show confirmation modal
+    /* ---------------- PAYMENT FLOW ---------------- */
     const handlePayment = () => {
-        if (validateForm()) setModalOpen(true);
+
+        if (!validateForm()) return;
+
+        // 📊 GOOGLE ANALYTICS — USER STARTED PAYMENT
+        track("begin_checkout", {
+            value: totalAmount,
+            currency: "AMD",
+            items: cart.map(item => ({
+                item_id: item.id,
+                item_name: item.name,
+                price: item.price,
+                quantity: item.quantity,
+                tariff: item.displayType,
+                billing: item.billing
+            }))
+        });
+
+        setModalOpen(true);
     };
 
-    // ✅ ENHANCED PAYMENT CONFIRMATION WITH IMMEDIATE REDIRECT
-    const confirmPayment = async () => {
-        console.log("🟡 CONFIRM PAYMENT STARTED");
 
+    const confirmPayment = async () => {
         try {
             setIsLoading(true);
-            setPaymentStatus({ success: false, error: null });
+            setPaymentStatus({ success: false, error: null, message: null });
 
             const orderData = {
                 customer_name: customerInfo.name,
@@ -121,61 +157,39 @@ function CartPage({ cart, updateQuantity, removeItem }) {
                 type: customerInfo.paymentType
             };
 
-            console.log("🟡 Sending order data:", orderData);
-
             const response = await apiClient.post(API_URL_Cart_Page, orderData);
-
-            console.log("🟡 Server response:", response.data);
-
             if (!response.data) throw new Error('No data from server');
 
-            // ✅ CORRECT DATA EXTRACTION
             const { orderId, payment } = response.data;
             const paymentLink = payment?.paymentLink;
-            const billNo = orderId;
 
-            console.log("🟡 Extracted payment data:", { orderId, billNo, paymentLink });
-
-            // ✅ SET PAYMENT DATA
             setPaymentData({
                 orderId,
-                billNo,
+                billNo: orderId,
                 paymentLink,
                 amount: totalAmount
             });
 
-            // ⭐ IMMEDIATE REDIRECT FOR CARD AND AMERIAPAY PAYMENTS
-            if (paymentLink && (customerInfo.paymentType === 'card' || customerInfo.paymentType === 'ameriapay')) {
-                console.log("🔵 IMMEDIATE REDIRECT TO:", paymentLink);
-
-                // Small delay to ensure state is set before redirect
+            if (
+                paymentLink &&
+                (customerInfo.paymentType === 'card' ||
+                    customerInfo.paymentType === 'ameriapay')
+            ) {
                 setTimeout(() => {
                     window.location.href = paymentLink;
                 }, 100);
-
-                return; // Exit function to prevent further processing
+                return;
             }
 
-            // ✅ FOR IDRAM/TELCELL - Let PaymentProcessor handle it
-            if (paymentLink && (customerInfo.paymentType === 'idram' || customerInfo.paymentType === 'telcell')) {
-                console.log("💳 Payment data set for processor:", {
-                    paymentType: customerInfo.paymentType,
-                    paymentLink: paymentLink
-                });
-            }
-
-            // ✅ SUCCESS STATE
             setPaymentStatus({
                 success: true,
-                message: `${customerInfo.paymentType.toUpperCase()} payment initiated successfully`
+                message: t("cart.payment_started")
             });
 
         } catch (error) {
-            console.error("🔴 PAYMENT ERROR:", error);
-
             setPaymentStatus({
                 success: false,
-                error: error.response?.data?.message || error.message || 'Payment initialization failed'
+                error: error.response?.data?.message || error.message
             });
         } finally {
             setIsLoading(false);
@@ -185,54 +199,68 @@ function CartPage({ cart, updateQuantity, removeItem }) {
 
     const cancelPayment = () => setModalOpen(false);
 
-    /** ------------------------
-     *  COMPONENT RENDER SECTIONS
-     ---------------------------*/
+    /* ---------------- RENDER HELPERS ---------------- */
 
     const renderCustomerForm = () => (
         <div className="customer-info">
-            <h3>Customer Information</h3>
+            <h3>{t("cart.customer.title")}</h3>
 
             <div className={`input-group ${validationErrors.name ? 'has-error' : ''}`}>
-                <label>Name *</label>
+                <label>{t("cart.customer.name")} *</label>
                 <input
                     name="name"
                     value={customerInfo.name}
                     onChange={handleInputChange}
-                    placeholder="Enter your first name"
+                    placeholder={t("cart.customer.name_placeholder")}
                 />
                 {validationErrors.name && <div className="error-text">{validationErrors.name}</div>}
             </div>
 
             <div className={`input-group ${validationErrors.surname ? 'has-error' : ''}`}>
-                <label>Surname *</label>
+                <label>{t("cart.customer.surname")} *</label>
                 <input
                     name="surname"
                     value={customerInfo.surname}
                     onChange={handleInputChange}
-                    placeholder="Enter your last name"
+                    placeholder={t("cart.customer.surname_placeholder")}
                 />
                 {validationErrors.surname && <div className="error-text">{validationErrors.surname}</div>}
             </div>
 
             <div className={`input-group ${validationErrors.phone ? 'has-error' : ''}`}>
-                <label>Phone *</label>
-                <input
-                    name="phone"
+                <label>{t("cart.customer.phone")} *</label>
+
+                <PhoneInput
+                    country={'am'}              // default Armenia
                     value={customerInfo.phone}
-                    onChange={handleInputChange}
-                    placeholder="+37477123456"
+                    onChange={(value) =>
+                        setCustomerInfo(prev => ({ ...prev, phone: `+${value}` }))
+                    }
+                    enableSearch
+                    disableSearchIcon
+                    countryCodeEditable={false}
+                    inputProps={{
+                        name: 'phone',
+                        required: true,
+                        autoFocus: false
+                    }}
+                    containerClass="phone-input-container"
+                    inputClass="phone-input"
+                    buttonClass="phone-input-flag"
                 />
-                {validationErrors.phone && <div className="error-text">{validationErrors.phone}</div>}
+
+                {validationErrors.phone && (
+                    <div className="error-text">{validationErrors.phone}</div>
+                )}
             </div>
 
             <div className="input-group">
-                <label>Payment Method *</label>
+                <label>{t("cart.customer.payment_method")} *</label>
                 <select name="paymentType" value={customerInfo.paymentType} onChange={handleInputChange}>
-                    <option value="idram">💳 Idram Digital Wallet</option>
-                    <option value="card">🏦 Bank Card (Ameria Bank)</option>
-                    <option value="ameriapay">📱 MyAmeria Pay</option>
-                    <option value="telcell">📞 Telcell Payment</option>
+                    <option value="idram">💳 {t("cart.payment.idram")}</option>
+                    <option value="card">🏦 {t("cart.payment.card")}</option>
+                    <option value="ameriapay">📱 {t("cart.payment.ameriapay")}</option>
+                    <option value="telcell">📞 {t("cart.payment.telcell")}</option>
                 </select>
             </div>
         </div>
@@ -240,16 +268,16 @@ function CartPage({ cart, updateQuantity, removeItem }) {
 
     const renderOrderSummary = () => (
         <div className="cart-totals">
-            <h3>Order Summary</h3>
+            <h3>{t("cart.summary.title")}</h3>
 
             <div className="total-row">
-                <span>Subtotal</span>
-                <span>{totalAmount} AMD</span>
+                <span>{t("cart.summary.subtotal")}</span>
+                <span>{totalAmount} ֏</span>
             </div>
 
             <div className="total-row total-amount">
-                <span>Total</span>
-                <span>{totalAmount} AMD</span>
+                <span>{t("cart.summary.total")}</span>
+                <span>{totalAmount} ֏</span>
             </div>
 
             <button
@@ -257,7 +285,7 @@ function CartPage({ cart, updateQuantity, removeItem }) {
                 onClick={handlePayment}
                 disabled={!isFormValid || isLoading || isCartEmpty}
             >
-                {isLoading ? 'Processing...' : 'Proceed To Checkout'}
+                {isLoading ? t("cart.processing") : t("cart.checkout")}
             </button>
 
             {validationErrors.cart && <div className="error-text center">{validationErrors.cart}</div>}
@@ -265,42 +293,28 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         </div>
     );
 
-    const renderPaymentStatusMessages = () => {
-        if (paymentStatus.error) {
-            return (
-                <div className="payment-message error">
-                    <p className="error-message">❌ {paymentStatus.error}</p>
-                    <button
-                        onClick={() => setPaymentStatus({ success: false, error: null, message: null })}
-                        className="retry-button"
-                    >
-                        Try Again
-                    </button>
-                </div>
-            );
-        }
 
-        if (paymentStatus.success) {
-            return (
-                <div className="payment-message success">
-                    <p className="success-message">
-                        ✅ {paymentStatus.message || 'Payment Successful!'}
-                    </p>
-                </div>
-            );
-        }
 
-        return null;
-    };
+    const renderPaymentMethods = () => (
+        <div className="payment-methods">
+            <h4>{t("cart.payment_methods.title")}</h4>
+
+            <div className="payment-logos">
+                <img src={logoPay1} alt="Mastercard" />
+                <img src={logoPay2} alt="Visa" />
+                <img src={logoPay3} alt="ArCa" />
+                <img src={logoPay4} alt="Idram" />
+                <img src={logoPay5} alt="PayLater" />
+                <img src={logoPay7} alt="MyAmeria առցանց վճարում " />
+                <img src={logoPay6} alt="Telcell Wallet" />
+            </div>
+        </div>
+    );
+
 
     const renderPaymentProcessor = () => {
-        // Only show PaymentProcessor for Idram/Telcell (non-redirect payments)
         if (!paymentData.paymentLink || !paymentData.orderId) return null;
-
-        if (customerInfo.paymentType === 'card' || customerInfo.paymentType === 'ameriapay') {
-            // These are handled by immediate redirect, no processor needed
-            return null;
-        }
+        if (customerInfo.paymentType === 'card' || customerInfo.paymentType === 'ameriapay') return null;
 
         return (
             <PaymentProcessor
@@ -311,30 +325,39 @@ function CartPage({ cart, updateQuantity, removeItem }) {
         );
     };
 
+    /* ---------------- RENDER ---------------- */
+
     return (
         <>
             <div className="cart-page">
-                <h2>Your Cart</h2>
+                <h2>{t("cart.title")}</h2>
             </div>
 
             <div className="container">
                 <div className="cart-page-container">
                     {isCartEmpty ? (
                         <div className="empty-cart-message">
-                            <h3>Your cart is empty</h3>
-                            <p>Add some courses to get started with your learning journey!</p>
-                            <button className="continue-shopping" onClick={() => navigate('/products')}>
-                                Continue Shopping
+                            <h3>{t("cart.empty.title")}</h3>
+                            <p>{t("cart.empty.description")}</p>
+                            <button
+                                className="continue-shopping"
+                                onClick={() => navigate('/products')}
+                            >
+                                {t("cart.empty.button")}
                             </button>
                         </div>
                     ) : (
-                        <CartItemsList cart={cart} updateQuantity={updateQuantity} removeItem={removeItem} />
+                        <CartItemsList
+                            cart={cart}
+                            updateQuantity={updateQuantity}
+                            removeItem={removeItem}
+                        />
                     )}
 
                     <div className="checkout-section">
                         {renderCustomerForm()}
                         {renderOrderSummary()}
-                        {renderPaymentStatusMessages()}
+                        {renderPaymentMethods()}
                     </div>
                 </div>
             </div>

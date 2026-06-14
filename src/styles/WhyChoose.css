@@ -1,5 +1,4 @@
 .why-choose-section {
-    padding-top: 50px ;
     width: 100%;
 }
 
@@ -113,9 +112,7 @@
 }
 
 @media (max-width: 480px) {
-    .why-choose-section {
-        padding: 60px 0;
-    }
+   
 
     .why-choose-title {
         font-size: 1.6rem;

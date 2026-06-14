@@ -21,7 +21,9 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000;
 
 function DepartmentManagers() {
     const { i18n, t } = useTranslation();
-    const lang = i18n.language || "hy";
+
+    // ✅ FIX — լեզուն ճիշտ ֆորմատով (en-US → en)
+    const lang = i18n.language.split('-')[0] || "hy";
 
     const [managers, setManagers] = useState([]);
     const [error, setError] = useState(null);
@@ -56,6 +58,10 @@ function DepartmentManagers() {
 
     if (error) return <p>Error: {error.message}</p>;
 
+    // ✅ Helper function (մաքուր լուծում)
+    const getField = (obj, field) =>
+        obj[`${field}_${lang}`] || obj[`${field}_hy`];
+
     const settings = {
         dots: false,
         infinite: true,
@@ -65,7 +71,6 @@ function DepartmentManagers() {
         autoplaySpeed: 3000,
         slidesToShow: 3,
         slidesToScroll: 1,
-
         responsive: [
             { breakpoint: 1024, settings: { slidesToShow: 3 } },
             { breakpoint: 768, settings: { slidesToShow: 2 } },
@@ -79,20 +84,23 @@ function DepartmentManagers() {
 
             <Slider {...settings}>
                 {managers.map((m, i) => {
-                    const name = m[`name_${lang}`] || m.name_hy;
-                    const role = m[`role_${lang}`] || m.role_hy;
-                    const desc = m[`description_${lang}`] || m.description_hy;
+                    const name = getField(m, "name");
+                    const role = getField(m, "role");
 
                     return (
                         <div className="manager-card" key={i}>
-                            <img
-                                src={`${BASE_URL}${m.img}`}
-                                alt={name}
-                                loading="lazy"
-                            />
-                            <h3>{name}</h3>
-                            <p className="manager-role">{role}</p>
-                            <p className="manager-desc">{desc}</p>
+                            <div className="manager-image">
+                                <img
+                                    src={`${BASE_URL}${m.img}`}
+                                    alt={name}
+                                    loading="lazy"
+                                />
+                            </div>
+
+                            <div className="manager-info">
+                                <h3>{name}</h3>
+                                <p className="manager-role">{role}</p>
+                            </div>
                         </div>
                     );
                 })}
@@ -102,5 +110,3 @@ function DepartmentManagers() {
 }
 
 export default DepartmentManagers;
-
-

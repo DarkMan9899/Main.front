@@ -23,43 +23,53 @@ const Footer = () => {
     const { t } = useTranslation();
     const { lang } = useParams();
 
-    const socialMediaLinks = [
-        {
-            className: "fa-brands fa-facebook-f",
-            url: "https://www.facebook.com/academypolyglot",
-            label: "Facebook",
-        },
-        {
-            className: "fa-brands fa-instagram",
-            url: "https://www.instagram.com/academy.polyglot/",
-            label: "Instagram",
-        },
-        {
-            className: "fa-brands fa-vk",
-            url: "https://vk.me/club225918715",
-            label: "VK",
-        },
-        {
-            className: "fa-brands fa-telegram",
-            url: "https://salebot.site/TG_1",
-            label: "Telegram",
-        },
-        {
-            className: "fab fa-linkedin-in",
-            url: "https://www.linkedin.com/company/academy-polyglot/",
-            label: "LinkedIn",
-        },
-    ];
-
+    const socialMediaLinks =
+        lang === "ka"
+            ? [
+                {
+                    className: "fa-brands fa-facebook-f",
+                    url: "https://www.facebook.com/share/1HQY22cApR/?mibextid=wwXIfr",
+                    label: "Facebook",
+                },
+                {
+                    className: "fa-brands fa-instagram",
+                    url: "https://www.instagram.com/polya.academy?igsh=eW9oNHNzcm9lMzE3",
+                    label: "Instagram",
+                },
+            ]
+            : [
+                {
+                    className: "fa-brands fa-facebook-f",
+                    url: "https://www.facebook.com/academypolyglot",
+                    label: "Facebook",
+                },
+                {
+                    className: "fa-brands fa-instagram",
+                    url: "https://www.instagram.com/academy.polyglot/",
+                    label: "Instagram",
+                },
+                {
+                    className: "fa-brands fa-vk",
+                    url: "https://vk.me/club225918715",
+                    label: "VK",
+                },
+                {
+                    className: "fa-brands fa-telegram",
+                    url: "https://t.me/polyglot_language_hub",
+                    label: "Telegram",
+                },
+                {
+                    className: "fab fa-linkedin-in",
+                    url: "https://www.linkedin.com/company/academy-polyglot/",
+                    label: "LinkedIn",
+                },
+            ];
     const quickLinks = [
         {
             label: t("footer.links.polya"),
             url: "https://t.me/Polyglotacademy_bot",
         },
-        {
-            label: t("footer.links.linkedin"),
-            url: "https://www.linkedin.com/company/academy-polyglot/",
-        },
+
         {
             label: t("footer.links.englishClub"),
             url: "https://t.me/polyglotacademyenglishchannel",
@@ -70,20 +80,21 @@ const Footer = () => {
         },
         {
             label: t("footer.links.questionnaire"),
-            url: "https://docs.google.com/forms/d/e/1FAIpQLSebWEdyDw57yU1otMqb2-yOb6c-sZRWzmBN_82Elk4aL7hu8g/viewform",
+            url: "https://drive.google.com/drive/folders/1fnOGD0qVmnTkxnLD6NddECFsNt15GrTB",
         },
         {
-            label: "SLI",
-            url: "https://drive.google.com/file/d/1BqK-JM8GqTLCwTPz30MjrnyVeC6OJ3x7/view?usp=drivesdk",
+            label: "SLA",
+            url: "https://drive.google.com/file/d/1iKCCWLUNdT65nf-VX--JDgaX8JezPvFp/view?usp=sharing",
         },
     ];
 
     const languages = [
+        { name: t("footer.languages.armenian") },
         { name: t("footer.languages.english") },
         { name: t("footer.languages.russian") },
-        { name: t("footer.languages.armenian") },
         { name: t("footer.languages.spanish") },
         { name: t("footer.languages.german") },
+        { name: t("footer.languages.french") },
     ];
 
     return (
@@ -134,7 +145,7 @@ const Footer = () => {
             <div className="lic">
                 <div className="lic-content">
                     <p>
-                        © 2025 <span className="brand">Polyglot Academy</span> —{" "}
+                        © 2026 <span className="brand">Polyglot Academy</span> —{" "}
                         {t("footer.rights")}
                     </p>
                 </div>

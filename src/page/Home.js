@@ -4,7 +4,7 @@ import {useParams, Link, ScrollRestoration} from "react-router-dom";
 import Slider from "react-slick";
 import axios from "axios";
 
-import ProductPreview from "../Component/ProductPreview";
+import ProductPreview from "../Component/Product/ProductPreview";
 import Hero from "../Component/Hero";
 import AboutUs from "../Component/AboutUs";
 import Polia from "../Component/Polia";
@@ -17,7 +17,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { API_URL_Products } from "../api";
 import WhyChoose from "../Component/WhyChoose";
-import SocialProgram from "../Component/SocialProgram";
 import SocialResponsibility from "../Component/SocialResponsibility";
 import FAQ from "../Component/FAQ";
 import Partners from "../Component/Partners";
@@ -115,8 +114,12 @@ function Home() {
                 <div className="product_container">
                     <AboutUs />
 
+                    {/* ՎԵՐՆԱԳԻՐ — մնում է վերևում */}
+                    <div className="product-section-text container">
+                        <span>{t("home.chooseCourse")}</span>
+                    </div>
 
-
+                    {/* SLIDER */}
                     {products.length > 0 ? (
                         <Slider {...settings} className="product-grid">
                             {products.map((product) => (
@@ -126,14 +129,17 @@ function Home() {
                     ) : (
                         <div className="no-products">{t("home.noProducts")}</div>
                     )}
-                    <div className="product-section-text">
-                        <span>{t("home.chooseCourse")}</span>
+
+                    {/* ԿՈՂՋԱԿ — աջ ներքևում */}
+                    <div className="product-all-btn">
                         <Link to={`/${lang}/products`} className="button">
                             {t("home.allLanguages")}
                         </Link>
                     </div>
                 </div>
             </section>
+
+
             <Comment />
             <StatisticsSection />
 

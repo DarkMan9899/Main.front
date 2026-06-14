@@ -2,11 +2,7 @@
    PREMIUM GALLERY SECTION
 ============================ */
 
-.gallery_posts {
-    width: 100%;
-    padding: 60px var(--base-padding-x);
-    margin: 0 auto;
-}
+
 
 .gallery_posts .slick-slide {
     display: flex !important;
@@ -31,16 +27,13 @@
 
     border-radius: var(--border-radius);
     overflow: hidden;
-    background: linear-gradient(135deg, #5e44e3, #6fb4c8);
+    /*background: linear-gradient(135deg, #5e44e3, #6fb4c8);*/
 
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    /*box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);*/
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.gallery_posts .post:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.32);
-}
+
 
 /* ============================
    IMAGE STYLING

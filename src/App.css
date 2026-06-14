@@ -1,167 +1,115 @@
 /* ===================================
-   🌐 Global Styles – Clean & Responsive
+   🌐 Global Styles – FINAL (CLS SAFE)
    =================================== */
 
 /* 🎨 Theme Variables */
 :root {
-  --brand-color: #5e44e3;
-  --brand-hover: #007bff;
-  --border-radius: 10px;
-  --transition: 0.3s ease;
-  --max-width: 1200px;
-  --base-padding-x: 1.5rem;
-  --base-padding-y: 25px;
-  --font-family: Helvetica, Arial, sans-serif;
+    --brand-color: #5e44e3;
+    --brand-hover: #007bff;
+    --border-radius: 10px;
+    --transition: 0.3s ease;
+    --max-width: 1200px;
+    --base-padding-x: 1.5rem;
+    --base-padding-y: 25px;
+    --font-family: Helvetica, Arial, sans-serif;
 }
 
-/* 🧱 Reset & Base */
+/* 🧱 Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 🧠 Root layout – MUST HAVE */
+html, body {
+    height: 100%;
 }
 
 body {
-  line-height: 1.6;
-  background-color: #fff;
-  color: #000;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #000;
+    font-family: var(--font-family), serif, sans-serif;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ==============================
-   📦 Layout Containers
+   📦 Main Layout
    ============================== */
+
+/* Wrapper for pages */
+.content {
+    min-height: 100vh;
+}
+
+/* Container (NO top padding anymore!) */
 .container {
-  max-width: var(--max-width);
-  width: 100%;
-  margin: 0 auto;
-  padding: 100px var(--base-padding-x) 0;
-  --bs-gutter-x: var(--base-padding-x);
-  --bs-gutter-y: 0;
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--base-padding-y) var(--base-padding-x);
 }
 
 /* ==============================
-   🔘 Global Button Styles
+   ⏳ Suspense Loader (CLS FIX)
    ============================== */
-.button {
-  background: linear-gradient(90deg, #3377E6, #6FB4C8);
-  background-size: 200% 100%; /* enables sliding animation */
-  background-position: left center; /* default gradient position */
-  white-space: nowrap;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  width: 170px;
-  height: 40px;
-  text-decoration: none;
-  border-radius: var(--border-radius);
-
-  transition:
-          background-position 0.5s ease,
-          transform var(--transition);
-
-  padding: 10px 20px;
+.page-loader {
+    min-height: 100vh; /* 🔥 KEY FIX */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
 }
 
-/* ✨ Hover → gradient slides RIGHT → LEFT */
+/* ==============================
+   🔘 Buttons
+   ============================== */
+
+.button {
+    background: linear-gradient(90deg, #3377E6, #6FB4C8) left center;
+    background-size: 200% 100%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 40px;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    transition: background-position 0.5s ease, transform var(--transition);
+}
+
 .button:hover {
-  background-position: right center;
-  transform: translateY(-2px);
+    background-position: right center;
+    transform: translateY(-2px);
 }
 
 .button:active {
-  transform: scale(0.98);
-}
-
-.button:focus-visible {
-  outline: 2px solid var(--brand-hover);
-  outline-offset: 3px;
+    transform: scale(0.98);
 }
 
 /* ==============================
-   🧱 Responsive Layouts
+   ⬆️ Scroll To Top (FIXED)
    ============================== */
-
-/* 💻 Medium Screens (tablets, laptops) */
-@media (max-width: 992px) {
-  .container {
-    padding: var(--base-padding-y) calc(var(--bs-gutter-x) * 0.5);
-  }
-
-  .button {
-    font-size: 0.875em;
-    width: 150px;
-    height: 50px;
-  }
-}
-
-/* 📱 Small Screens (mobile landscape) */
-@media (max-width: 768px) {
-  .container {
-    padding: var(--base-padding-y) calc(var(--bs-gutter-x) * 0.5);
-  }
-
-  .button {
-    font-size: 0.75em;
-    width: 130px;
-    height: 45px;
-  }
-}
-
-/* 📲 Very Small Screens (mobile portrait) */
-@media (max-width: 576px) {
-  .container {
-    padding: var(--base-padding-y) calc(var(--bs-gutter-x) * 0.5);
-  }
-
-  .button {
-    font-size: 0.75em;
-    width: 120px;
-    height: 40px;
-    margin: 1em 0;
-    white-space: nowrap;
-
-  }
-}
-
-/* ==============================
-   ✨ Utility Classes
-   ============================== */
-.text-center {
-  text-align: center;
-}
-
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 
 .scroll-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 53px;
+  right: 1400px;
 
-  width: 50px;
-  height: 50px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
 
   background: linear-gradient(90deg, #3377E6, #6FB4C8);
@@ -181,8 +129,23 @@ body {
   z-index: 9999;
 }
 
-/* Hover animation */
 .scroll-to-top:hover {
-  transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    transform: translateY(-4px) scale(1.08);
+}
+
+/* ==============================
+   📱 Responsive
+   ============================== */
+
+@media (max-width: 768px) {
+    .scroll-to-top {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .button {
+        width: 130px;
+        height: 45px;
+        font-size: 0.85em;
+    }
 }

@@ -7,9 +7,9 @@ export function PaymentProcessor({ paymentType, paymentData, setPaymentStatus })
     console.log("🟣 TYPE:", paymentType);
     console.log("🟣 DATA:", paymentData);
 
-    // 🔥 Redirect happens ONLY here — not in CartPage
+    // Redirect for external payment pages
     if (
-        (paymentType === "card" || paymentType === "ameria_pay") &&
+        (paymentType === "card" || paymentType === "ameriapay") &&
         paymentData?.paymentLink
     ) {
         console.log("🔵 REDIRECTING TO:", paymentData.paymentLink);
@@ -17,9 +17,9 @@ export function PaymentProcessor({ paymentType, paymentData, setPaymentStatus })
         return null;
     }
 
-    // 🔥 For processors that stay inside the website
+    // Processors that stay inside website
     switch (paymentType) {
-        case 'idram':
+        case "idram":
             return (
                 <IdramPaymentProcessor
                     paymentData={paymentData}
@@ -27,7 +27,7 @@ export function PaymentProcessor({ paymentType, paymentData, setPaymentStatus })
                 />
             );
 
-        case 'ameria_pay':
+        case "ameriapay":
             return (
                 <AmeriaPaymentProcessor
                     paymentData={paymentData}
@@ -35,14 +35,10 @@ export function PaymentProcessor({ paymentType, paymentData, setPaymentStatus })
                 />
             );
 
-        case 'card':
-            return (
-                <AmeriaCardPaymentRedirect
-                    paymentLink={paymentData.paymentLink}
-                />
-            );
+        case "card":
+            return <AmeriaCardPaymentRedirect paymentLink={paymentData.paymentLink} />;
 
-        case 'telcell':
+        case "telcell":
             return (
                 <TelcellPaymentProcessor
                     paymentData={paymentData}

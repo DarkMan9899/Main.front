@@ -43,7 +43,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 2em;
-    padding-top: 50px;
+    padding-top: 100px;
 }
 
 .product-section-text span {
@@ -72,8 +72,28 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1em;
-    padding-top: 100px;
 }
+/* Bottom-right button wrapper */
+.product-all-btn {
+    display: flex;
+    justify-content: flex-end;   /* 👉 աջ */
+    margin-top: 30px;
+}
+
+/* Button look consistency */
+.product-all-btn .button {
+    padding: 12px 22px;
+    border-radius: 12px;
+}
+
+/* Tablet & mobile — կենտրոն */
+@media (max-width: 768px) {
+    .product-all-btn {
+        justify-content: center;
+        margin-top: 25px;
+    }
+}
+
 
 /* ===========================
    📱 Responsive Adjustments
@@ -90,14 +110,13 @@
 
 /* 📱 Small (Mobile landscape) */
 @media (max-width: 768px) {
-    .product_container {
-        padding: 25px calc(var(--bs-gutter-x) * 0.5);
-    }
+
 
     .product-section-text {
         flex-direction: column;
         text-align: center;
         margin: 0;
+        padding-top: 50px;
     }
 
     .product-section-text span {
@@ -110,9 +129,7 @@
 
 /* 📲 Extra Small (Mobile portrait) */
 @media (max-width: 480px) {
-    .product_container {
-        padding: 25px calc(var(--bs-gutter-x) * 0.5);
-    }
+
 
     .product-section-text span {
         font-size: 1.2rem;

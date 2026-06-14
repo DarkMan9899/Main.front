@@ -60,6 +60,23 @@
     text-align: center;
 }
 
+.form-group select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.5px solid #ccc;
+    font-size: 1rem;
+    transition: 0.3s ease;
+    background: #fff;
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    border-color: #3377e6;
+    outline: none;
+    box-shadow: 0 0 4px rgba(51, 119, 230, 0.4);
+}
+
+
 /* Responsive */
 @media (max-width: 600px) {
     .certificate-container {

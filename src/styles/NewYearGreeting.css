@@ -1,0 +1,66 @@
+.ny-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    pointer-events: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 🎄 ՏՈՆԱԿԱՆ ՖՈՆ */
+    background:
+            radial-gradient(circle at top,
+            rgba(120, 190, 235, 0.25),
+            rgba(255, 255, 255, 0.85)
+            ),
+            linear-gradient(
+                    180deg,
+                    rgba(90, 170, 225, 0.25),
+                    rgba(255, 255, 255, 0.9)
+            );
+}
+
+.ny-text {
+    font-size: 40px;
+    font-weight: 600;
+    color: #2f5fa7; /* քո բրենդի կապույտ */
+    white-space: nowrap;
+    text-align: center;
+
+    /* ✨ փոքր տոնական glow */
+    text-shadow:
+            0 0 12px rgba(120, 190, 235, 0.4),
+            0 0 24px rgba(120, 190, 235, 0.2);
+}
+
+/* Արագ ներքևից վերև */
+.slide-fast {
+    animation: slideFast 1.2s ease-in-out forwards;
+}
+
+@keyframes slideFast {
+    0% {
+        opacity: 0;
+        transform: translateY(120%);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    65% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120%);
+    }
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .ny-text {
+        font-size: 22px;
+    }
+}

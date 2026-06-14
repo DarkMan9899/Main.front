@@ -14,6 +14,7 @@
 
 /* ===== Base Navbar ===== */
 .navbar {
+    contain: layout;
     position: fixed;
     top: 0;
     left: 0;
@@ -48,18 +49,41 @@
    ======================== */
 .navbar_logo {
     width: 150px;
-    height: auto;
+    height: 50px; /* ⬅️ պարտադիր */
+    object-fit: contain;
+    display: block;
 }
+
+.social_links i,
+.socal_link i,
+.lang-current i {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 @media (max-width: 600px) {
     .navbar_logo {
         width: 120px;
+        height: 40px;
+    }
+
+    .navbar_link {
+        color: aliceblue;
     }
 }
 
 @media (max-width: 420px) {
     .navbar_logo {
         width: 105px;
+        height: 35px;
+    }
+
+    .navbar_link {
+        color: aliceblue;
     }
 }
 
@@ -271,6 +295,10 @@ body {
    📱 MOBILE (≤ 768px)
    ================================= */
 @media (max-width: 768px) {
+    ․navbar_link {
+        color: #fff7ed;
+    }
+
     .navbar_menu {
         display: none;
         flex-direction: column;
@@ -326,6 +354,10 @@ body {
         animation: fadeInIcons 0.4s ease 0.1s forwards;
     }
 
+    ․navbar_link {
+        color: #fff7ed;
+    }
+
     @keyframes fadeInIcons {
         to {
             opacity: 1;
@@ -345,5 +377,9 @@ body {
 
     .lang-current span {
         display: none;
+    }
+
+    ․navbar_link {
+        color: #fff7ed;
     }
 }

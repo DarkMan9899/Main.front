@@ -1,71 +1,91 @@
-
-
+/* TITLES */
 .social-title {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    margin-bottom: 50px;
     color: #1a1a1a;
-    padding-top: 50px ;
-
+    padding-top: 50px;
+    margin-bottom: 16px;
 }
 
-/*.social-title span {*/
-/*    color: #5e44e3;*/
-/*}*/
-
-.social-slide {
-    padding: 10px;
+.social-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+    line-height: 1.6;
 }
 
+/* GRID */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+/* CARD */
 .social-card {
-    perspective: 1000px;
+    perspective: 1200px;
     width: 100%;
-    height: 280px;
+    height: 420px;
     position: relative;
     cursor: pointer;
 }
 
+/* FRONT & BACK */
 .card-front,
 .card-back {
     width: 100%;
     height: 100%;
-    border-radius: 12px;
-    background: #E2EDF3
-;
+    border-radius: 18px;
+    background: #e2edf3;
     backface-visibility: hidden;
     position: absolute;
     top: 0;
     left: 0;
-    transition: transform 0.6s;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: transform 0.6s ease;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    text-align: center;
 }
 
+/* FRONT CONTENT */
 .card-front img {
     width: 80px;
     height: 80px;
     object-fit: contain;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .card-front h3 {
-    font-size: 1.1rem;
-    color: #222;
+    font-size: 1.5rem;
     font-weight: 600;
+    color: #222;
+    margin-bottom: 16px;
+    line-height: 1.4;
+    max-width: 85%;
 }
 
+/* MAIN TEXT (description2) */
+.card-highlight {
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 90%;
+}
+
+/* BACK */
 .card-back {
     transform: rotateY(180deg);
-    background-color: #5e44e3;
+    background: linear-gradient(135deg, #5e44e3, #7a63ff);
     color: #fff;
-    padding: 20px;
     font-size: 0.95rem;
-    line-height: 1.5em;
+    line-height: 1.7;
+    overflow-y: auto;
 }
 
+/* FLIP */
 .social-card.flipped .card-front {
     transform: rotateY(180deg);
 }
@@ -74,17 +94,71 @@
     transform: rotateY(0deg);
 }
 
-@media (max-width: 1024px) {
-    .social-title {
-        font-size: 2rem;
-    }
-}
+/* =========================
+   FINAL RESPONSIVE FIX
+   ========================= */
+
 
 @media (max-width: 768px) {
-    .social-title {
-        font-size: 1.7rem;
+
+    .social-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
+
     .social-card {
-        height: 240px;
+        height: 420px;
+        perspective: 1200px;
+    }
+
+    .card-front,
+    .card-back {
+        position: absolute;
+        height: 100%;
+        justify-content: center;
+        padding: 24px 18px;
+        box-sizing: border-box;
+    }
+    .social-title {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        padding-top: 32px;
+        margin-bottom: 12px;
+    }
+
+    .social-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 28px;
+        text-align: center;
+    }
+
+
+    .card-front img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .card-front h3 {
+        font-size: 1.25rem;
+    }
+
+    .card-highlight {
+        font-size: 0.95rem;
+    }
+
+    .card-back {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .social-title {
+        font-size: 1.35rem;
+        line-height: 1.2;
+        padding-top: 24px;
+    }
+
+    .social-subtitle {
+        font-size: 0.9rem;
     }
 }

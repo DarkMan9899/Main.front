@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ProductPreview from '../Component/ProductPreview';
+import { useTranslation } from 'react-i18next';
+import ProductPreview from '../Component/Product/ProductPreview';
 import '../styles/ProductPage.css';
 import { API_URL_Product_Page } from '../api';
 
@@ -9,6 +10,7 @@ const CACHE_TIME_KEY = 'products_data_cache_time';
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
 function ProductPage() {
+    const { t } = useTranslation(); // ✅ i18n
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
 
@@ -35,8 +37,7 @@ function ProductPage() {
 
         if (cachedData && cacheTime && now - parseInt(cacheTime, 10) < CACHE_DURATION) {
             setProducts(JSON.parse(cachedData));
-            // Optionally, revalidate in the background
-            fetchProductsFromAPI();
+            fetchProductsFromAPI(); // revalidate
         } else {
             fetchProductsFromAPI();
         }
@@ -47,17 +48,22 @@ function ProductPage() {
     }, []);
 
     if (error) {
-        return <div>Error fetching products: {error.message}</div>;
+        return <div>{t("products.error")}: {error.message}</div>;
     }
 
     return (
         <div className="product-page">
             <div className="product-page_Title">
-                <h2>All Products</h2>
+                <h2>{t("products.title")}</h2>
             </div>
+
+
             <div className="product-list">
+                <div className="container produtct-page_T">
+                    <p>{t("productss.description")}</p>
+                </div>
                 <div className="product_list_full container">
-                    {products.map((product) => (
+                    {products.map(product => (
                         <ProductPreview key={product.id} product={product} />
                     ))}
                 </div>

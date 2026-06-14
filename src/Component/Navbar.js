@@ -5,23 +5,37 @@ import "../styles/Navbar.css";
 import logo from "../Img/IMG_4270.PNG";
 
 import CertificateModal from "./CertificateModal";
+import TelegramLoginModal from "./TelegramLoginModal";
 
 function Navbar({ cartItemCount }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [langMenuOpen, setLangMenuOpen] = useState(false);
 
-    // ---------- Certificate Modal States ----------
+    // ---------- Certificate Modal ----------
     const [certificateModal, setCertificateModal] = useState(false);
     const [certificateCode, setCertificateCode] = useState("");
     const [certificateData, setCertificateData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
+    // ---------- Telegram Login ----------
+    const [telegramLoginOpen, setTelegramLoginOpen] = useState(false);
+
     const location = useLocation();
     const navigate = useNavigate();
     const { lang } = useParams();
     const { t, i18n } = useTranslation();
+
+    const isGeorgian = lang === "ka";
+
+    const facebookLink = isGeorgian
+        ? "https://www.facebook.com/share/1HQY22cApR/?mibextid=wwXIfr"
+        : "http://m.me/academypolyglot";
+
+    const instagramLink = isGeorgian
+        ? "https://www.instagram.com/polya.academy?igsh=eW9oNHNzcm9lMzE3"
+        : "https://www.instagram.com/academy.polyglot/";
 
     /* Scroll listener */
     useEffect(() => {
@@ -30,12 +44,22 @@ function Navbar({ cartItemCount }) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const handleMenuToggle = () => setMenuOpen((prev) => !prev);
+    const handleMenuToggle = () => setMenuOpen(prev => !prev);
     const closeMenu = () => setMenuOpen(false);
-    const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    const scrollToTop = () =>
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
-    const getLinkClass = (path) =>
-        location.pathname.startsWith(`/${lang}${path}`) ? "active" : "";
+    const getLinkClass = (path) => {
+        const current = location.pathname;
+
+        if (path === "/") {
+            return current === `/${lang}` || current === `/${lang}/`
+                ? "active"
+                : "";
+        }
+
+        return current.startsWith(`/${lang}${path}`) ? "active" : "";
+    };
 
     const openSocialMedia = (url) =>
         window.open(url, "_blank", "noopener,noreferrer");
@@ -44,10 +68,12 @@ function Navbar({ cartItemCount }) {
         hy: "https://flagcdn.com/w20/am.png",
         ru: "https://flagcdn.com/w20/ru.png",
         en: "https://flagcdn.com/w20/gb.png",
+        ka: "https://flagcdn.com/w20/ge.png",
     };
 
     const changeLang = (newLang) => {
-        const currentPath = location.pathname.replace(`/${lang}`, "") || "/";
+        const currentPath =
+            location.pathname.replace(`/${lang}`, "") || "/";
         navigate(`/${newLang}${currentPath}`);
         i18n.changeLanguage(newLang);
         setLangMenuOpen(false);
@@ -59,7 +85,7 @@ function Navbar({ cartItemCount }) {
             <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
                 <div className="navbar_cont container_navbar">
 
-                    {/* 🏠 Logo */}
+                    {/* Logo */}
                     <Link
                         to={`/${lang}`}
                         onClick={() => {
@@ -67,10 +93,16 @@ function Navbar({ cartItemCount }) {
                             scrollToTop();
                         }}
                     >
-                        <img alt="Polyglot logo" src={logo} className="navbar_logo" />
+                        <img
+                            src={logo}
+                            alt="Polyglot logo"
+                            className="navbar_logo"
+                            width="150"
+                            height="50"
+                        />
                     </Link>
 
-                    {/* 📋 Menu (Mobile & Desktop Shared) */}
+                    {/* Menu */}
                     <div className={`navbar_menu ${menuOpen ? "open" : ""}`}>
                         <Link
                             to={`/${lang}/`}
@@ -105,6 +137,30 @@ function Navbar({ cartItemCount }) {
                             {t("navbar.language")}
                         </Link>
 
+                        {/* ⭐ Certificate */}
+                        <span
+                            className="navbar_link"
+                            onClick={() => {
+                                closeMenu();
+                                setCertificateModal(true);
+                            }}
+                        >
+                            {t("navbar.certificate")}
+                        </span>
+
+                        {/*/!* 📲 Telegram VIP (LINK STYLE) *!/*/}
+                        {/*<Link*/}
+                        {/*    to="#"*/}
+                        {/*    className="navbar_link telegram-link"*/}
+                        {/*    onClick={(e) => {*/}
+                        {/*        e.preventDefault();*/}
+                        {/*        closeMenu();*/}
+                        {/*        setTelegramLoginOpen(true);*/}
+                        {/*    }}*/}
+                        {/*>*/}
+                        {/*    {t("navbar.telegram")}*/}
+                        {/*</Link>*/}
+
                         <Link
                             to={`/${lang}/contact`}
                             className={getLinkClass("/contact")}
@@ -116,98 +172,95 @@ function Navbar({ cartItemCount }) {
                             {t("navbar.contact")}
                         </Link>
 
-                        {/* ⭐ Certificate — Visible also in Mobile menu */}
-                        <span
-                            className="navbar_link"
-                            onClick={() => {
-                                closeMenu();
-                                setCertificateModal(true);
-                            }}
-                        >
-                            {t("navbar.certificate")}
-                        </span>
-
-                        {/* Social links (mobile only) */}
+                        {/* Mobile socials */}
                         <div className="social_links mobile-only">
                             <i
                                 className="fa-brands fa-facebook-messenger"
-                                onClick={() => openSocialMedia("http://m.me/academypolyglot")}
-                            ></i>
-
+                                onClick={() => openSocialMedia(facebookLink)}
+                            />
                             <i
                                 className="fa-brands fa-instagram"
-                                onClick={() =>
-                                    openSocialMedia("https://www.instagram.com/academy.polyglot/")
-                                }
-                            ></i>
-
+                                onClick={() => openSocialMedia(instagramLink)}
+                            />
                             <i
                                 className="fa-brands fa-whatsapp"
                                 onClick={() =>
-                                    openSocialMedia("https://wa.me/qr/N6QBFPT6G3FOA1")
+                                    openSocialMedia(
+                                        "https://wa.me/qr/N6QBFPT6G3FOA1"
+                                    )
                                 }
-                            ></i>
+                            />
                         </div>
                     </div>
 
-                    {/* 🔧 Right Controls */}
+                    {/* Right controls */}
                     <div className="navbar_right">
-                        {/* 🌍 Language */}
+                        {/* Language */}
                         <div className="lang-dropdown">
                             <div
                                 className="lang-current"
-                                onClick={() => setLangMenuOpen(!langMenuOpen)}
+                                onClick={() =>
+                                    setLangMenuOpen(!langMenuOpen)
+                                }
                             >
-                                <img src={flags[lang]} alt={t(`lang.${lang}`)} />
+                                <img
+                                    src={flags[lang]}
+                                    alt={t(`lang.${lang}`)}
+                                />
                                 <span>{t(`lang.${lang}`)}</span>
                                 <i
                                     className={`fa-solid fa-chevron-${
                                         langMenuOpen ? "up" : "down"
                                     }`}
-                                ></i>
+                                />
                             </div>
 
                             {langMenuOpen && (
                                 <div className="lang-menu">
                                     {Object.keys(flags)
-                                        .filter((code) => code !== lang)
-                                        .map((code) => (
+                                        .filter(code => code !== lang)
+                                        .map(code => (
                                             <div
                                                 key={code}
                                                 className="lang-option"
-                                                onClick={() => changeLang(code)}
+                                                onClick={() =>
+                                                    changeLang(code)
+                                                }
                                             >
-                                                <img src={flags[code]} alt={t(`lang.${code}`)} />
-                                                <span>{t(`lang.${code}`)}</span>
+                                                <img
+                                                    src={flags[code]}
+                                                    alt={t(`lang.${code}`)}
+                                                />
+                                                <span>
+                                                    {t(`lang.${code}`)}
+                                                </span>
                                             </div>
                                         ))}
                                 </div>
                             )}
                         </div>
 
-                        {/* 💬 Social Icons (desktop) */}
+                        {/* Desktop socials */}
                         <div className="social_links desktop-only">
                             <i
                                 className="fa-brands fa-facebook-messenger"
-                                onClick={() => openSocialMedia("http://m.me/academypolyglot")}
-                            ></i>
-
+                                onClick={() => openSocialMedia(facebookLink)}
+                            />
                             <i
                                 className="fa-brands fa-instagram"
-                                onClick={() =>
-                                    openSocialMedia("https://www.instagram.com/academy.polyglot/")
-                                }
-                            ></i>
-
+                                onClick={() => openSocialMedia(instagramLink)}
+                            />
                             <i
                                 className="fa-brands fa-whatsapp"
                                 onClick={() =>
-                                    openSocialMedia("https://wa.me/qr/N6QBFPT6G3FOA1")
+                                    openSocialMedia(
+                                        "https://wa.me/qr/N6QBFPT6G3FOA1"
+                                    )
                                 }
-                            ></i>
+                            />
                         </div>
 
-                        {/* 🛒 Cart */}
+                        {/* Cart */}
                         <Link
                             to={`/${lang}/cart`}
                             className="cart-icon"
@@ -217,7 +270,7 @@ function Navbar({ cartItemCount }) {
                             🛒
                         </Link>
 
-                        {/* ☰ Mobile Toggle */}
+                        {/* Mobile toggle */}
                         <button
                             className="navbar_toggle"
                             onClick={handleMenuToggle}
@@ -228,7 +281,7 @@ function Navbar({ cartItemCount }) {
                 </div>
             </nav>
 
-            {/* ⭐ Certificate Modal */}
+            {/* Certificate Modal */}
             <CertificateModal
                 open={certificateModal}
                 onClose={() => {
@@ -247,6 +300,13 @@ function Navbar({ cartItemCount }) {
                 errorMessage={errorMessage}
                 setErrorMessage={setErrorMessage}
             />
+
+            {/* Telegram Login Modal */}
+            {telegramLoginOpen && (
+                <TelegramLoginModal
+                    onClose={() => setTelegramLoginOpen(false)}
+                />
+            )}
         </>
     );
 }

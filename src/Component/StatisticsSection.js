@@ -20,7 +20,7 @@ function StatisticsSection() {
 
     return (
         <section className="statistics-wrapper">
-            <div className="statistics-section">
+            <div className="statistics-section container">
                 {statisticsData.map((data, index) => (
                     <StatisticsCard
                         key={index}

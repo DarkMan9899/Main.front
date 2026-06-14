@@ -9,6 +9,7 @@ function Contact(props) {
                     <p>Join Our New Session</p>
                     <h1>Call and Enroll Now</h1>
                     <h1>+374 95 12 12 16</h1>
+                    <h1>+374 95 12 12 16</h1>
                 </div>
                 <a href="/contact" className="button">Contact Us</a>
             </div>

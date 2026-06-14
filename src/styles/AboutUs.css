@@ -1,24 +1,9 @@
-/* =========================================
-   🏫 About Us Section – Clean & Responsive
-   ========================================= */
-
-.about-us {
-    width: 100%;
-    background: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px;
-}
-
 .container_about {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 50px;
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 2rem;
+    padding-top: 100px;
 }
 
 /* ===== Image ===== */
@@ -28,14 +13,9 @@
     height: auto;
     object-fit: cover;
     border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.about-image:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
+
 
 /* ===== Text Section ===== */
 .text-about {
@@ -49,7 +29,7 @@
 .about_us_button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -73,7 +53,7 @@
         flex-direction: column;
         text-align: center;
         gap: 40px;
-        padding: 0 1.5rem;
+        padding: 7rem 1.5rem 0 1.5rem;
     }
 
     .about_us_button {
@@ -97,7 +77,7 @@
 /* ===== Small Screens (Phones) ===== */
 @media (max-width: 576px) {
     .about-us {
-        padding: 80px 0;
+        padding: 50px 0;
     }
 
     /* 🔥 MOBILE: MAKE BUTTON GO UNDER TEXT */

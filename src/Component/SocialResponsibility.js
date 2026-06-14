@@ -1,17 +1,13 @@
-import React, { useRef, useState } from "react";
-import Slider from "react-slick";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/SocialResponsibility.css";
 
-// ✅ Sample logos (replace with your real ones)
-import logo1 from "../Img/S1.png";
-import logo2 from "../Img/S2.png";
-import logo3 from "../Img/S3.png";
-import logo4 from "../Img/S4.png";
+// Logos
+import logo1 from "../Img/logo1/zinvori-tun.png";
+import logo4 from "../Img/logo1/ՄԵՄ.png";
 
 const SocialResponsibility = () => {
     const { t } = useTranslation();
-    const sliderRef = useRef(null);
     const [flippedIndex, setFlippedIndex] = useState(null);
 
     const cards = [
@@ -19,84 +15,52 @@ const SocialResponsibility = () => {
             logo: logo1,
             name: t("social.card1"),
             description: t("social.desc1"),
-        },
-        {
-            logo: logo2,
-            name: t("social.card2"),
-            description: t("social.desc2"),
-        },
-        {
-            logo: logo3,
-            name: t("social.card3"),
-            description: t("social.desc3"),
+            description2: t("social.desc22"),
         },
         {
             logo: logo4,
-            name: t("social.card4"),
-            description: t("social.desc4"),
+            name: t("social.card2"),
+            description: t("social.desc2"),
+            description2: t("social.desc33"),
         },
-        // {
-        //     logo: logo5,
-        //     name: t("social.card5"),
-        //     description: t("social.desc5"),
-        // },
     ];
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 3000, // ⏱️ 3-second rotation
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        pauseOnHover: true,
-        arrows: false,
-        responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 3 } },
-            { breakpoint: 768, settings: { slidesToShow: 2 } },
-            { breakpoint: 480, settings: { slidesToShow: 1 } },
-        ],
-    };
-
     const handleCardClick = (index) => {
-        const slider = sliderRef.current;
-        if (flippedIndex === index) {
-            setFlippedIndex(null);
-            slider && slider.slickPlay(); // ▶️ Resume autoplay
-        } else {
-            setFlippedIndex(index);
-            slider && slider.slickPause(); // ⏸️ Pause when a card flips
-        }
+        setFlippedIndex(flippedIndex === index ? null : index);
     };
 
     return (
         <section className="social-section">
             <div className="container">
-                <h2 className="social-title">
-                    {t("social.title")} <br />
-                    {/*<span>{t("social.subtitle")}</span>*/}
-                </h2>
+                <h2 className="social-title">{t("social.title")}</h2>
 
-                <Slider ref={sliderRef} {...settings}>
+                <p className="social-subtitle">{t("social.title2")}</p>
+
+                <div className="social-grid">
                     {cards.map((card, index) => (
-                        <div key={index} className="social-slide">
-                            <div
-                                className={`social-card ${
-                                    flippedIndex === index ? "flipped" : ""
-                                }`}
-                                onClick={() => handleCardClick(index)}
-                            >
-                                <div className="card-front">
-                                    <img src={card.logo} alt={card.name} />
-                                    <h3>{card.name}</h3>
+                        <div
+                            key={index}
+                            className={`social-card ${
+                                flippedIndex === index ? "flipped" : ""
+                            }`}
+                            onClick={() => handleCardClick(index)}
+                        >
+                            {/* FRONT */}
+                            <div className="card-front">
+                                <img src={card.logo} alt={card.name} loading="lazy" />
+                                <h3>{card.name}</h3>
+                                <div className="card-highlight">
+                                    {card.description2}
                                 </div>
-                                <div className="card-back">
-                                    <p>{card.description}</p>
-                                </div>
+                            </div>
+
+                            {/* BACK */}
+                            <div className="card-back">
+                                <p>{card.description}</p>
                             </div>
                         </div>
                     ))}
-                </Slider>
+                </div>
             </div>
         </section>
     );

@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .teacher-header h2 {
@@ -95,6 +95,33 @@
     color: #000;
     margin: 0;
 }
+.btich{
+    width: 220px;
+}
+
+
+
+/* Bottom-right button */
+.teacher-all-btn {
+    display: flex;
+    justify-content: flex-end;   /* 👉 աջ */
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+/* Button style consistency */
+.teacher-all-btn .button {
+    padding: 12px 22px;
+    border-radius: 12px;
+}
+
+/* Mobile — կենտրոն */
+@media (max-width: 768px) {
+    .teacher-all-btn {
+        justify-content: center;
+        margin-top: 25px;
+    }
+}
 
 /* ----------------------------
    RESPONSIVE DESIGN
@@ -117,6 +144,9 @@
         text-align: center;
         gap: 15px;
     }
+    .teacher_section {
+        padding-top: 50px;
+    }
 
     .teacher-intro {
         text-align: center;
@@ -134,6 +164,9 @@
         justify-items: center;   /* ⭐ centers the cards */
     }
 
+    .teacher_section {
+        padding-top: 50px;
+    }
     .teacher-card {
         width: 100%;
         max-width: 340px;        /* ⭐ prevents full-width stretching */

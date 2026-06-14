@@ -1,0 +1,118 @@
+.payment-fail-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Overlay */
+.payment-fail-container .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+/* Modal */
+.payment-fail-container .modal-box {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon */
+.payment-fail-container .fail-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Details */
+.payment-fail-container .payment-details {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.payment-fail-container .detail-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+}
+
+/* Buttons */
+.payment-fail-container .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.payment-fail-container .btn-primary,
+.payment-fail-container .btn-secondary,
+.payment-fail-container .btn-retry {
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.payment-fail-container .btn-primary {
+    background: #007bff;
+    color: #ffffff;
+}
+
+.payment-fail-container .btn-secondary {
+    background: #6c757d;
+    color: #ffffff;
+}
+
+.payment-fail-container .btn-retry {
+    background: #dc3545;
+    color: #ffffff;
+}
+
+.payment-fail-container .btn-primary:hover,
+.payment-fail-container .btn-secondary:hover,
+.payment-fail-container .btn-retry:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+/* Hint */
+.payment-fail-container .hint {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .payment-fail-container .modal-box {
+        padding: 1.5rem;
+    }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .payment-fail-container .modal-box {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+
+    .payment-fail-container .payment-details {
+        background: #4a5568;
+    }
+
+    .payment-fail-container .hint {
+        color: #a0aec0;
+    }
+}

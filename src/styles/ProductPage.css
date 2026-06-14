@@ -1,16 +1,20 @@
-.product-page {
+.produtct-page_T p{
+    padding-bottom: 50px;
+    font-size: 20px;
 }
 
+
 .product-page_Title {
-    background-image: url("/src/Img/grqerov.jpg");
-    background-position: center;
+    background-image: url("/src/Img/Dasyntac_page_banner.png");
+    width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    padding: 40px 0;
     height: 300px;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 0 20px; /* Added padding for smaller screens */
+    align-items: center;
+    display: flex;
 }
 
 .product-page_Title h2 {
@@ -23,9 +27,9 @@
 /* Product list grid */
 .product_list_full {
     display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding: 20px;
+    gap: 130px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+    padding: 20px 20px 50px;
 }
 
 .product-card {
@@ -73,8 +77,11 @@
 }
 
 @media (max-width: 768px) {
+
     .product-page_Title {
         height: 200px;
+        background-image: url("/src/Img/mobile/720x420 5.png");
+
     }
 
     .product-page_Title h2 {
@@ -96,6 +103,10 @@
 }
 
 @media (max-width: 576px) {
+    .product-page_Title {
+        background-image: url("/src/Img/mobile/720x420 5.png");
+
+    }
     .product-page_Title {
         height: 150px;
     }
